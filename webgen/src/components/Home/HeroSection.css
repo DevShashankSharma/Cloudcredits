@@ -1,0 +1,83 @@
+;
+/* Container for the hero section */
+.hero-container {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+}
+
+/* Carousel styling */
+.hero-slide img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+/* Hero content styling */
+.hero-content {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: white;
+}
+
+.hero-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    animation: fadeIn 2s ease-out;
+}
+
+.hero-content p {
+    font-size: 1.25rem;
+    margin-bottom: 2rem;
+    animation: fadeIn 3s ease-out;
+}
+
+.hero-content .btn-primary {
+    padding: 0.75rem 1.5rem;
+    background-color: #007bff;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.hero-content .btn-primary:hover {
+    background-color: #0056b3;
+}
+
+/* Brand logos styling */
+.hero-brands {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.brand-logo {
+    width: 50px;
+    height: 50px;
+    object-fit: contain;
+    transition: transform 0.3s;
+}
+
+.brand-logo:hover {
+    transform: scale(1.1);
+}
+
+/* Keyframes for animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

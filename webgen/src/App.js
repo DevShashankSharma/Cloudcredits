@@ -3,6 +3,9 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Header from './components/Header';
 import Footer from './components/Footer';
 import Home from './components/Home'; 
+import Template from './components/Template';
+import Editor from './components/Editor';
+import Deployment from './components/Deployment';
 import './index.css';
 
 function App() {
@@ -13,6 +16,9 @@ function App() {
                 <main className="flex-grow">
                     <Routes>
                         <Route path="/" element={<Home/>} /> 
+                        <Route path="/templates" element={<Template/>} />
+                        <Route path="/editor" element={<Editor/>} />
+                        <Route path="/deployment" element={<Deployment/>} />
                     </Routes>
                 </main>
                 <Footer />
