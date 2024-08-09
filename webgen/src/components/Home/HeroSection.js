@@ -7,7 +7,7 @@ function HeroSection() {
     return (
         <section className="relative flex flex-col items-center justify-center min-h-screen text-white overflow-hidden">
             {/* Background Carousel */}
-            <div className="absolute inset-0 w-full h-full opacity-60">
+            <div className="absolute inset-0 w-full h-full opacity-70">
                 <Carousel
                     autoPlay
                     infiniteLoop
@@ -33,7 +33,7 @@ function HeroSection() {
 
             {/* Hero Content */}
             <div className="relative z-10 flex flex-col items-center text-center px-4 md:px-8">
-                <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn opacity-0" style={{ animation: 'fadeIn 2s forwards' }}>
+                <h1 className="text-4xl md:text-6xl font-bold mb-4 animate-fadeIn opacity-0 bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500 bg-clip-text text-transparent" style={{ animation: 'fadeIn 2s forwards' }}>
                     Create Dynamic Websites with Ease
                 </h1>
                 <p className="text-lg md:text-xl mb-6 max-w-2xl mt-6 mx-auto animate-slideIn opacity-0" style={{ animation: 'slideIn 2s forwards' }}>
@@ -56,12 +56,12 @@ function HeroSection() {
                 <div className="mt-12 text-center animate-fadeIn opacity-0" style={{ animation: 'fadeIn 3s forwards' }}>
                     <p className="text-lg mb-4">Trusted by leading brands and thousands of developers worldwide</p>
                     <div className="flex flex-wrap items-center justify-center gap-6 mt-8">
-                        <img src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1723075200&semt=ais_hybrid" alt="Facebook" className="w-12 h-auto opacity-75 rounded-full hover:opacity-100 transition-opacity duration-300" />
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd-lkijlO0g1F6MHKlfo2erxZ-z8FSlzTHRA&s" alt="Twitter" className="w-12 h-auto opacity-75 rounded-full hover:opacity-100 transition-opacity duration-300" />
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTj-MM_UyJqsvN2GeGKQKLEHNaL-cfeoLa-Q&s" alt="Google" className="w-12 h-auto opacity-75 rounded-full hover:opacity-100 transition-opacity duration-300" />
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtIr5WW7vtFBwAUwptaRNkOThkxKXZEfjbAA&s" alt="LinkedIn" className="w-12 h-auto opacity-75 rounded-full hover:opacity-100 transition-opacity duration-300" />
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyYVvZ8tyM6iQZPi_TBNXwgRJ7hTQ9kryJqkTR8E3n93ogxjnk8ms_EIMB4nl0nuq8Rl4&usqp=CAU" alt="Instagram" className="w-12 h-auto opacity-75 rounded-full hover:opacity-100 transition-opacity duration-300" />
-                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgQ7WGNDT9mt2WRz9wjNvB0jXqVSuJAFldfA&s" alt="YouTube" className="w-12 h-auto opacity-75 rounded-full hover:opacity-100 transition-opacity duration-300" />
+                        <img src="https://img.freepik.com/free-vector/bird-colorful-logo-gradient-vector_343694-1365.jpg?size=338&ext=jpg&ga=GA1.1.2008272138.1723075200&semt=ais_hybrid" alt="Facebook" className="w-12 h-auto opacity-75 rounded-full hover:opacity-100 transition-opacity duration-300 animate-pulse" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTd-lkijlO0g1F6MHKlfo2erxZ-z8FSlzTHRA&s" alt="Twitter" className="w-12 h-auto opacity-75 rounded-full hover:opacity-100 transition-opacity duration-300 animate-spin-slow" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQTj-MM_UyJqsvN2GeGKQKLEHNaL-cfeoLa-Q&s" alt="Google" className="w-12 h-auto opacity-75 rounded-full hover:opacity-100 transition-opacity duration-300 animate-bounce" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTtIr5WW7vtFBwAUwptaRNkOThkxKXZEfjbAA&s" alt="LinkedIn" className="w-12 h-auto opacity-75 rounded-full hover:opacity-100 transition-opacity duration-300 animate-bounce" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyYVvZ8tyM6iQZPi_TBNXwgRJ7hTQ9kryJqkTR8E3n93ogxjnk8ms_EIMB4nl0nuq8Rl4&usqp=CAU" alt="Instagram" className="w-12 h-auto opacity-75 rounded-full hover:opacity-100 transition-opacity duration-300 animate-spin-slow" />
+                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQgQ7WGNDT9mt2WRz9wjNvB0jXqVSuJAFldfA&s" alt="YouTube" className="w-12 h-auto opacity-75 rounded-full hover:opacity-100 transition-opacity duration-300 animate-pulse" />
                     </div>
                 </div>
             </div>
@@ -84,6 +84,14 @@ function HeroSection() {
                 @keyframes slideIn {
                     0% { transform: translateY(20px); opacity: 0; }
                     100% { transform: translateY(0); opacity: 1; }
+                }
+                @keyframes spin-slow {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+                @keyframes pulse {
+                    0%, 100% { opacity: 1; transform: scale(1); }
+                    50% { opacity: 0.5; transform: scale(0.95); }
                 }
                 `}
             </style>
