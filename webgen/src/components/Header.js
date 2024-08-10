@@ -25,7 +25,7 @@ function Header() {
     return (
         <header
             ref={headerRef}
-            className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white p-6 flex justify-between items-center shadow-lg transition-transform duration-300"
+            className="fixed top-0 left-0 right-0 z-50 bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-white p-6 flex justify-between items-center shadow-lg transition-transform duration-300 opacity-85"
             style={{ fontFamily: '"Poppins", sans-serif' }}
         >
             <div className="text-2xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-yellow-400 via-red-500 to-pink-500">
