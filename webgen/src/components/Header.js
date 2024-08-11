@@ -34,35 +34,38 @@ function Header() {
             <nav className="space-x-8 text-lg md:text-xl">
                 <Link
                     to="/"
-                    className={`hover:text-yellow-400 ${
-                        location.pathname === '/' ? 'border-b-2 border-yellow-400' : ''
-                    }`}
+                    className={`hover:text-yellow-400 ${location.pathname === '/' ? 'border-b-2 border-yellow-400' : ''
+                        }`}
                 >
                     Home
                 </Link>
                 <Link
                     to="/templates"
-                    className={`hover:text-yellow-400 ${
-                        location.pathname === '/templates' ? 'border-b-2 border-yellow-400' : ''
-                    }`}
+                    className={`hover:text-yellow-400 ${location.pathname === '/templates' ? 'border-b-2 border-yellow-400' : ''
+                        }`}
                 >
                     Templates
                 </Link>
                 <Link
                     to="/editor"
-                    className={`hover:text-yellow-400 ${
-                        location.pathname === '/editor' ? 'border-b-2 border-yellow-400' : ''
-                    }`}
+                    className={`hover:text-yellow-400 ${location.pathname === '/editor' ? 'border-b-2 border-yellow-400' : ''
+                        }`}
                 >
                     Editor
                 </Link>
                 <Link
                     to="/deployment"
-                    className={`hover:text-yellow-400 ${
-                        location.pathname === '/deployment' ? 'border-b-2 border-yellow-400' : ''
-                    }`}
+                    className={`hover:text-yellow-400 ${location.pathname === '/deployment' ? 'border-b-2 border-yellow-400' : ''
+                        }`}
                 >
                     Deployment
+                </Link>
+                <Link
+                    to="/documentation"
+                    className={`hover:text-yellow-400 ${location.pathname === '/documentation' ? 'border-b-2 border-yellow-400' : ''
+                        }`}
+                >
+                    Documentation
                 </Link>
             </nav>
         </header>

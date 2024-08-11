@@ -6,6 +6,7 @@ import Home from './components/Home';
 import Template from './components/Template';
 import Editor from './components/Editor';
 import Deployment from './components/Deployment';
+import Documentation from './components/Documentation';
 import './index.css';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
                         <Route path="/templates" element={<Template/>} />
                         <Route path="/editor" element={<Editor/>} />
                         <Route path="/deployment" element={<Deployment/>} />
+                        <Route path="/documentation" element={<Documentation/>} />
                     </Routes>
                 </main>
                 <Footer />
