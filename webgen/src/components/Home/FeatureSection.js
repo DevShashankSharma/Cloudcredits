@@ -4,19 +4,12 @@ function FeatureSection() {
     return (
         <section className="relative py-16 text-white overflow-hidden">
             {/* Background with Gradient and Particles */}
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-800 via-purple-800 to-blue-800">
-                {/* Floating Particles */}
-                <div className="absolute inset-0 overflow-hidden">
-                    <div className="absolute w-72 h-72 bg-blue-600 opacity-30 rounded-full mix-blend-multiply blur-2xl animate-float1"></div>
-                    <div className="absolute w-96 h-96 bg-purple-600 opacity-30 rounded-full mix-blend-multiply blur-2xl animate-float2"></div>
-                    <div className="absolute w-48 h-48 bg-pink-600 opacity-30 rounded-full mix-blend-multiply blur-2xl animate-float3"></div>
-                </div>
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-900 via-purple-900 to-blue-900">
             </div>
 
             <h2 className="relative text-4xl font-bold text-center mb-12 z-10 bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-500 to-pink-600">
                 Why Choose WebGen?
             </h2>
-
 
             <div className="relative z-10 flex flex-wrap justify-center gap-8 px-4">
                 <div className="w-full sm:w-1/3 text-center">
@@ -44,24 +37,7 @@ function FeatureSection() {
 
             {/* Custom Styles */}
             <style>
-                {`
-                    .animate-float1 {
-                        animation: float 6s ease-in-out infinite;
-                        animation-delay: 0s;
-                    }
-                    .animate-float2 {
-                        animation: float 8s ease-in-out infinite;
-                        animation-delay: 2s;
-                    }
-                    .animate-float3 {
-                        animation: float 10s ease-in-out infinite;
-                        animation-delay: 4s;
-                    }
-                    @keyframes float {
-                        0% { transform: translateY(0px); }
-                        50% { transform: translateY(-20px); }
-                        100% { transform: translateY(0px); }
-                    }
+                {` 
                     .animate-spin-slow {
                         animation: spin 12s linear infinite;
                     }

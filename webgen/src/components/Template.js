@@ -2,7 +2,7 @@ import React from 'react';
 
 function TemplatePage() {
     return (
-        <div className="p-8 bg-blue-200 min-h-screen pt-[6rem]">
+        <div className="p-8 bg-slate-700 min-h-screen pt-[6rem]">
             <h2 className="text-4xl font-bold mb-8 text-white text-center animate-fadeIn">Choose a Template</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 {/* Template 1 */}

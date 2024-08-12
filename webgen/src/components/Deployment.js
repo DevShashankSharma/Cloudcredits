@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 function Deployment() {
     return (
-        <div className="p-8 pt-[8rem] bg-gradient-to-r from-indigo-900 via-purple-900 to-black min-h-screen text-white">
+        <div className="p-8 pt-[8rem] bg-gradient-to-r from-indigo-950 via-purple-950 to-black min-h-screen text-white">
             <h2 className="text-4xl font-bold mb-8 text-center animate-fadeIn">Deploy Your Website</h2>
             <p className="text-lg text-center mb-12">Follow these steps to publish your website seamlessly and effectively.</p>
 
