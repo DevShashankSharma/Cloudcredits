@@ -1,9 +1,46 @@
 import React from 'react';
+import { useState } from 'react';
 
-function Home({darkMode}) { 
+function Home({ darkMode }) {
+    // State to manage the current testimonial slide
+    const [currentSlide, setCurrentSlide] = useState(0);
+
+    // Testimonials data
+    const testimonials = [
+        {
+            quote: "WebBasics has significantly improved my development workflow. The tools are intuitive and powerful.",
+            name: "Alex J., Front-End Developer",
+            image: "https://via.placeholder.com/100"
+        },
+        {
+            quote: "The responsive design tools are fantastic. They save me so much time when building websites.",
+            name: "Jessica L., UI/UX Designer",
+            image: "https://via.placeholder.com/100"
+        },
+        {
+            quote: "WebBasics provides everything I need in one place. It's my go-to toolkit for web development.",
+            name: "Michael R., Full-Stack Developer",
+            image: "https://via.placeholder.com/100"
+        },
+        {
+            quote: "The code editor is a game-changer. It’s fast, customizable, and integrates seamlessly with my workflow.",
+            name: "Taylor R., Web Designer",
+            image: "https://via.placeholder.com/100"
+        },
+        {
+            quote: "WebBasics' CSS frameworks integration is spot on. It makes styling my projects much easier.",
+            name: "Sarah W., Front-End Engineer",
+            image: "https://via.placeholder.com/100"
+        },
+    ];
+
+    // Handle next and previous slide
+    const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % testimonials.length);
+    const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
+
     return (
         <div className={`${darkMode ? "dark" : ""}`}>
-            <div className={`transition-all min-h-screen ${darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-gray-900"} p-4`}> 
+            <div className={`transition-all min-h-screen ${darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-gray-900"} p-4`}>
 
                 {/* Hero Section */}
                 <section className="container mx-auto text-center py-20">
@@ -90,6 +127,48 @@ function Home({darkMode}) {
                                 <img src="https://via.placeholder.com/400x200" alt="JavaScript Utilities" className="w-full h-40 object-cover rounded-lg" />
                             </div>
                         </div>
+                    </div>
+                </section>
+
+                {/* What Our Developers Say Section */}
+                <section className="container mx-auto mt-20">
+                    <h2 className="text-4xl font-bold text-center">What Our Developers Say</h2>
+                    <p className="text-lg text-center mt-4">
+                        Hear from developers who have transformed their workflow with WebBasics.
+                    </p>
+
+                    {/* Testimonial Slider */}
+                    <div className="relative mt-12">
+                        <div className="overflow-hidden">
+                            <div className="flex transition-transform duration-500" style={{ transform: `translateX(-${currentSlide * 100}%)` }}>
+                                {testimonials.map((testimonial, index) => (
+                                    <div key={index} className="flex-shrink-0 w-full md:w-1/2 lg:w-1/3 px-4">
+                                        <div className={`p-8 rounded-lg shadow-lg ${darkMode ? "bg-gray-800" : "bg-white"}`}>
+                                            <img src={testimonial.image} alt={testimonial.name} className="w-16 h-16 rounded-full mx-auto" />
+                                            <blockquote className="mt-4 text-lg italic">
+                                                "{testimonial.quote}"
+                                            </blockquote>
+                                            <p className="mt-4 text-center font-semibold">
+                                                - {testimonial.name}
+                                            </p>
+                                        </div>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                        {/* Navigation buttons */}
+                        <button
+                            onClick={prevSlide}
+                            className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-gray-200 text-gray-700 rounded-full p-2 m-2"
+                        >
+                            &lt;
+                        </button>
+                        <button
+                            onClick={nextSlide}
+                            className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-gray-200 text-gray-700 rounded-full p-2 m-2"
+                        >
+                            &gt;
+                        </button>
                     </div>
                 </section>
 
