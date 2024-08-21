@@ -14,7 +14,7 @@ function Sidebar({ toggleDarkMode, darkMode }) {
                     <Link to="/" className="flex items-center py-3 px-5 rounded-md hover:bg-gray-700 transition-colors mb-2">
                         <FiHome className="mr-3 text-xl" /> Home
                     </Link>
-                    <Link to="/documentation" className="flex items-center py-3 px-5 rounded-md hover:bg-gray-700 transition-colors mb-2">
+                    <Link to="/templates" className="flex items-center py-3 px-5 rounded-md hover:bg-gray-700 transition-colors mb-2">
                         <FiBookOpen className="mr-3 text-xl" /> Documentation
                     </Link>
                     <Link to="/advanced-features" className="flex items-center py-3 px-5 rounded-md hover:bg-gray-700 transition-colors mb-2">
@@ -38,17 +38,18 @@ function Sidebar({ toggleDarkMode, darkMode }) {
                 </button>
 
                 {/* User Profile Section */}
-                <div className={`flex items-center py-4 px-1 mt-8 rounded-md ${darkMode ? "bg-gray-800 border-gray-700" : "bg-gray-200 border-gray-300"} border transition-shadow hover:shadow-lg`}>
+                <div className={`flex items-center py-4 px-5 mt-8 rounded-md ${darkMode ? "bg-gray-800 border-gray-700" : "bg-gray-200 border-gray-300"} border transition-shadow hover:shadow-lg`}>
                     <img
                         src="https://via.placeholder.com/60"
                         alt="User"
                         className="w-16 h-16 rounded-full object-cover border-2 border-blue-500"
                     />
-                    <div className="ml-2 text-sm">
-                        <p className="font-semibold text-lg text-gray-900 dark:text-gray-100">John Doe</p>
-                        <p className="text-gray-600 dark:text-gray-300">johndoe@example.com</p>
+                    <div className="ml-4 text-sm overflow-hidden">
+                        <p className={`font-semibold text-lg ${darkMode ? "text-gray-100" : "text-gray-800"}  `}>John Doe</p>
+                        <p className={`${darkMode ? "text-gray-300" : "text-gray-00"} truncate max-w-[10rem]`}>johndoe@example.com</p>
                     </div>
                 </div>
+
             </div>
         </div>
     );

@@ -5,6 +5,7 @@ import Documentation from './components/Documentation';
 import AdvancedFeatures from './components/AdvancedFeatures';
 import Sidebar from './components/SideBar';
 import Footer from './components/Footer';
+import TemplatePage from './components/Template';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/" element={<Home darkMode={darkMode} />} />
                 <Route path="/documentation" element={<Documentation />} />
                 <Route path="/advanced-features" element={<AdvancedFeatures />} />
+                <Route path="/templates" element={<TemplatePage />} />
               </Routes>
               <Footer darkMode={darkMode} />
             </div>
