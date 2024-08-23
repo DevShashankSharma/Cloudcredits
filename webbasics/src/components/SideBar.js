@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiHome, FiBookOpen, FiTool, FiMoon, FiSun, FiInfo, FiGithub } from 'react-icons/fi';
+import { FiHome, FiBookOpen, FiTool, FiMoon, FiSun, FiInfo, FiGithub, FiLayers } from 'react-icons/fi';
 
 function Sidebar({ toggleDarkMode, darkMode }) {
     return (
@@ -15,6 +15,9 @@ function Sidebar({ toggleDarkMode, darkMode }) {
                         <FiHome className="mr-3 text-xl" /> Home
                     </Link>
                     <Link to="/templates" className="flex items-center py-3 px-5 rounded-md hover:bg-gray-700 transition-colors mb-2">
+                    <FiLayers className="mr-3 text-xl" /> Templates
+                </Link>
+                    <Link to="/documentation" className="flex items-center py-3 px-5 rounded-md hover:bg-gray-700 transition-colors mb-2">
                         <FiBookOpen className="mr-3 text-xl" /> Documentation
                     </Link>
                     <Link to="/advanced-features" className="flex items-center py-3 px-5 rounded-md hover:bg-gray-700 transition-colors mb-2">

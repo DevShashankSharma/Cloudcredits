@@ -4,8 +4,10 @@ import Home from './components/Home';
 import Documentation from './components/Documentation';
 import AdvancedFeatures from './components/AdvancedFeatures';
 import Sidebar from './components/SideBar';
+import ComingSoon from './components/ComingSoon';
 import Footer from './components/Footer';
-import TemplatePage from './components/Template';
+import TemplatePage from './components/template/Template';
+import ViewTemplate from './components/template/ViewTemplate';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
@@ -28,7 +30,9 @@ function App() {
                 <Route path="/" element={<Home darkMode={darkMode} />} />
                 <Route path="/documentation" element={<Documentation />} />
                 <Route path="/advanced-features" element={<AdvancedFeatures />} />
-                <Route path="/templates" element={<TemplatePage />} />
+                <Route path="/templates" element={<TemplatePage darkMode={darkMode} />} />
+                <Route path="/templates/:id" element={<ViewTemplate darkMode={darkMode} />} />
+                <Route path="*" element={<ComingSoon darkMode={darkMode} />} />
               </Routes>
               <Footer darkMode={darkMode} />
             </div>
