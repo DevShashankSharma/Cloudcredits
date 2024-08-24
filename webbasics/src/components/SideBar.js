@@ -1,60 +1,187 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { FiHome, FiBookOpen, FiTool, FiMoon, FiSun, FiInfo, FiGithub, FiLayers } from 'react-icons/fi';
+import React, { useState } from 'react';
+import { Link, useLocation } from 'react-router-dom';
+import { FiHome, FiBookOpen, FiTool, FiMoon, FiInfo, FiGithub, FiLayers, FiTag, FiUser, FiMenu, FiX } from 'react-icons/fi';
 
 function Sidebar({ toggleDarkMode, darkMode }) {
+    const location = useLocation(); // Get current path for active link styling
+    const [sidebarOpen, setSidebarOpen] = useState(true); // State to toggle sidebar visibility
+
+    const toggleSidebar = () => {
+        setSidebarOpen(!sidebarOpen);
+    };
+
+    // user details for testing purposes
+    const user = {
+        name: 'John Doe',
+        email: 'W7H9H@example.com',
+    };
     return (
-        <div className={`h-screen w-64 py-8 px-4 ${darkMode ? "bg-gray-700 text-white" : "bg-white text-black"} sticky top-0 flex flex-col`}>
-            <div>
-                <h2 className="text-3xl font-bold text-center mb-8">
-                    WebBasics
-                </h2>
+        <>
+            {/* Sidebar */}
+            <div
+                className={`h-screen ${sidebarOpen ? 'w-64' : 'w-20'} py-8 px-4 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'} sticky top-0 flex flex-col transition-all duration-300 ease-in-out`}
+            >
+                <div className={`flex items-center ${sidebarOpen ? 'justify-between' : 'justify-center'} mb-8`}>
+                    {/* Hamburger Menu Button */}
+                    <button
+                        className={`text-3xl ${darkMode ? 'text-white' : 'text-black'}`}
+                        onClick={toggleSidebar}
+                        aria-label="Toggle Sidebar"
+                    >
+                        {sidebarOpen ? <FiX /> : <FiMenu />}
+                    </button>
 
-                <nav>
-                    <Link to="/" className="flex items-center py-3 px-5 rounded-md hover:bg-gray-700 transition-colors mb-2">
-                        <FiHome className="mr-3 text-xl" /> Home
-                    </Link>
-                    <Link to="/templates" className="flex items-center py-3 px-5 rounded-md hover:bg-gray-700 transition-colors mb-2">
-                    <FiLayers className="mr-3 text-xl" /> Templates
-                </Link>
-                    <Link to="/documentation" className="flex items-center py-3 px-5 rounded-md hover:bg-gray-700 transition-colors mb-2">
-                        <FiBookOpen className="mr-3 text-xl" /> Documentation
-                    </Link>
-                    <Link to="/advanced-features" className="flex items-center py-3 px-5 rounded-md hover:bg-gray-700 transition-colors mb-2">
-                        <FiTool className="mr-3 text-xl" /> Advanced Features
-                    </Link>
-                    <Link to="/about" className="flex items-center py-3 px-5 rounded-md hover:bg-gray-700 transition-colors mb-2">
-                        <FiInfo className="mr-3 text-xl" /> About
-                    </Link>
-                    <Link to="/contact" className="flex items-center py-3 px-5 rounded-md hover:bg-gray-700 transition-colors mb-2">
-                        <FiGithub className="mr-3 text-xl" /> Contact
-                    </Link>
-                </nav>
-            </div>
-
-            <div className="mt-auto">
-                <button
-                    onClick={toggleDarkMode}
-                    className={`flex items-center py-3 px-5 w-full rounded-md shadow-lg hover:shadow-xl transition-transform ${darkMode ? "bg-gray-800 text-white" : "bg-gray-200 text-gray-800"}`}>
-                    {darkMode ? <FiSun className="mr-3 text-xl" /> : <FiMoon className="mr-3 text-xl" />}
-                    {darkMode ? "Light Mode" : "Dark Mode"}
-                </button>
-
-                {/* User Profile Section */}
-                <div className={`flex items-center py-4 px-5 mt-8 rounded-md ${darkMode ? "bg-gray-800 border-gray-700" : "bg-gray-200 border-gray-300"} border transition-shadow hover:shadow-lg`}>
-                    <img
-                        src="https://via.placeholder.com/60"
-                        alt="User"
-                        className="w-16 h-16 rounded-full object-cover border-2 border-blue-500"
-                    />
-                    <div className="ml-4 text-sm overflow-hidden">
-                        <p className={`font-semibold text-lg ${darkMode ? "text-gray-100" : "text-gray-800"}  `}>John Doe</p>
-                        <p className={`${darkMode ? "text-gray-300" : "text-gray-00"} truncate max-w-[10rem]`}>johndoe@example.com</p>
-                    </div>
+                    {/* Website Name - only visible when sidebar is open */}
+                    {sidebarOpen && (
+                        <h2 className="text-3xl font-bold text-center tracking-wider">
+                            WebBasics
+                        </h2>
+                    )}
                 </div>
 
+                <nav className="space-y-2">
+                    <Link
+                        to="/"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-3 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/"
+                                ? "bg-purple-500 text-white shadow-lg scale-105"
+                                : darkMode
+                                    ? "hover:bg-gray-700 hover:text-purple-400"
+                                    : "hover:bg-gray-200 hover:text-purple-500"
+                            }`}
+                    >
+                        <FiHome className="text-2xl" />
+                        {sidebarOpen && <span className="ml-3">Home</span>}
+                    </Link>
+
+                    <Link
+                        to="/templates"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-3 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/templates"
+                                ? "bg-purple-500 text-white shadow-lg scale-105"
+                                : darkMode
+                                    ? "hover:bg-gray-700 hover:text-purple-400"
+                                    : "hover:bg-gray-200 hover:text-purple-500"
+                            }`}
+                    >
+                        <FiLayers className="text-2xl" />
+                        {sidebarOpen && <span className="ml-3">Templates</span>}
+                    </Link>
+
+                    <Link
+                        to="/pricing"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-3 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/pricing"
+                                ? "bg-purple-500 text-white shadow-lg scale-105"
+                                : darkMode
+                                    ? "hover:bg-gray-700 hover:text-purple-400"
+                                    : "hover:bg-gray-200 hover:text-purple-500"
+                            }`}
+                    >
+                        <FiTag className="text-2xl" />
+                        {sidebarOpen && <span className="ml-3">Pricing</span>}
+                    </Link>
+
+                    <Link
+                        to="/documentation"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-3 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/documentation"
+                                ? "bg-purple-500 text-white shadow-lg scale-105"
+                                : darkMode
+                                    ? "hover:bg-gray-700 hover:text-purple-400"
+                                    : "hover:bg-gray-200 hover:text-purple-500"
+                            }`}
+                    >
+                        <FiBookOpen className="text-2xl" />
+                        {sidebarOpen && <span className="ml-3">Documentation</span>}
+                    </Link>
+
+                    <Link
+                        to="/advanced-features"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-3 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/advanced-features"
+                                ? "bg-purple-500 text-white shadow-lg scale-105"
+                                : darkMode
+                                    ? "hover:bg-gray-700 hover:text-purple-400"
+                                    : "hover:bg-gray-200 hover:text-purple-500"
+                            }`}
+                    >
+                        <FiTool className="text-2xl" />
+                        {sidebarOpen && <span className="ml-3">Advanced Features</span>}
+                    </Link>
+
+                    <Link
+                        to="/about"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-3 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/about"
+                                ? "bg-purple-500 text-white shadow-lg scale-105"
+                                : darkMode
+                                    ? "hover:bg-gray-700 hover:text-purple-400"
+                                    : "hover:bg-gray-200 hover:text-purple-500"
+                            }`}
+                    >
+                        <FiInfo className="text-2xl" />
+                        {sidebarOpen && <span className="ml-3">About</span>}
+                    </Link>
+
+                    <Link
+                        to="/contact"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-3 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/contact"
+                                ? "bg-purple-500 text-white shadow-lg scale-105"
+                                : darkMode
+                                    ? "hover:bg-gray-700 hover:text-purple-400"
+                                    : "hover:bg-gray-200 hover:text-purple-500"
+                            }`}
+                    >
+                        <FiGithub className="text-2xl" />
+                        {sidebarOpen && <span className="ml-3">Contact</span>}
+                    </Link>
+                </nav>
+
+                <div className="mt-auto">
+                    {/* Dark Mode Toggle */}
+                    <button
+                        onClick={toggleDarkMode}
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-3 w-full rounded-md shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 ${darkMode
+                                ? "bg-gray-700 text-white hover:bg-gray-600"
+                                : "bg-gray-200 text-gray-800 hover:bg-gray-300"
+                            }`}
+                    >
+                        <FiMoon className="text-2xl" />
+                        {sidebarOpen && <span className="ml-3">{darkMode ? "Light Mode" : "Dark Mode"}</span>}
+                    </button>
+
+                    {/* User Profile Section */}
+                    <div
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-4 mt-8 rounded-md shadow-lg transition-transform transform hover:scale-105 ${darkMode ? "bg-gray-700 border-gray-600" : "bg-gray-100 border-gray-300"
+                            }`}
+                    >
+                        {user ? (
+                            <>
+                                <img
+                                    src="https://via.placeholder.com/60"
+                                    alt="User"
+                                    className="w-12 h-12 rounded-full object-cover border-2 border-blue-500"
+                                />
+                                {sidebarOpen && (
+                                    <div className="flex flex-col ml-4 text-sm overflow-hidden">
+                                        <p className={`font-semibold text-lg ${darkMode ? "text-gray-100" : "text-gray-800"}`}>
+                                            {user.name}
+                                        </p>
+                                        <p className={`${darkMode ? "text-gray-300" : "text-gray-600"} truncate max-w-[10rem]`}>
+                                            {user.email}
+                                        </p>
+                                    </div>
+                                )}
+                            </>
+                        ) : (
+                            <div className={`flex gap-4`}>
+                                <FiUser className="text-2xl" />
+                                {sidebarOpen && (
+                                    <div>
+                                        <p className={`font-semibold ${darkMode ? "text-gray-100" : "text-gray-800"}`}>Guest Mode</p>
+                                    </div>
+                                )}
+                            </div>
+                        )}
+                    </div>
+                </div>
             </div>
-        </div>
+        </>
     );
 }
 

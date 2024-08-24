@@ -1,5 +1,6 @@
 import React from 'react';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
 
 function Home({ darkMode }) {
     // State to manage the current testimonial slide
@@ -50,9 +51,13 @@ function Home({ darkMode }) {
                     <p className="text-xl mt-4">
                         Your Essential Toolkit for Modern Web Development. WebBasics is designed to provide developers, both new and experienced, with a comprehensive set of tools for building responsive, dynamic, and efficient websites.
                     </p>
-                    <button className={`mt-8 px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 ${darkMode ? "bg-gradient-to-r from-yellow-500 to-pink-500 text-black" : "bg-gradient-to-r from-blue-600 to-purple-600 text-white"}`}>
+                    <Link
+                        to="/pricing"
+                        className={`block w-[200px] mx-auto mt-8 px-8 py-4 rounded-full shadow-lg hover:shadow-xl transition-transform duration-300 transform hover:scale-105 ${darkMode ? "bg-gradient-to-r from-yellow-500 to-pink-500 text-black" : "bg-gradient-to-r from-blue-600 to-purple-600 text-white"}`}
+                    >
                         Get Started
-                    </button>
+                    </Link>
+
                 </section>
 
                 {/* Features Section */}
