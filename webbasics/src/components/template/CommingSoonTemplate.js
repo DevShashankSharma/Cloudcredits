@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FiArrowRight, FiInfo } from 'react-icons/fi'; 
+import { FiArrowRight, FiInfo } from 'react-icons/fi';
 import { RiStarSmileLine, RiGift2Line } from 'react-icons/ri';
 
 function ComingSoonSection() {
@@ -8,7 +8,7 @@ function ComingSoonSection() {
         <div className="relative my-16 py-16 px-6 bg-gradient-to-r from-blue-500 via-purple-600 to-pink-500 overflow-hidden">
             {/* Animated Background */}
             <div className="absolute inset-0 -z-10 animate-pulse bg-gradient-to-r from-blue-600 to-pink-600 opacity-20"></div>
-            
+
             <div className="max-w-6xl mx-auto text-center text-white relative z-10">
                 <h2 className="text-4xl font-bold mb-4">Coming Soon</h2>
                 <p className="text-lg mb-8">
@@ -24,7 +24,7 @@ function ComingSoonSection() {
                         <h3 className="text-2xl font-semibold mb-3">Innovative Designs</h3>
                         <p>Explore templates with modern, innovative designs that are crafted to impress and engage.</p>
                     </div>
-                    
+
                     {/* Feature 2 */}
                     <div className="bg-white text-gray-800 p-6 rounded-lg shadow-lg">
                         <div className="text-4xl mb-4">

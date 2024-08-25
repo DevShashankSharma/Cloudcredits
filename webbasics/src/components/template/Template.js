@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { FiSearch, FiX } from "react-icons/fi"; // Importing search icon 
+import { motion } from "framer-motion"; // For animations
 import TemplateCard from "./TemplateCard";
 import ComingSoonTemplates from "./CommingSoonTemplate";
 import SpecificContentSection from "./SpecificContentSection";
@@ -29,33 +30,44 @@ function TemplatePage({ darkMode }) {
                 {/* Header */}
                 <section className={`py-10 ${darkMode ? "bg-gray-900" : "bg-white"}`}>
                     <div className="container mx-auto text-center">
-                        <h1
-                            className={`text-6xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text animate-fadeInUp`}
+                        <motion.h1
+                            className={`text-6xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}
+                            initial={{ opacity: 0, y: -50 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6 }}
                         >
                             Our Templates
-                        </h1>
-                        <p
-                            className={`text-xl mt-4 ${darkMode ? "text-gray-300" : "text-gray-600"
-                                } animate-fadeIn`}
+                        </motion.h1>
+                        <motion.p
+                            className={`text-xl mt-4 ${darkMode ? "text-gray-300" : "text-gray-600"}`}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.2 }}
                         >
                             Discover the perfect template that suits your project needs.
-                        </p>
-                        <p
-                            className={`text-md mt-2 ${darkMode ? "text-gray-400" : "text-gray-500"
-                                } animate-fadeIn`}
+                        </motion.p>
+                        <motion.p
+                            className={`text-md mt-2 ${darkMode ? "text-gray-400" : "text-gray-500"}`}
+                            initial={{ opacity: 0, y: 20 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: 0.4 }}
                         >
                             Choose from a wide range of creative, responsive, and optimized
                             templates to help you bring your ideas to life effortlessly.
-                        </p>
+                        </motion.p>
                     </div>
                 </section>
 
                 {/* Search Box and Filters */}
                 <div className="flex flex-wrap justify-between items-center mt-8 mb-8 space-y-4 md:space-y-0">
 
-
                     {/* Search Box */}
-                    <div className="relative w-full max-w-lg">
+                    <motion.div
+                        className="relative w-full max-w-lg"
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: 0.2 }}
+                    >
                         <input
                             type="text"
                             placeholder="Search templates..."
@@ -83,12 +95,10 @@ function TemplatePage({ darkMode }) {
                                 <FiX className="w-5 h-5" />
                             </button>
                         )}
-                    </div>
-
-
+                    </motion.div>
 
                     {/* Filters */}
-                    <select
+                    <motion.select
                         value={category}
                         onChange={(e) => setCategory(e.target.value)}
                         className={`ml-0 md:ml-4 p-4 rounded-lg transition-all duration-300 shadow-lg 
@@ -99,6 +109,9 @@ function TemplatePage({ darkMode }) {
                                 : "bg-white text-gray-900"
                             } 
                         hover:shadow-2xl hover:scale-105`}
+                        initial={{ opacity: 0, scale: 0.9 }}
+                        animate={{ opacity: 1, scale: 1 }}
+                        transition={{ duration: 0.6, delay: 0.4 }}
                     >
                         <option value="All">All Categories</option>
                         <option value="Personal">Personal</option>
@@ -110,13 +123,23 @@ function TemplatePage({ darkMode }) {
                         <option value="Charity">Charity</option>
                         <option value="Event">Event</option>
                         <option value="Tech">Tech</option>
-                    </select>
+                    </motion.select>
                 </div>
 
                 {/* Template Cards */}
-                <div className="relative">
+                <motion.div
+                    className="relative"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.6 }}
+                >
                     {filteredTemplates.length === 0 ? (
-                        <div className="flex flex-col items-center justify-center h-64 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center">
+                        <motion.div
+                            className="flex flex-col items-center justify-center h-64 bg-gray-100 dark:bg-gray-800 rounded-lg shadow-lg p-6 text-center"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            animate={{ opacity: 1, scale: 1 }}
+                            transition={{ duration: 0.6 }}
+                        >
                             <svg
                                 className="w-16 h-16 mb-4 text-gray-400 dark:text-gray-600"
                                 xmlns="http://www.w3.org/2000/svg"
@@ -137,17 +160,23 @@ function TemplatePage({ darkMode }) {
                             <p className="mt-2 text-gray-500 dark:text-gray-400">
                                 Try adjusting your search criteria or filters.
                             </p>
-                        </div>
+                        </motion.div>
                     ) : (
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                             {filteredTemplates
                                 .slice(0, viewMore ? filteredTemplates.length : 6)
                                 .map((template) => (
-                                    <TemplateCard
+                                    <motion.div
                                         key={template.id}
-                                        template={template}
-                                        darkMode={darkMode}
-                                    />
+                                        initial={{ opacity: 0, y: 20 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        transition={{ duration: 0.6 }}
+                                    >
+                                        <TemplateCard
+                                            template={template}
+                                            darkMode={darkMode}
+                                        />
+                                    </motion.div>
                                 ))}
                         </div>
                     )}
@@ -155,15 +184,18 @@ function TemplatePage({ darkMode }) {
                     {/* View More Button */}
                     {filteredTemplates.length > 6 && (
                         <div className="flex justify-center mt-12">
-                            <button
+                            <motion.button
                                 className={`px-8 py-4 rounded-full shadow-lg transition-transform transform hover:scale-105 ${darkMode
                                     ? "bg-yellow-500 text-black"
                                     : "bg-blue-600 text-white"
                                     } hover:bg-opacity-75`}
                                 onClick={() => setViewMore(!viewMore)}
+                                initial={{ opacity: 0, y: 20 }}
+                                animate={{ opacity: 1, y: 0 }}
+                                transition={{ duration: 0.6 }}
                             >
                                 {viewMore ? "View Less" : "View More"}
-                            </button>
+                            </motion.button>
                         </div>
                     )}
 
@@ -172,7 +204,7 @@ function TemplatePage({ darkMode }) {
 
                     {/* Specific Content Section */}
                     <SpecificContentSection darkMode={darkMode} />
-                </div>
+                </motion.div>
             </div>
         </div>
     );

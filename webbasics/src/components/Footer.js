@@ -4,7 +4,7 @@ import { FaFacebookF, FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
 
 const Footer = ({ darkMode }) => {
     return (
-        <footer className={`w-full py-6 mt-auto ${darkMode ? "bg-gray-800 text-gray-100" : "bg-gray-200 text-gray-900"}`}>
+        <footer className={`mx-4 w-full py-6 mt-auto ${darkMode ? "bg-gray-800 text-gray-100" : "bg-gray-200 text-gray-900"}`}>
             <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
                 {/* Site Links */}
                 <div className="mb-6 md:mb-0">
