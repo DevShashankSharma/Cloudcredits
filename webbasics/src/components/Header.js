@@ -4,7 +4,7 @@ import { FiSun, FiMoon } from 'react-icons/fi';
 // Animated Logo Component
 const AnimatedLogo = () => (
     <svg
-        className="w-36 sm:w-32 md:w-40 lg:w-48 h-auto"
+        className="w-24 xxs:w-32 xs:w-36 md:w-40 lg:w-48 h-auto"
         viewBox="0 0 150 40"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
@@ -18,7 +18,7 @@ const AnimatedLogo = () => (
             <filter id="glow" x="-50%" y="-50%" width="200%" height="200%">
                 <feFlood floodColor="rgba(255, 105, 180, 0.8)" result="color" />
                 <feComposite in2="SourceAlpha" operator="in" />
-                <feGaussianBlur stdDeviation="3" result="blur" />
+                <feGaussianBlur stdDeviation="1" result="blur" />
                 <feOffset dx="1" dy="1" />
                 <feMerge>
                     <feMergeNode />
@@ -78,7 +78,7 @@ function Header({ darkMode, toggleDarkMode }) {
             className={`fixed top-0 w-screen z-50 p-4 shadow-md transition-transform duration-300 ${isVisible ? 'translate-y-0' : '-translate-y-full'} ${darkMode ? 'bg-gradient-to-r from-gray-900 to-gray-800' : 'bg-gradient-to-r from-blue-500 to-teal-400'} text-gray-800 dark:text-gray-200 flex justify-between items-center`}
         >
             {/* Logo */}
-            <div className="flex items-center">
+            <div className="flex items-center ">
                 <AnimatedLogo />
             </div>
 

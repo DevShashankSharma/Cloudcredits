@@ -8,7 +8,7 @@ import AdvancedFeature from '../image/AdvacedFeature.png'
 
 const Documentation = ({ darkMode }) => (
     <motion.div
-        className={`p-4 min-h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"} transition-colors duration-300`}
+        className={`px-2 py-4 xs:p-4 min-h-screen ${darkMode ? "bg-gray-900 text-white" : "bg-gray-100 text-gray-900"} transition-colors duration-300`}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.5 }}
@@ -20,23 +20,24 @@ const Documentation = ({ darkMode }) => (
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
         >
-            <h1 className="text-5xl font-extrabold">
+            <h1 className="text-xl xxs:text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
+                        font-extrabold">
                 Documentation
             </h1>
-            <p className="text-xl mt-4">
+            <p className="text-base xs:text-xl  mt-4">
                 Welcome to the WebBasics documentation. Below you'll find comprehensive guides on how to use our code editor and templates effectively.
             </p>
         </motion.section>
 
         {/* Code Editor Usage */}
         <motion.section
-            className="container mx-auto mt-20"
+            className="container mx-auto mt-12"
             initial={{ opacity: 0, y: 50 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
         >
-            <h2 className="text-4xl font-bold text-center">Using the Code Editor</h2>
-            <p className="text-lg text-center mt-4">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-center">Using the Code Editor</h2>
+            <p className="text-lg xs:text-xl text-center mt-4">
                 Our code editor is a powerful tool for writing and managing your code. Follow these steps to get started:
             </p>
 
@@ -92,8 +93,8 @@ const Documentation = ({ darkMode }) => (
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
         >
-            <h2 className="text-4xl font-bold text-center">Using Templates</h2>
-            <p className="text-lg text-center mt-4">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-center">Using Templates</h2>
+            <p className="text-lg xs:text-xl text-center mt-4">
                 Templates make it easy to start with pre-designed layouts. Here’s how you can use and customize them:
             </p>
 
@@ -149,8 +150,8 @@ const Documentation = ({ darkMode }) => (
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1 }}
         >
-            <h2 className="text-4xl font-bold text-center">Additional Concepts</h2>
-            <p className="text-lg text-center mt-4">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl font-bold text-center">Additional Concepts</h2>
+            <p className="text-lg xs:text-xl text-center mt-4">
                 Learn about additional concepts that enhance your experience with WebBasics.
             </p>
 

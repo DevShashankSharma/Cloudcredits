@@ -4,7 +4,7 @@ import { FaArrowLeft } from 'react-icons/fa';
 
 function ComingSoon({ darkMode }) {
     return (
-        <div className={`min-h-screen flex items-center justify-center ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'} transition-colors duration-300`}>
+        <div className={`min-h-screen p-10 mt-10 vsm:mt-0 flex items-center justify-center ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-gray-100 text-gray-900'} transition-colors duration-300`}>
             <div className="text-center">
                 <AiOutlineLoading3Quarters className={`text-6xl ${darkMode ? 'text-gray-200' : 'text-gray-700'} animate-spin mb-4 w-full`} />
                 <h1 className="text-2xl font-bold mb-2">Working on this page</h1>

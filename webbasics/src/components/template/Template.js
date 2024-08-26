@@ -23,15 +23,16 @@ function TemplatePage({ darkMode }) {
 
     return (
         <div
-            className={`min-h-screen p-8 ${darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-gray-900"
+            className={`min-h-screen mt-5 px-2 py-8 xs:p-8 ${darkMode ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-gray-900"
                 }`}
         >
-            <div className="container mx-auto">
+            <div className="w-full xs:container mx-auto">
                 {/* Header */}
                 <section className={`py-10 ${darkMode ? "bg-gray-900" : "bg-white"}`}>
                     <div className="container mx-auto text-center">
                         <motion.h1
-                            className={`text-6xl font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}
+                            className={`text-xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
+                        font-extrabold bg-gradient-to-r from-blue-500 via-purple-500 to-pink-500 text-transparent bg-clip-text ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}
                             initial={{ opacity: 0, y: -50 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6 }}
@@ -39,7 +40,7 @@ function TemplatePage({ darkMode }) {
                             Our Templates
                         </motion.h1>
                         <motion.p
-                            className={`text-xl mt-4 ${darkMode ? "text-gray-300" : "text-gray-600"}`}
+                            className={`text-lg xs:text-xl mt-4 ${darkMode ? "text-gray-300" : "text-gray-600"}`}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.2 }}
@@ -47,7 +48,7 @@ function TemplatePage({ darkMode }) {
                             Discover the perfect template that suits your project needs.
                         </motion.p>
                         <motion.p
-                            className={`text-md mt-2 ${darkMode ? "text-gray-400" : "text-gray-500"}`}
+                            className={`text-sm xs:text-base mt-2 ${darkMode ? "text-gray-400" : "text-gray-500"}`}
                             initial={{ opacity: 0, y: 20 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{ duration: 0.6, delay: 0.4 }}
@@ -185,7 +186,7 @@ function TemplatePage({ darkMode }) {
                     {filteredTemplates.length > 6 && (
                         <div className="flex justify-center mt-12">
                             <motion.button
-                                className={`px-8 py-4 rounded-full shadow-lg transition-transform transform hover:scale-105 ${darkMode
+                                className={`px-6 xs:px-8 py-4 text-sm xs:text-base rounded-full shadow-lg transition-transform transform hover:scale-105 ${darkMode
                                     ? "bg-yellow-500 text-black"
                                     : "bg-blue-600 text-white"
                                     } hover:bg-opacity-75`}

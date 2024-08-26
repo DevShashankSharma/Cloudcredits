@@ -4,7 +4,7 @@ import { motion } from 'framer-motion';
 
 function PricingPage({ darkMode }) {
     return (
-        <div className={`min-h-screen px-6 mt-4 py-16 ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-900'} transition-colors`}>
+        <div className={`min-h-screen px-6 mt-6 py-16 ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-900'} transition-colors`}>
             <div className={`px-6 pb-11 ${darkMode ? 'bg-gray-900 text-gray-100' : 'bg-white text-gray-900'} transition-colors relative`}>
 
                 {/* Page Title and Description */}

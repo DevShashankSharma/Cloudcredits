@@ -38,12 +38,13 @@ const features = [
 
 function AdvancedFeaturesPage({ darkMode }) {
     return (
-        <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'}`}>
+        <div className={`min-h-screen px-2 py-6 xs:p-6 ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'}`}>
             {/* Hero Section */}
             <section className="py-16 px-4 text-center bg-gradient-to-r from-blue-500 to-blue-700 rounded-b-xl shadow-lg">
                 <div className="max-w-3xl mx-auto">
                     <motion.h1
-                        className="text-4xl font-extrabold mb-4"
+                        className="text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
+                        font-extrabold mb-4"
                         initial={{ opacity: 0, scale: 0.9 }}
                         animate={{ opacity: 1, scale: 1 }}
                         transition={{ duration: 0.6 }}
@@ -51,7 +52,7 @@ function AdvancedFeaturesPage({ darkMode }) {
                         Advanced Features
                     </motion.h1>
                     <motion.p
-                        className="text-lg mb-8"
+                        className="text-base xs:text-xl mb-8"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}
@@ -70,7 +71,8 @@ function AdvancedFeaturesPage({ darkMode }) {
             {/* Features Section */}
             <section className="py-16 px-4">
                 <div className="max-w-6xl mx-auto">
-                    <h2 className="text-3xl font-bold mb-12 text-center">Key Features</h2>
+                    <h2 className="text-2xl xs:text-3xl sm:text-4xl 
+                        font-bold mb-12 text-center">Key Features</h2>
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                         {features.map((feature) => (
                             <motion.div
@@ -81,11 +83,11 @@ function AdvancedFeaturesPage({ darkMode }) {
                                 transition={{ duration: 0.5 }}
                                 whileHover={{ scale: 1.05 }}
                             >
-                                <div className="text-blue-500 text-4xl mb-4">
+                                <div className="text-blue-500 text-2xl xs:text-3xl sm:text-4xl   mb-4">
                                     {feature.icon}
                                 </div>
-                                <h3 className="text-2xl font-semibold mb-2">{feature.title}</h3>
-                                <p>{feature.description}</p>
+                                <h3 className="text-lg xs:text-3xl sm:text-4xl font-semibold mb-2">{feature.title}</h3>
+                                <p className='text-sm xs:text-base sm:text-xl '>{feature.description}</p>
                             </motion.div>
                         ))}
                     </div>
@@ -96,7 +98,8 @@ function AdvancedFeaturesPage({ darkMode }) {
             <section className="py-16 px-4 bg-blue-500 text-white text-center rounded-t-xl shadow-lg">
                 <div className="max-w-4xl mx-auto">
                     <motion.h2
-                        className="text-3xl font-bold mb-4"
+                        className="text-xl xs:text-3xl sm:text-4xl 
+                        font-bold mb-4"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.6 }}
@@ -104,7 +107,7 @@ function AdvancedFeaturesPage({ darkMode }) {
                         Ready to Explore More?
                     </motion.h2>
                     <motion.p
-                        className="text-lg mb-8"
+                        className="text-sm xs:text-lg mb-8"
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8 }}

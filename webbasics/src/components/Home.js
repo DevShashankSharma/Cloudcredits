@@ -49,7 +49,7 @@ function Home({ darkMode }) {
                 >
                     <h1
                         className={`
-                        text-xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
+                        text-2xl xs:text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl 
                         font-extrabold text-transparent bg-clip-text mx-auto 
                         ${darkMode ? "bg-gradient-to-r from-yellow-500 to-pink-500" : "bg-gradient-to-r from-blue-600 to-purple-600"}
                     `}
