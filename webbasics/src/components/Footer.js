@@ -4,23 +4,40 @@ import { FaFacebookF, FaTwitter, FaLinkedin, FaGithub } from 'react-icons/fa';
 
 const Footer = ({ darkMode }) => {
     return (
-        <footer className={`mx-4 w-full py-6 mt-auto ${darkMode ? "bg-gray-800 text-gray-100" : "bg-gray-200 text-gray-900"}`}>
-            <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center">
+        <footer className={`mx-4 sm:mx-6 w-auto py-6 mt-auto ${darkMode ? "bg-gray-800 text-gray-100" : "bg-gray-200 text-gray-900"}`}>
+            <div className="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0">
+                
                 {/* Site Links */}
-                <div className="mb-6 md:mb-0">
-                    <h3 className="text-xl font-bold mb-2">Quick Links</h3>
+                <div className="text-center md:text-left">
+                    <h3 className="text-xl font-bold mb-4">Quick Links</h3>
                     <ul className="space-y-2">
-                        <li><Link to="/" className="hover:text-blue-500 transition-colors">Home</Link></li>
-                        <li><Link to="/documentation" className="hover:text-blue-500 transition-colors">Documentation</Link></li>
-                        <li><Link to="/advanced-features" className="hover:text-blue-500 transition-colors">Advanced Features</Link></li>
-                        <li><Link to="/about" className="hover:text-blue-500 transition-colors">About</Link></li>
+                        <li>
+                            <Link to="/" className="text-blue-500 hover:text-blue-700 transition-colors">
+                                Home
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/documentation" className="text-blue-500 hover:text-blue-700 transition-colors">
+                                Documentation
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/advanced-features" className="text-blue-500 hover:text-blue-700 transition-colors">
+                                Advanced Features
+                            </Link>
+                        </li>
+                        <li>
+                            <Link to="/about" className="text-blue-500 hover:text-blue-700 transition-colors">
+                                About
+                            </Link>
+                        </li>
                     </ul>
                 </div>
 
                 {/* Social Media Links */}
-                <div className="mb-6 md:mb-0">
-                    <h3 className="text-xl font-bold mb-2">Follow Us</h3>
-                    <div className="flex space-x-4">
+                <div className="text-center md:text-left">
+                    <h3 className="text-xl font-bold mb-4">Follow Us</h3>
+                    <div className="flex justify-center md:justify-start space-x-4">
                         <Link to="https://facebook.com" className="text-gray-600 hover:text-blue-600 transition-colors" target="_blank" rel="noopener noreferrer">
                             <FaFacebookF size={24} />
                         </Link>
@@ -37,10 +54,10 @@ const Footer = ({ darkMode }) => {
                 </div>
 
                 {/* Contact Info */}
-                <div className="mb-6 md:mb-0">
-                    <h3 className="text-xl font-bold mb-2">Contact Us</h3>
-                    <p className="text-gray-400">support@webbasics.com</p>
-                    <p className="text-gray-400">+1 (555) 123-4567</p>
+                <div className="text-center md:text-left">
+                    <h3 className="text-xl font-bold mb-4">Contact Us</h3>
+                    <p className="text-gray-400 text-sm xs:text-lg">support@webbasics.com</p>
+                    <p className="text-gray-400 text-sm xs:text-lg">+1 (555) 123-4567</p>
                 </div>
             </div>
 

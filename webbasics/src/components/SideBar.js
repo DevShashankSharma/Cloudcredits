@@ -18,7 +18,7 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, user })
                 className={`h-screen py-4 px-2 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'} flex flex-col transition-all duration-300 ease-in-out`}
                 style={{ height: 'max(100vh, 700px)' }}
             >
-                <div className={`flex items-center ${sidebarOpen ? 'justify-between' : 'justify-center'} mb-8`}>
+                <div className={`items-center ${sidebarOpen ? 'justify-between' : 'justify-center'} mb-8  flex`}>
                     {/* Hamburger Menu Button */}
                     <button
                         className={`text-3xl ${darkMode ? "hover:bg-gray-700 hover:text-purple-400"
@@ -40,7 +40,7 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, user })
                 <nav className="space-y-2">
                     <Link
                         to="/"
-                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/"
                             ? "bg-purple-500 text-white shadow-lg scale-105"
                             : darkMode
                                 ? "hover:bg-gray-700 hover:text-purple-400"
@@ -53,7 +53,7 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, user })
 
                     <Link
                         to="/templates"
-                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/templates"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/templates"
                             ? "bg-purple-500 text-white shadow-lg scale-105"
                             : darkMode
                                 ? "hover:bg-gray-700 hover:text-purple-400"
@@ -66,7 +66,7 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, user })
 
                     <Link
                         to="/pricing"
-                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/pricing"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/pricing"
                             ? "bg-purple-500 text-white shadow-lg scale-105"
                             : darkMode
                                 ? "hover:bg-gray-700 hover:text-purple-400"
@@ -79,7 +79,7 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, user })
 
                     <Link
                         to="/codeeditor"
-                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/codeeditor"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/codeeditor"
                             ? "bg-purple-500 text-white shadow-lg scale-105"
                             : darkMode
                                 ? "hover:bg-gray-700 hover:text-purple-400"
@@ -92,7 +92,7 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, user })
 
                     <Link
                         to="/documentation"
-                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/documentation"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/documentation"
                             ? "bg-purple-500 text-white shadow-lg scale-105"
                             : darkMode
                                 ? "hover:bg-gray-700 hover:text-purple-400"
@@ -105,7 +105,7 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, user })
 
                     <Link
                         to="/advanced-features"
-                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/advanced-features"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/advanced-features"
                             ? "bg-purple-500 text-white shadow-lg scale-105"
                             : darkMode
                                 ? "hover:bg-gray-700 hover:text-purple-400"
@@ -118,7 +118,7 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, user })
 
                     <Link
                         to="/about"
-                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/about"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/about"
                             ? "bg-purple-500 text-white shadow-lg scale-105"
                             : darkMode
                                 ? "hover:bg-gray-700 hover:text-purple-400"
@@ -134,7 +134,7 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, user })
                     {/* Dark Mode Toggle */}
                     <button
                         onClick={toggleDarkMode}
-                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-3 w-full rounded-md shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 ${darkMode
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-3 w-full rounded-md shadow-lg hover:shadow-xl transition-transform transform hover:scale-105 ${darkMode
                             ? "bg-gray-700 text-white hover:bg-gray-600"
                             : "bg-gray-200 text-gray-800 hover:bg-gray-300"
                             }`}
@@ -145,7 +145,7 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, user })
 
                     {/* User Profile Section */}
                     <div
-                        className={`flex items-center ${sidebarOpen ? 'justify-start px-5' : 'justify-center'} py-4 mt-8 rounded-md shadow-lg transition-transform transform hover:scale-105 ${darkMode ? "bg-gray-700 border-gray-600" : "bg-gray-100 border-gray-300"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-4 mt-8 rounded-md shadow-lg transition-transform transform hover:scale-105 ${darkMode ? "bg-gray-700 border-gray-600" : "bg-gray-100 border-gray-300"
                             }`}
                     >
                         {user ? (
