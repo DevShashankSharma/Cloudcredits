@@ -1,22 +1,17 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { FiHome, FiBookOpen, FiTool, FiMoon, FiInfo, FiLayers, FiTag, FiUser, FiMenu, FiX, FiEdit3 } from 'react-icons/fi';
+import ProfilePopup from './ProfilePopUp';
 
-function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, user }) {
-    const location = useLocation(); // Get current path for active link styling
+function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, userDetails, isPopupOpen, openPopup, closePopup, setFormData }) {
+    const location = useLocation();
 
-
-    // user details for testing purposes
-    // const user = {
-    //     name: 'John Doe',
-    //     email: 'W7H9H@example.com',
-    // };
     return (
-        <div className="max-h-screen sticky top-0 overflow-y-auto custom-scrollbar">
+        <div className={`h-screen sticky top-0 overflow-y-auto custom-scrollbar  ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'}`}>
             {/* Sidebar */}
             <div
-                className={`h-screen py-4 px-2 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'} flex flex-col transition-all duration-300 ease-in-out`}
-                style={{ height: 'max(100vh, 700px)' }}
+                className={`min-h-[660px] py-4 px-2 ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'} flex flex-col transition-all duration-300 ease-in-out`}
+                style={{ height: 'min(100vh, 750px)' }}
             >
                 <div className={`items-center ${sidebarOpen ? 'justify-between' : 'justify-center'} mb-8  flex`}>
                     {/* Hamburger Menu Button */}
@@ -78,7 +73,7 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, user })
                     </Link>
 
                     <Link
-                        to="/codeeditor"
+                        to={`/codeeditor`}
                         className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/codeeditor"
                             ? "bg-purple-500 text-white shadow-lg scale-105"
                             : darkMode
@@ -145,40 +140,29 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, user })
 
                     {/* User Profile Section */}
                     <div
-                        className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-4 mt-8 rounded-md shadow-lg transition-transform transform hover:scale-105 ${darkMode ? "bg-gray-700 border-gray-600" : "bg-gray-100 border-gray-300"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-4 mt-8 rounded-md shadow-lg transition-transform transform hover:scale-105 hover:cursor-pointer ${darkMode ? "bg-gray-700 border-gray-600" : "bg-gray-100 border-gray-300"
                             }`}
                     >
-                        {user ? (
-                            <>
-                                <img
-                                    src="https://via.placeholder.com/60"
-                                    alt="User"
-                                    className="w-12 h-12 rounded-full object-cover border-2 border-blue-500"
-                                />
-                                {sidebarOpen && (
-                                    <div className="flex flex-col ml-4 text-sm overflow-hidden">
-                                        <p className={`font-semibold text-lg ${darkMode ? "text-gray-100" : "text-gray-800"}`}>
-                                            {user.name}
-                                        </p>
-                                        <p className={`${darkMode ? "text-gray-300" : "text-gray-600"} truncate max-w-[10rem]`}>
-                                            {user.email}
-                                        </p>
-                                    </div>
-                                )}
-                            </>
-                        ) : (
-                            <div className={`flex gap-4`}>
-                                <FiUser className="text-2xl" />
-                                {sidebarOpen && (
-                                    <div>
-                                        <p className={`font-semibold ${darkMode ? "text-gray-100" : "text-gray-800"}`}>Guest Mode</p>
-                                    </div>
-                                )}
+                        <div className="flex items-center" onClick={openPopup}>
+                            <div
+                                className="relative flex items-center justify-center w-[4.5rem] xl:w-16 h-12 rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold text-xl shadow-lg transition-transform transform hover:scale-110">
+                                {userDetails.initials !== "" ? userDetails.initials : <FiUser className='w-6 h-6' />}
                             </div>
-                        )}
+                            {sidebarOpen && (
+                                <div className="flex flex-col ml-4 text-sm w-full overflow-hidden">
+                                    <p className={`font-semibold text-lg ${darkMode ? "text-gray-100" : "text-gray-800"}`}>
+                                        {userDetails.name !== "" ? userDetails.name : "Guest Mode"}
+                                    </p>
+                                    <p className={`${darkMode ? "text-gray-300" : "text-gray-600"} truncate w-[6rem] xl:w-[8rem]`}>
+                                        {userDetails.email !== "" ? userDetails.email : "guestmode123@example.com"}
+                                    </p>
+                                </div>
+                            )}
+                        </div>
                     </div>
                 </div>
             </div>
+            {isPopupOpen && <ProfilePopup userDetails={userDetails} onClose={closePopup} isOpen={isPopupOpen} darkMode={darkMode} setFormData={setFormData} />}
         </div>
     );
 }

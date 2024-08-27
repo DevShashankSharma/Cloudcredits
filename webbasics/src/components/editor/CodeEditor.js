@@ -1,106 +1,113 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { Editor } from '@monaco-editor/react';
+import { allTemplates } from '../template/templates';
 
 
 function CodeEditor({ darkMode }) {
+    const { id } = useParams(); 
+    const templateId =  id || 0;
+    const template = allTemplates.find(t => t.id === Number(templateId));
     const [tabs, setTabs] = useState([
         {
             id: 1,
             name: 'index.html',
             language: 'html',
-            code: `<!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Card Component</title>
-        <link rel="stylesheet" href="style.css">
-    </head>
-    <body>
-        <div class="card">
-            <img class="card-image" src="https://via.placeholder.com/400" alt="Placeholder Image">
-            <div class="card-content">
-                <div class="card-title">Card Title</div>
-                <p class="card-description">
-                    This is a simple card component created using plain HTML and CSS.
-                </p>
+            code: templateId !== 0 ? template.html : `
+            <div class="template-card">
+                <img src="https://s.tmimgcdn.com/scr/800x500/52500/music-band-responsive-website-template_52511-original.jpg" alt="Music Band Website Image" class="template-image">
+                <div class="template-content">
+                    <h3 class="template-title">Music Band Website</h3>
+                    <p class="template-description">Design a vibrant music band website. Include sections for tour dates, music samples, and profiles of band members to engage fans and promote your music.</p>
+                    <div class="tour-dates">
+                        <h4 class="dates-title">Upcoming Tour Dates</h4>
+                        <div class="tour-item">
+                            <h5 class="tour-city">New York City</h5>
+                            <p class="tour-date">September 25, 2024</p>
+                        </div>
+                        <div class="tour-item">
+                            <h5 class="tour-city">Los Angeles</h5>
+                            <p class="tour-date">October 5, 2024</p>
+                        </div>
+                    </div>
+                    <button class="cta-button">Listen to Music</button>
+                </div>
             </div>
-            <div class="card-tags">
-                <span class="tag">#Tag1</span>
-                <span class="tag">#Tag2</span>
-                <span class="tag">#Tag3</span>
-            </div>
-        </div>
-    </body>
-    </html>`,
+        ` ,
             dependencies: []
         },
         {
             id: 2,
             name: 'style.css',
             language: 'css',
-            code: `/* Basic reset */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
-    
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #f7f7f7;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        height: 100vh;
-    }
-    
-    .card {
-        max-width: 400px;
-        border-radius: 8px;
-        overflow: hidden;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        background-color: #ffffff;
-    }
-    
-    .card-image {
-        width: 100%;
-        display: block;
-    }
-    
-    .card-content {
-        padding: 16px;
-    }
-    
-    .card-title {
-        font-size: 1.25rem;
-        font-weight: bold;
-        color: #333333;
-        margin-bottom: 8px;
-    }
-    
-    .card-description {
-        font-size: 1rem;
-        color: #666666;
-    }
-    
-    .card-tags {
-        padding: 16px;
-        border-top: 1px solid #e0e0e0;
-    }
-    
-    .tag {
-        display: inline-block;
-        background-color: #e0e0e0;
-        border-radius: 12px;
-        padding: 8px 12px;
-        font-size: 0.875rem;
-        font-weight: 600;
-        color: #333333;
-        margin-right: 8px;
-        margin-bottom: 8px;
-        text-transform: uppercase;
-    }`,
+            code: templateId !== 0 ? template.css : `
+            .template-card {
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                padding: 20px;
+                text-align: center;
+                transition: transform 0.3s ease;
+            }
+            .template-card:hover {
+                transform: scale(1.05);
+            }
+            .template-image {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px;
+                margin-bottom: 20px;
+            }
+            .template-content {
+                padding: 10px;
+            }
+            .template-title {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 10px;
+                color: #333;
+            }
+            .template-description {
+                color: #555;
+                margin-top: 8px;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            .tour-dates {
+                margin-top: 20px;
+                text-align: left;
+            }
+            .dates-title {
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+            }
+            .tour-item {
+                margin-bottom: 15px;
+            }
+            .tour-city {
+                font-size: 16px;
+                font-weight: bold;
+                color: #333;
+            }
+            .tour-date {
+                font-size: 14px;
+                color: #666;
+            }
+            .cta-button {
+                background-color: #673ab7;
+                color: #fff;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 20px;
+            }
+            .cta-button:hover {
+                background-color: #5e35b1;
+            }
+        `,
 
             dependencies: []
         }

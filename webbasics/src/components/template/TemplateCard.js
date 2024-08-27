@@ -17,7 +17,7 @@ const TemplateCard = ({ template, darkMode }) => {
                 <div className="flex flex-col gap-2 vsm:flex-row vsm:items-center vsm:justify-between">
                     <span className={`text-sm ${darkMode ? "text-gray-400" : "text-gray-500"}`}>{template.category}</span>
                     <Link
-                        to={`/templates/${template.id}`}
+                        to={`/codeeditor/${template.id}`}
                         className={`px-2 xs:px-6 py-2 rounded-lg text-center text-xs xs:text-sm font-semibold shadow-lg transition duration-300 ease-in-out ${darkMode ? "bg-gradient-to-r from-yellow-500 to-yellow-600 hover:from-yellow-600 hover:to-yellow-700 text-white" : "bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white"}`}
                     >
                         View Template

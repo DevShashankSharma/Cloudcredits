@@ -1,22 +1,13 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FiHome, FiBookOpen, FiTool, FiInfo, FiLayers, FiTag, FiMoreHorizontal, FiEdit3 } from 'react-icons/fi';
+import { FiHome, FiUser, FiBookOpen, FiTool, FiInfo, FiLayers, FiTag, FiMoreHorizontal, FiEdit3 } from 'react-icons/fi';
 import ProfilePopup from './ProfilePopUp';
 
-const NavFooter = ({ darkMode }) => {
+const NavFooter = ({ darkMode, userDetails, isPopupOpen, openPopup, closePopup, setFormData }) => {
     const location = useLocation();
-    const [showMore, setShowMore] = useState(false);
-    const [isPopupOpen, setIsPopupOpen] = useState(false);
+    const [showMore, setShowMore] = useState(false); 
 
-    const toggleMore = () => setShowMore(!showMore);
-    const openPopup = () => setIsPopupOpen(true);
-    const closePopup = () => setIsPopupOpen(false); 
-
-    const user = {
-        name: "John Doe",
-        email: "john.doe@example.com",
-        initials: "JD"
-    };
+    const toggleMore = () => setShowMore(!showMore); 
 
     return (
         <nav className={`fixed bottom-0 left-0 right-0 z-50 shadow-lg w-screen py-2 px-1
@@ -34,12 +25,8 @@ const NavFooter = ({ darkMode }) => {
                         onClick={openPopup}
                         className="relative flex items-center justify-center w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-gradient-to-r from-green-400 to-blue-500 text-white font-bold text-lg sm:text-xl shadow-lg transition-transform transform hover:scale-110"
                     >
-                        {user.initials}
-                    </button>
-                    {/* Username on Hover */}
-                    <div className="absolute top-0 left-1/2 transform -translate-x-1/2 -translate-y-1/2 bg-green-500 text-white font-bold text-xs sm:text-sm p-2 rounded-lg opacity-0 pointer-events-none group-hover:opacity-100 group-hover:pointer-events-auto transition-opacity duration-300">
-                        {user.name}
-                    </div>
+                        {userDetails.initials !== "" ? userDetails.initials : <FiUser/>}
+                    </button> 
                 </div>
 
                 <Link
@@ -71,7 +58,7 @@ const NavFooter = ({ darkMode }) => {
                 </Link>
 
                 <Link
-                    to="/codeeditor"
+                    to={`/codeeditor`}
                     className={`hidden xs:flex flex-col justify-center items-center p-2 sm:p-3 md:p-4 w-1/5 md:w-1/6 lg:w-1/8 rounded-lg transition-all duration-300 ease-in-out 
                         ${location.pathname === "/codeeditor"
                             ? "bg-gradient-to-r from-purple-500 to-purple-700 text-white shadow-lg transform scale-105"
@@ -144,7 +131,7 @@ const NavFooter = ({ darkMode }) => {
                     </Link>
 
                     <Link
-                        to="/codeeditor"
+                        to={`/codeeditor`}
                         className={`flex xs:hidden flex-row w-full justify-start gap-4 items-center p-2 sm:p-3 md:p-4 rounded-lg transition-all duration-300 ease-in-out 
                         ${location.pathname === "/codeeditor"
                                 ? "bg-gradient-to-r from-purple-500 to-purple-700 text-white shadow-lg transform scale-105"
@@ -187,7 +174,7 @@ const NavFooter = ({ darkMode }) => {
                 </div>
             </div>
 
-            {isPopupOpen && <ProfilePopup user={user} onClose={closePopup} isOpen={isPopupOpen} />}
+            {isPopupOpen && <ProfilePopup userDetails={userDetails} onClose={closePopup} isOpen={isPopupOpen} darkMode={darkMode} setFormData={setFormData} />}
         </nav>
     );
 };

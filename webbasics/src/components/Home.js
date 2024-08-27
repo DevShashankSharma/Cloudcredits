@@ -1,6 +1,16 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import editor from '../image/editor.png'
+import responsive from '../image/Responsive.png'
+import cssFramework from '../image/cssFramework.png'
+import assetsmanage from '../image/assetsManage.png'
+import collaboration from '../image/collaboration.png'
+import dev1 from '../image/dev1.jpg'
+import dev2 from '../image/dev2.jpg'
+import dev3 from '../image/dev3.jpg'
+import dev4 from '../image/dev4.jpg'
+import dev5 from '../image/dev5.jpg'
 
 function Home({ darkMode }) {
     const [currentSlide, setCurrentSlide] = useState(0);
@@ -9,29 +19,30 @@ function Home({ darkMode }) {
         {
             quote: "WebBasics has significantly improved my development workflow. The tools are intuitive and powerful.",
             name: "Alex J., Front-End Developer",
-            image: "https://via.placeholder.com/100"
+            image: dev1
         },
         {
             quote: "The responsive design tools are fantastic. They save me so much time when building websites.",
             name: "Jessica L., UI/UX Designer",
-            image: "https://via.placeholder.com/100"
+            image: dev2
         },
         {
             quote: "WebBasics provides everything I need in one place. It's my go-to toolkit for web development.",
             name: "Michael R., Full-Stack Developer",
-            image: "https://via.placeholder.com/100"
+            image: dev3
         },
         {
             quote: "The code editor is a game-changer. It’s fast, customizable, and integrates seamlessly with my workflow.",
             name: "Taylor R., Web Designer",
-            image: "https://via.placeholder.com/100"
+            image: dev4
         },
         {
             quote: "WebBasics' CSS frameworks integration is spot on. It makes styling my projects much easier.",
             name: "Sarah W., Front-End Engineer",
-            image: "https://via.placeholder.com/100"
+            image: dev5
         },
     ];
+    
 
     const nextSlide = () => setCurrentSlide((prev) => (prev + 1) % testimonials.length);
     const prevSlide = () => setCurrentSlide((prev) => (prev - 1 + testimonials.length) % testimonials.length);
@@ -94,7 +105,7 @@ function Home({ darkMode }) {
                                 Our powerful code editor is built with productivity in mind, offering features such as syntax highlighting, real-time code linting, and customizable themes to suit your style.
                             </p>
                             <div className="mt-6">
-                                <img src="https://via.placeholder.com/400x200" alt="Code Editor" className="w-full h-40 object-cover rounded-lg" />
+                                <img src={editor} alt="Code Editor" className="w-full h-40 object-cover rounded-lg" />
                             </div>
                         </motion.div>
 
@@ -110,7 +121,7 @@ function Home({ darkMode }) {
                                 Easily build websites that look stunning on any device. Our responsive design tools allow you to preview and fine-tune your layouts for various screen sizes.
                             </p>
                             <div className="mt-6">
-                                <img src="https://via.placeholder.com/400x200" alt="Responsive Design Tools" className="w-full h-40 object-cover rounded-lg" />
+                                <img src={responsive} alt="Responsive Design Tools" className="w-full h-40 object-cover rounded-lg" />
                             </div>
                         </motion.div>
 
@@ -126,7 +137,7 @@ function Home({ darkMode }) {
                                 Get access to popular CSS frameworks such as Tailwind CSS and Bootstrap. These frameworks provide a solid foundation for styling your web projects efficiently.
                             </p>
                             <div className="mt-6">
-                                <img src="https://via.placeholder.com/400x200" alt="CSS Frameworks" className="w-full h-40 object-cover rounded-lg" />
+                                <img src={cssFramework} alt="CSS Frameworks" className="w-full h-40 object-cover rounded-lg" />
                             </div>
                         </motion.div>
                     </div>
@@ -157,7 +168,7 @@ function Home({ darkMode }) {
                                 Manage your web assets with ease. Our asset management system helps you organize, optimize, and deploy images, fonts, and other media efficiently.
                             </p>
                             <div className="mt-6">
-                                <img src="https://via.placeholder.com/400x200" alt="Asset Management" className="w-full h-40 object-cover rounded-lg" />
+                                <img src={assetsmanage} alt="Asset Management" className="w-full h-40 object-cover rounded-lg" />
                             </div>
                         </motion.div>
 
@@ -173,7 +184,7 @@ function Home({ darkMode }) {
                                 Collaborate with your team in real-time. Our live collaboration tools allow multiple developers to work on the same codebase simultaneously with instant updates.
                             </p>
                             <div className="mt-6">
-                                <img src="https://via.placeholder.com/400x200" alt="Live Collaboration" className="w-full h-40 object-cover rounded-lg" />
+                                <img src={collaboration} alt="Live Collaboration" className="w-full h-40 object-cover rounded-lg" />
                             </div>
                         </motion.div>
                     </div>
