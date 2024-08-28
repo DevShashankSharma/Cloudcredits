@@ -1,114 +1,34 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Editor } from '@monaco-editor/react';
-import { allTemplates } from '../template/templates';
 
 
-function CodeEditor({ darkMode }) {
-    const { id } = useParams(); 
-    const templateId =  id || 0;
-    const template = allTemplates.find(t => t.id === Number(templateId));
+function CodeEditor({ darkMode, onSave, onUpdate }) {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const { template, index } = location.state || {}; 
+
     const [tabs, setTabs] = useState([
         {
             id: 1,
             name: 'index.html',
             language: 'html',
-            code: templateId !== 0 ? template.html : `
-            <div class="template-card">
-                <img src="https://s.tmimgcdn.com/scr/800x500/52500/music-band-responsive-website-template_52511-original.jpg" alt="Music Band Website Image" class="template-image">
-                <div class="template-content">
-                    <h3 class="template-title">Music Band Website</h3>
-                    <p class="template-description">Design a vibrant music band website. Include sections for tour dates, music samples, and profiles of band members to engage fans and promote your music.</p>
-                    <div class="tour-dates">
-                        <h4 class="dates-title">Upcoming Tour Dates</h4>
-                        <div class="tour-item">
-                            <h5 class="tour-city">New York City</h5>
-                            <p class="tour-date">September 25, 2024</p>
-                        </div>
-                        <div class="tour-item">
-                            <h5 class="tour-city">Los Angeles</h5>
-                            <p class="tour-date">October 5, 2024</p>
-                        </div>
-                    </div>
-                    <button class="cta-button">Listen to Music</button>
-                </div>
-            </div>
-        ` ,
+            code: template.html || '<!DOCTYPE html>\n<html>\n<head>\n\t<title>My Web Page</title>\n</head>\n<body>\n\t<h1>Hello, World!</h1>\n</body>\n</html>',
             dependencies: []
         },
         {
             id: 2,
             name: 'style.css',
             language: 'css',
-            code: templateId !== 0 ? template.css : `
-            .template-card {
-                background-color: #fff;
-                border-radius: 10px;
-                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-                overflow: hidden;
-                padding: 20px;
-                text-align: center;
-                transition: transform 0.3s ease;
-            }
-            .template-card:hover {
-                transform: scale(1.05);
-            }
-            .template-image {
-                max-width: 100%;
-                height: auto;
-                border-radius: 10px;
-                margin-bottom: 20px;
-            }
-            .template-content {
-                padding: 10px;
-            }
-            .template-title {
-                font-size: 24px;
-                font-weight: bold;
-                margin-top: 10px;
-                color: #333;
-            }
-            .template-description {
-                color: #555;
-                margin-top: 8px;
-                font-size: 16px;
-                line-height: 1.5;
-            }
-            .tour-dates {
-                margin-top: 20px;
-                text-align: left;
-            }
-            .dates-title {
-                font-size: 18px;
-                font-weight: bold;
-                color: #333;
-            }
-            .tour-item {
-                margin-bottom: 15px;
-            }
-            .tour-city {
-                font-size: 16px;
-                font-weight: bold;
-                color: #333;
-            }
-            .tour-date {
-                font-size: 14px;
-                color: #666;
-            }
-            .cta-button {
-                background-color: #673ab7;
-                color: #fff;
-                padding: 12px 20px;
-                border: none;
-                border-radius: 5px;
-                cursor: pointer;
-                margin-top: 20px;
-            }
-            .cta-button:hover {
-                background-color: #5e35b1;
-            }
-        `,
+            code: template.css || 'body {\n\tbackground-color: #f2f2f2;\n}\n\nh1 {\n\tcolor: #333;\n\ttext-align: center;\n}',
 
+            dependencies: []
+        },
+        {
+            id: 3,
+            name: 'script.js',
+            language: 'javascript',
+            code: template.js || 'console.log("Hello, World!");',
             dependencies: []
         }
     ]);
@@ -119,11 +39,43 @@ function CodeEditor({ darkMode }) {
     const [useTailwind, setUseTailwind] = useState(false);
     const [useBootstrap, setUseBootstrap] = useState(false);
     const [previewSize, setPreviewSize] = useState('desktop');
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+    const [tag, setTag] = useState(""); 
+
+    const handleSave = () => {
+        const projectData = { title, description, tag };
+        onSave(projectData);
+    };
+
+    const handleUpdate = () => {
+        const projectData = { title, description, tag };
+        onUpdate(projectData);
+    };
+
+    const containerStyles = darkMode
+        ? "bg-gray-800 text-white"
+        : "bg-white text-gray-900";
+    const inputStyles = darkMode
+        ? "bg-gray-700 text-white border-gray-600"
+        : "bg-gray-100 text-gray-900 border-gray-300";
 
     useEffect(() => {
         const htmlTab = tabs.find(tab => tab.language === 'html');
         setHtmlCode(htmlTab ? htmlTab.code : '');
     }, [tabs, activeTab]);
+
+    useEffect(() => { 
+            setTitle(template.title || '');
+            setDescription(template.description || '');
+            setTag(template.tag || ''); 
+    }, [template]);
+
+    useEffect(() => {
+        if (!location.state) {
+            navigate("/templates");
+        }
+    }, [location.state, navigate]);
 
     const getLanguage = (fileType) => {
         switch (fileType) {
@@ -209,29 +161,29 @@ function CodeEditor({ darkMode }) {
         if (screenWidth <= 480) { // Mobile view
             switch (previewSize) {
                 case 'tablet':
-                    return { width: '70%', height: '600px' }; // Adjust width for mobile view
+                    return { width: '70%', height: '600px' };
                 case 'mobile':
-                    return { width: '50%', height: '700px' }; // Adjust width for mobile view
+                    return { width: '50%', height: '700px' };
                 default:
-                    return { width: '100%', height: '500px' }; // Default view for mobile
+                    return { width: '100%', height: '500px' };
             }
         } else if (screenWidth <= 768) { // Tablet view
             switch (previewSize) {
                 case 'tablet':
-                    return { width: '500px', height: '1024px' }; // Fixed tablet size for tablet view
+                    return { width: '500px', height: '1024px' };
                 case 'mobile':
-                    return { width: '375px', height: '667px' }; // Fixed mobile size for tablet view
+                    return { width: '375px', height: '667px' };
                 default:
-                    return { width: '768px', height: '800px' }; // Default view for desktop
+                    return { width: '768px', height: '800px' };
             }
         } else { // Laptop/Desktop view
             switch (previewSize) {
                 case 'tablet':
-                    return { width: '768px', height: '1024px' }; // Fixed tablet size for desktop view
+                    return { width: '768px', height: '1024px' };
                 case 'mobile':
-                    return { width: '375px', height: '667px' }; // Fixed mobile size for desktop view
+                    return { width: '375px', height: '667px' };
                 default:
-                    return { width: '1280px', height: '800px' }; // Default desktop size
+                    return { width: '1280px', height: '800px' };
             }
         }
     };
@@ -240,6 +192,83 @@ function CodeEditor({ darkMode }) {
 
     return (
         <div className={`m-auto mt-20 flex flex-col min-h-screen w-150px xxs:w-[200px] xs:w-[300px] vvsm:w-[380px] vsm:w-[440px] ssm:w-[545px] sm:w-[630px] md:w-[750px] slg:w-[940px] lg:w-[800px] xl:w-[980px] ${darkMode ? 'bg-gray-900 text-white' : 'bg-gray-100 text-gray-900'}`}>
+            <div
+                className={`flex items-center justify-center p-8 ${containerStyles} transition-colors duration-500 mb-3`}
+            >
+                <div className="w-full max-w-lg">
+                    <h2 className="text-3xl font-bold mb-6 text-center">
+                        {index !== -1 ? "Update Project" : "Create New Project"}
+                    </h2>
+                    <form className="space-y-6">
+                        <div>
+                            <label className="block text-sm font-medium mb-2" htmlFor="title">
+                                Title
+                            </label>
+                            <input
+                                id="title"
+                                type="text"
+                                className={`w-full px-4 py-2 rounded-lg border ${inputStyles} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                placeholder="Enter project title"
+                            />
+                        </div>
+                        <div>
+                            <label
+                                className="block text-sm font-medium mb-2"
+                                htmlFor="description"
+                            >
+                                Description
+                            </label>
+                            <textarea
+                                id="description"
+                                className={`w-full px-4 py-2 rounded-lg border ${inputStyles} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                placeholder="Enter project description"
+                                rows="4"
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium mb-2" htmlFor="tag">
+                                Tag
+                            </label>
+                            <input
+                                id="tag"
+                                type="text"
+                                className={`w-full px-4 py-2 rounded-lg border ${inputStyles} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                                value={tag}
+                                onChange={(e) => setTag(e.target.value)}
+                                placeholder="Enter project tag"
+                            />
+                        </div>
+                        <div className="flex space-x-4 justify-center mt-8">
+                            <button
+                                type="button"
+                                onClick={handleSave}
+                                className={`px-6 py-3 rounded-full ${darkMode
+                                    ? "bg-gradient-to-r from-green-400 to-blue-500 text-black"
+                                    : "bg-gradient-to-r from-green-600 to-blue-600 text-white"
+                                    } shadow-lg hover:shadow-xl transition-transform duration-300 transform hover:scale-105`}
+                            >
+                                Save
+                            </button>
+                            {index !== -1 && (
+                                <button
+                                    type="button"
+                                    onClick={handleUpdate}
+                                    className={`px-6 py-3 rounded-full ${darkMode
+                                        ? "bg-gradient-to-r from-yellow-400 to-pink-500 text-black"
+                                        : "bg-gradient-to-r from-yellow-600 to-pink-600 text-white"
+                                        } shadow-lg hover:shadow-xl transition-transform duration-300 transform hover:scale-105`}
+                                >
+                                    Update
+                                </button>
+                            )}
+                        </div>
+                    </form>
+                </div>
+            </div>
             {/* Utility Selection */}
             <div className={`p-4 ${darkMode ? 'bg-gray-800' : 'bg-gray-200'} flex flex-col xs:flex-row items-center gap-1 xs:space-x-4`}>
                 <button
@@ -337,7 +366,7 @@ function CodeEditor({ darkMode }) {
                 </div>
 
                 {/* Preview Options and Title */}
-                <div className="p-4 mt-10">
+                <div className={`p-4 mt-10 ${containerStyles}`}>
                     <div className="text-center mb-4">
                         <span className={`text-xl xs:text-3xl font-bold ${darkMode ? 'text-white' : 'text-gray-900'}`}>
                             Preview

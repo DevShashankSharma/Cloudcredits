@@ -13,6 +13,7 @@ import PricingPage from './components/PricingPage';
 import CodeEditorPage from './components/editor/CodeEditor';
 import About from './components/About';
 import SignUp from './components/SignUp';
+import MyProjects from './components/MyProjects';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 
 
@@ -127,10 +128,10 @@ function App() {
                 <Route path="/advanced-features" element={<AdvancedFeatures darkMode={darkMode} />} />
                 <Route path="/templates" element={<TemplatePage darkMode={darkMode} />} />
                 <Route path="*" element={<ComingSoon darkMode={darkMode} />} />
-                <Route path="/pricing" element={<PricingPage darkMode={darkMode} />} />
-                <Route path="/codeeditor/:id" element={<CodeEditorPage darkMode={darkMode} />} />
+                <Route path="/pricing" element={<PricingPage darkMode={darkMode} />} /> 
                 <Route path="/about" element={<About darkMode={darkMode} />} />
                 <Route path="/codeeditor" element={<CodeEditorPage darkMode={darkMode} />} />
+                <Route path="/myprojects" element={<MyProjects darkMode={darkMode} />} />
                 <Route path="/signup" element={<SignUp darkMode={darkMode} handleInputChange={handleInputChange} handleSubmit={handleSubmit} formData={formData} />} />
               </Routes>
               <Footer darkMode={darkMode} />

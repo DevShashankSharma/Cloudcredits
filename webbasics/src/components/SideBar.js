@@ -1,10 +1,102 @@
 import React from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FiHome, FiBookOpen, FiTool, FiMoon, FiInfo, FiLayers, FiTag, FiUser, FiMenu, FiX, FiEdit3 } from 'react-icons/fi';
+import { FiHome, FiBookOpen, FiTool, FiMoon, FiInfo, FiLayers, FiTag, FiUser, FiMenu, FiX, FiEdit3, FiFolder } from 'react-icons/fi';
 import ProfilePopup from './ProfilePopUp';
 
 function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, userDetails, isPopupOpen, openPopup, closePopup, setFormData }) {
     const location = useLocation();
+
+    const template = {
+        html: `
+            <div class="template-card">
+                <img src="https://s.tmimgcdn.com/scr/800x500/52500/music-band-responsive-website-template_52511-original.jpg" alt="Music Band Website Image" class="template-image">
+                <div class="template-content">
+                    <h3 class="template-title">Music Band Website</h3>
+                    <p class="template-description">Design a vibrant music band website. Include sections for tour dates, music samples, and profiles of band members to engage fans and promote your music.</p>
+                    <div class="tour-dates">
+                        <h4 class="dates-title">Upcoming Tour Dates</h4>
+                        <div class="tour-item">
+                            <h5 class="tour-city">New York City</h5>
+                            <p class="tour-date">September 25, 2024</p>
+                        </div>
+                        <div class="tour-item">
+                            <h5 class="tour-city">Los Angeles</h5>
+                            <p class="tour-date">October 5, 2024</p>
+                        </div>
+                    </div>
+                    <button class="cta-button">Listen to Music</button>
+                </div>
+            </div>
+        ` ,
+        css: `
+            .template-card {
+                background-color: #fff;
+                border-radius: 10px;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                overflow: hidden;
+                padding: 20px;
+                text-align: center;
+                transition: transform 0.3s ease;
+            }
+            .template-card:hover {
+                transform: scale(1.05);
+            }
+            .template-image {
+                max-width: 100%;
+                height: auto;
+                border-radius: 10px;
+                margin-bottom: 20px;
+            }
+            .template-content {
+                padding: 10px;
+            }
+            .template-title {
+                font-size: 24px;
+                font-weight: bold;
+                margin-top: 10px;
+                color: #333;
+            }
+            .template-description {
+                color: #555;
+                margin-top: 8px;
+                font-size: 16px;
+                line-height: 1.5;
+            }
+            .tour-dates {
+                margin-top: 20px;
+                text-align: left;
+            }
+            .dates-title {
+                font-size: 18px;
+                font-weight: bold;
+                color: #333;
+            }
+            .tour-item {
+                margin-bottom: 15px;
+            }
+            .tour-city {
+                font-size: 16px;
+                font-weight: bold;
+                color: #333;
+            }
+            .tour-date {
+                font-size: 14px;
+                color: #666;
+            }
+            .cta-button {
+                background-color: #673ab7;
+                color: #fff;
+                padding: 12px 20px;
+                border: none;
+                border-radius: 5px;
+                cursor: pointer;
+                margin-top: 20px;
+            }
+            .cta-button:hover {
+                background-color: #5e35b1;
+            }
+        `
+    } 
 
     return (
         <div className={`h-screen sticky top-0 overflow-y-auto custom-scrollbar  ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'}`}>
@@ -47,6 +139,19 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, userDet
                     </Link>
 
                     <Link
+                        to="/myprojects"
+                        className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/myprojects"
+                            ? "bg-purple-500 text-white shadow-lg scale-105"
+                            : darkMode
+                                ? "hover:bg-gray-700 hover:text-purple-400"
+                                : "hover:bg-gray-200 hover:text-purple-500"
+                            }`}
+                    >
+                        <FiFolder className="text-2xl" />
+                        {sidebarOpen && <span className="ml-3">My Projects</span>}
+                    </Link>
+
+                    <Link
                         to="/templates"
                         className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/templates"
                             ? "bg-purple-500 text-white shadow-lg scale-105"
@@ -73,7 +178,8 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, userDet
                     </Link>
 
                     <Link
-                        to={`/codeeditor`}
+                        to={`/codeeditor`}                 
+                        state={{ template: template, index: -1 }}
                         className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/codeeditor"
                             ? "bg-purple-500 text-white shadow-lg scale-105"
                             : darkMode

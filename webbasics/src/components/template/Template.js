@@ -13,11 +13,11 @@ function TemplatePage({ darkMode }) {
 
     // Filtering based on search query and selected category
     const filteredTemplates = allTemplates.filter((template) => {
-        const matchesSearch = template.name
+        const matchesSearch = template.title
             .toLowerCase()
             .includes(searchQuery.toLowerCase());
         const matchesCategory =
-            category === "All" || template.category === category;
+            category === "All" || template.tag === category;
         return matchesSearch && matchesCategory;
     });
 

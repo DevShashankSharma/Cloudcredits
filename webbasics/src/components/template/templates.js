@@ -35,8 +35,8 @@ import t30 from "../../image/t30.png";
 export const allTemplates = [
     {
         id: 1,
-        name: "Portfolio",
-        category: "Personal",
+        title: "Portfolio",
+        tag: "Personal",
         image: t1,
         description: "Showcase your work with a beautiful portfolio.",
         html: `
@@ -124,8 +124,8 @@ export const allTemplates = [
     },
     {
         id: 2,
-        name: "Business Landing Page",
-        category: "Business",
+        title: "Business Landing Page",
+        tag: "Business",
         image: t2,
         description: "Create a stunning landing page for your business.",
         html: `
@@ -223,8 +223,8 @@ export const allTemplates = [
     },
     {
         id: 3,
-        name: "Blog",
-        category: "Personal",
+        title: "Blog",
+        tag: "Personal",
         image: t3,
         description: "Create a beautiful blog to share your thoughts.",
         html: `
@@ -319,8 +319,8 @@ export const allTemplates = [
     },
     {
         id: 4,
-        name: "E-commerce",
-        category: "Business",
+        title: "E-commerce",
+        tag: "Business",
         image: t4,
         description: "Build a modern e-commerce website to sell products online.",
         html: `
@@ -415,8 +415,8 @@ export const allTemplates = [
     },
     {
         id: 5,
-        name: "Photography Portfolio",
-        category: "Personal",
+        title: "Photography Portfolio",
+        tag: "Personal",
         image: t5,
         description: "Display your photography work with a stunning portfolio.",
         html: `
@@ -495,8 +495,8 @@ export const allTemplates = [
     },
     {
         id: 6,
-        name: "Restaurant",
-        category: "Business",
+        title: "Restaurant",
+        tag: "Business",
         image: t6,
         description: "Launch a website for your restaurant with a menu and reservation features.",
         html: `
@@ -591,8 +591,8 @@ export const allTemplates = [
     },
     {
         id: 7,
-        name: "Landing Page",
-        category: "Business",
+        title: "Landing Page",
+        tag: "Business",
         image:t7,
         description: "Create a captivating landing page for your product or service.",
         html: `
@@ -680,8 +680,8 @@ export const allTemplates = [
     },
     {
         id: 8,
-        name: "Event",
-        category: "Business",
+        title: "Event",
+        tag: "Business",
         image: t8,
         description: "Promote your event with a dynamic and engaging page.",
         html: `
@@ -796,8 +796,8 @@ export const allTemplates = [
     },
     {
         id: 9,
-        name: "Travel",
-        category: "Personal",
+        title: "Travel",
+        tag: "Personal",
         image: t9,
         description: "Share your travel experiences and itineraries.",
         html: `
@@ -892,8 +892,8 @@ export const allTemplates = [
     },
     {
         id: 10,
-        name: "Non-Profit",
-        category: "Business",
+        title: "Non-Profit",
+        tag: "Business",
         image: t10,
         description: "Create a site to promote your non-profit organization and its mission.",
         html: `
@@ -999,8 +999,8 @@ export const allTemplates = [
     },
     {
         id: 11,
-        name: "Fitness",
-        category: "Personal",
+        title: "Fitness",
+        tag: "Personal",
         image: t11,
         description: "Build a fitness website with workout plans and nutrition tips.",
         html: `
@@ -1121,8 +1121,8 @@ export const allTemplates = [
     },
     {
         id: 12,
-        name: "Education",
-        category: "Personal",
+        title: "Education",
+        tag: "Personal",
         image: t12,
         description: "Create an educational site with courses and learning resources.",
         html: `
@@ -1234,8 +1234,8 @@ export const allTemplates = [
     },
     {
         id: 13,
-        name: "Food Blog",
-        category: "Personal",
+        title: "Food Blog",
+        tag: "Personal",
         image: t13,
         description: "Share recipes, cooking tips, and food photography on your blog.",
         html: `
@@ -1356,8 +1356,8 @@ export const allTemplates = [
     },
     {
         id: 14,
-        name: "Photography",
-        category: "Personal",
+        title: "Photography",
+        tag: "Personal",
         image: t14,
         description: "Display your photography portfolio with stunning visuals.",
         html: `
@@ -1470,8 +1470,8 @@ export const allTemplates = [
     },
     {
         id: 15,
-        name: "Real Estate",
-        category: "Business",
+        title: "Real Estate",
+        tag: "Business",
         image: t15,
         description: "Showcase properties with a professional real estate website.",
         html: `
@@ -1583,8 +1583,8 @@ export const allTemplates = [
     },
     {
         id: 16,
-        name: "E-Commerce",
-        category: "Business",
+        title: "E-Commerce",
+        tag: "Business",
         image: t16,
         description: "Create a fully functional e-commerce website to sell products online.",
         html: `
@@ -1696,8 +1696,8 @@ export const allTemplates = [
     },
     {
         id: 17,
-        name: "Wedding Invitation",
-        category: "Personal",
+        title: "Wedding Invitation",
+        tag: "Personal",
         image: t17,
         description: "Create elegant and memorable wedding invitations.",
         html: `
@@ -1782,8 +1782,8 @@ export const allTemplates = [
     },
     {
         id: 18,
-        name: "Health Blog",
-        category: "Personal",
+        title: "Health Blog",
+        tag: "Personal",
         image: t18,
         description: "Share health tips, wellness advice, and fitness routines on your blog.",
         html: `
@@ -1895,8 +1895,8 @@ export const allTemplates = [
     },
     {
         id: 19,
-        name: "Travel Agency",
-        category: "Business",
+        title: "Travel Agency",
+        tag: "Business",
         image: t19,
         description: "Design a travel agency website with beautiful destinations and booking options.",
         html: `
@@ -1999,8 +1999,8 @@ export const allTemplates = [
     },
     {
         id: 20,
-        name: "Real Estate",
-        category: "Business",
+        title: "Real Estate",
+        tag: "Business",
         image: t20,
         description: "Showcase properties with a professional real estate website. Provide property details, pricing information, and contact forms for potential buyers.",
         html: `
@@ -2112,8 +2112,8 @@ export const allTemplates = [
     },
     {
         id: 21,
-        name: "Tech Startup",
-        category: "Business",
+        title: "Tech Startup",
+        tag: "Business",
         image: t21,
         description: "Build a dynamic website for your tech startup with modern design and features.",
         html: `
@@ -2225,8 +2225,8 @@ export const allTemplates = [
     },
     {
         id: 22,
-        name: "E-commerce Store",
-        category: "Business",
+        title: "E-commerce Store",
+        tag: "Business",
         image: t22,
         description: "Create an e-commerce store with product listings, cart functionality, and checkout options.",
         html: `
@@ -2329,8 +2329,8 @@ export const allTemplates = [
     },
     {
         id: 23,
-        name: "Non-Profit Organization",
-        category: "Non-Profit",
+        title: "Non-Profit Organization",
+        tag: "Non-Profit",
         image: t23,
         description: "Design a website for your non-profit organization to highlight your mission, projects, and donation opportunities.",
         html: `
@@ -2429,8 +2429,8 @@ export const allTemplates = [
     },
     {
         id: 24,
-        name: "Event Planner",
-        category: "Business",
+        title: "Event Planner",
+        tag: "Business",
         image: t24,
         description: "Create a website to showcase your event planning services. Include details on your services, past events, and contact information.",
         html: `
@@ -2542,8 +2542,8 @@ export const allTemplates = [
     },
     {
         id: 25,
-        name: "Portfolio Showcase",
-        category: "Personal",
+        title: "Portfolio Showcase",
+        tag: "Personal",
         image: t25,
         description: "Design a portfolio showcase to highlight your projects and skills. Ideal for freelancers and creatives.",
         html: `
@@ -2655,8 +2655,8 @@ export const allTemplates = [
     },
     {
         id: 26,
-        name: "Startup Landing Page",
-        category: "Business",
+        title: "Startup Landing Page",
+        tag: "Business",
         image: t26,
         description: "Create a compelling landing page for your startup. Showcase your product, features, and call-to-action buttons.",
         html: `
@@ -2749,8 +2749,8 @@ export const allTemplates = [
     },
     {
         id: 27,
-        name: "Restaurant Menu",
-        category: "Food",
+        title: "Restaurant Menu",
+        tag: "Food",
         image: t27,
         description: "Design a website to display your restaurant menu. Include sections for appetizers, main courses, desserts, and beverages.",
         html: `
@@ -2864,8 +2864,8 @@ export const allTemplates = [
     },
     {
         id: 28,
-        name: "Fitness Trainer",
-        category: "Health",
+        title: "Fitness Trainer",
+        tag: "Health",
         image: t28,
         description: "Create a website for a fitness trainer. Include information about services, workout plans, testimonials, and contact details.",
         html: `
@@ -2969,8 +2969,8 @@ export const allTemplates = [
     },
     {
         id: 29,
-        name: "Real Estate Listings",
-        category: "Real Estate",
+        title: "Real Estate Listings",
+        tag: "Real Estate",
         image: t29,
         description: "Design a website for real estate listings. Display properties, details, and contact information for potential buyers.",
         html: `
@@ -3069,8 +3069,8 @@ export const allTemplates = [
     },
     {
         id: 30,
-        name: "Educational Course",
-        category: "Education",
+        title: "Educational Course",
+        tag: "Education",
         image: t30,
         description: "Create a website to showcase educational courses. Include course details, instructor information, and registration options.",
         html: `
