@@ -1,5 +1,5 @@
 import t1 from "../../image/t1.jpeg";
-import t2 from "../../image/t2.jpeg"; 
+import t2 from "../../image/t2.jpeg";
 import t3 from "../../image/t3.jpeg";
 import t4 from "../../image/t4.jpeg";
 import t5 from "../../image/t5.jpg";
@@ -20,17 +20,17 @@ import t16 from "../../image/t16.avif";
 import t17 from "../../image/t17.webp";
 import t18 from "../../image/t18.jpg";
 import t19 from "../../image/t19.jpeg";
-import t20 from "../../image/t20.webp"; 
-import t21 from "../../image/t21.jpeg"; 
-import t22 from "../../image/t22.jpg"; 
-import t23 from "../../image/t23.jpg"; 
-import t24 from "../../image/t24.jpeg"; 
-import t25 from "../../image/t25.jpg"; 
-import t26 from "../../image/t26.avif"; 
-import t27 from "../../image/t27.webp"; 
-import t28 from "../../image/t28.jpeg"; 
-import t29 from "../../image/t29.jpg"; 
-import t30 from "../../image/t30.png";  
+import t20 from "../../image/t20.webp";
+import t21 from "../../image/t21.jpeg";
+import t22 from "../../image/t22.jpg";
+import t23 from "../../image/t23.jpg";
+import t24 from "../../image/t24.jpeg";
+import t25 from "../../image/t25.jpg";
+import t26 from "../../image/t26.avif";
+import t27 from "../../image/t27.webp";
+import t28 from "../../image/t28.jpeg";
+import t29 from "../../image/t29.jpg";
+import t30 from "../../image/t30.png";
 
 export const allTemplates = [
     {
@@ -39,25 +39,35 @@ export const allTemplates = [
         tag: "Personal",
         image: t1,
         description: "Showcase your work with a beautiful portfolio.",
-        html: `
+        tabs: [
+            {
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t1} alt="Portfolio Image" class="template-image">
                 <div class="template-content">
                     <h3 class="template-title">Portfolio</h3>
-                    <p class="template-description">Showcase your work with a beautiful portfolio. Highlight your achievements, projects, and skills in a professional manner. Customize your portfolio with various layouts and colors.</p>
+           ]         <p class="template-description">Showcase your work with a beautiful portfolio. Highlight your achievements, projects, and skills in a professional manner. Customize your portfolio with various layouts and colors.</p>
                     <div class="project-list">
                         <h4 class="project-title">Projects</h4>
                         <ul>
                             <li>Project 1: Personal Website</li>
                             <li>Project 2: E-commerce Application</li>
-                            <li>Project 3: Mobile App</li>
+            [             <li>Project 3: Mobile App</li>
                         </ul>
                     </div>
                     <button class="cta-button">Explore Portfolio</button>
                 </div>
             </div>
-        `,
-        css: `
+            `,
+            },
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -120,7 +130,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #0056b3;
             }
-        `
+            `},
+        ],
     },
     {
         id: 2,
@@ -128,13 +139,19 @@ export const allTemplates = [
         tag: "Business",
         image: t2,
         description: "Create a stunning landing page for your business.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t2} alt="Landing Page Image" class="template-image">
                 <div class="template-content">
                     <h3 class="template-title">Business Landing Page</h3>
                     <p class="template-description">Create a stunning landing page for your business. Highlight your services, products, and key offerings to capture potential customers' attention.</p>
-                    <div class="features-list">
+           ]         <div class="features-list">
                         <h4 class="features-title">Key Features</h4>
                         <ul>
                             <li>Feature 1: Responsive Design</li>
@@ -142,14 +159,19 @@ export const allTemplates = [
                             <li>Feature 3: SEO Optimized</li>
                         </ul>
                     </div>
-                    <div class="cta-section">
+            [     <div class="cta-section">
                         <p class="cta-text">Start growing your business today!</p>
                         <button class="cta-button">Get Started</button>
                     </div>
                 </div>
             </div>
-        `,
-        css: `
+                `
+            }
+            , {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #f5f5f5;
                 border-radius: 12px;
@@ -219,7 +241,9 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #218838;
             }
-        `
+                `
+            }
+        ],
     },
     {
         id: 3,
@@ -227,7 +251,13 @@ export const allTemplates = [
         tag: "Personal",
         image: t3,
         description: "Create a beautiful blog to share your thoughts.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t3} alt="Blog Image" class="template-image">
                 <div class="template-content">
@@ -235,20 +265,26 @@ export const allTemplates = [
                     <p class="template-description">Create a beautiful blog to share your thoughts. Customize your posts, add comments, and connect with your audience through a stunning layout.</p>
                     <div class="blog-posts">
                         <h4 class="posts-title">Recent Posts</h4>
-                        <div class="post-item">
+                        <div class="post-item">]
                             <h5 class="post-title">Post 1: The Future of Web Development</h5>
                             <p class="post-snippet">Explore the latest trends in web development...</p>
                         </div>
                         <div class="post-item">
                             <h5 class="post-title">Post 2: JavaScript Frameworks</h5>
                             <p class="post-snippet">A comparison between React, Angular, and Vue...</p>
-                        </div>
+[                      </div>
                     </div>
                     <button class="cta-button">Read More</button>
                 </div>
             </div>
-        `,
-        css: `
+        `
+            }
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -316,6 +352,8 @@ export const allTemplates = [
                 background-color: #0056b3;
             }
         `
+            }
+        ]
     },
     {
         id: 4,
@@ -323,13 +361,19 @@ export const allTemplates = [
         tag: "Business",
         image: t4,
         description: "Build a modern e-commerce website to sell products online.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t4} alt="E-commerce Image" class="template-image">
                 <div class="template-content">
                     <h3 class="template-title">E-commerce</h3>
                     <p class="template-description">Build a modern e-commerce website to sell products online. Add categories, payment integration, and a smooth checkout process for the best customer experience.</p>
-                    <div class="product-list">
+           ]         <div class="product-list">
                         <h4 class="product-title">Featured Products</h4>
                         <div class="product-item">
                             <h5 class="product-name">Product 1: Smart Watch</h5>
@@ -337,14 +381,20 @@ export const allTemplates = [
                         </div>
                         <div class="product-item">
                             <h5 class="product-name">Product 2: Wireless Headphones</h5>
-                            <p class="product-price">$149.99</p>
+            [             <p class="product-price">$149.99</p>
                         </div>
                     </div>
                     <button class="cta-button">Shop Now</button>
                 </div>
             </div>
-        `,
-        css: `
+        `
+            }
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -412,6 +462,8 @@ export const allTemplates = [
                 background-color: #218838;
             }
         `
+            }
+        ]
     },
     {
         id: 5,
@@ -419,22 +471,33 @@ export const allTemplates = [
         tag: "Personal",
         image: t5,
         description: "Display your photography work with a stunning portfolio.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
-                <img src=${t5} alt="Photography Portfolio Image" class="template-image">
+           ]     <img src=${t5} alt="Photography Portfolio Image" class="template-image">
                 <div class="template-content">
                     <h3 class="template-title">Photography Portfolio</h3>
                     <p class="template-description">Display your photography work with a stunning portfolio. Showcase high-quality images and create categories to organize your portfolio effectively.</p>
                     <div class="gallery">
                         <img src=${t5p1}class="gallery-image" alt="Gallery Image 1">
-                        <img src=${t5p2} class="gallery-image" alt="Gallery Image 2">
+            [         <img src=${t5p2} class="gallery-image" alt="Gallery Image 2">
                         <img src=${t5p3} class="gallery-image" alt="Gallery Image 3">
                     </div>
                     <button class="cta-button">View Portfolio</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -491,7 +554,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #138496;
             }
-        `
+        `}
+        ]
     },
     {
         id: 6,
@@ -499,13 +563,19 @@ export const allTemplates = [
         tag: "Business",
         image: t6,
         description: "Launch a website for your restaurant with a menu and reservation features.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t6} alt="Restaurant Image" class="template-image">
                 <div class="template-content">
                     <h3 class="template-title">Restaurant</h3>
                     <p class="template-description">Launch a website for your restaurant with a menu and reservation features. Attract customers by showcasing your dishes and offering online reservations for tables.</p>
-                    <div class="menu-list">
+           ]         <div class="menu-list">
                         <h4 class="menu-title">Our Menu</h4>
                         <div class="menu-item">
                             <h5 class="dish-name">Grilled Salmon</h5>
@@ -513,14 +583,19 @@ export const allTemplates = [
                         </div>
                         <div class="menu-item">
                             <h5 class="dish-name">Pasta Carbonara</h5>
-                            <p class="dish-price">$18.99</p>
+            [             <p class="dish-price">$18.99</p>
                         </div>
                     </div>
                     <button class="cta-button">Make a Reservation</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -587,32 +662,44 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #e55330;
             }
-        `
+        `}
+        ]
     },
     {
         id: 7,
         title: "Landing Page",
         tag: "Business",
-        image:t7,
+        image: t7,
         description: "Create a captivating landing page for your product or service.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t7} alt="Landing Page Image" class="template-image">
                 <div class="template-content">
-                    <h3 class="template-title">Landing Page</h3>
+           ]         <h3 class="template-title">Landing Page</h3>
                     <p class="template-description">Create a captivating landing page for your product or service. Utilize modern design elements and call-to-action buttons to drive conversions.</p>
                     <div class="features-list">
                         <h4 class="features-title">Key Features</h4>
                         <ul class="feature-items">
                             <li>Feature 1: High conversion rate</li>
-                            <li>Feature 2: Responsive design</li>
+            [             <li>Feature 2: Responsive design</li>
                         </ul>
                     </div>
                     <button class="cta-button">Get Started</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -676,7 +763,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #0056b3;
             }
-        `
+        `}
+        ]
     },
     {
         id: 8,
@@ -684,7 +772,13 @@ export const allTemplates = [
         tag: "Business",
         image: t8,
         description: "Promote your event with a dynamic and engaging page.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t8} alt="Event Image" class="template-image">
                 <div class="template-content">
@@ -696,7 +790,7 @@ export const allTemplates = [
                         <p class="event-location">Location: Downtown Conference Center</p>
                         <p class="event-time">Time: 10:00 AM - 4:00 PM</p>
                     </div>
-                    <div class="speaker-list">
+           ]         <div class="speaker-list">
                         <h4 class="speakers-title">Featured Speakers</h4>
                         <div class="speaker-item">
                             <h5 class="speaker-name">John Doe</h5>
@@ -704,14 +798,19 @@ export const allTemplates = [
                         </div>
                         <div class="speaker-item">
                             <h5 class="speaker-name">Jane Smith</h5>
-                            <p class="speaker-topic">Panel Discussion: Innovations in AI</p>
+            [             <p class="speaker-topic">Panel Discussion: Innovations in AI</p>
                         </div>
                     </div>
                     <button class="cta-button">Register Now</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -792,7 +891,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #e64a19;
             }
-        `
+        `}
+        ]
     },
     {
         id: 9,
@@ -800,7 +900,13 @@ export const allTemplates = [
         tag: "Personal",
         image: t9,
         description: "Share your travel experiences and itineraries.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t9} alt="Travel Image" class="template-image">
                 <div class="template-content">
@@ -808,20 +914,25 @@ export const allTemplates = [
                     <p class="template-description">Share your travel experiences and itineraries. Create travel guides, highlight destinations, and provide tips for fellow travelers.</p>
                     <div class="destination-list">
                         <h4 class="destinations-title">Popular Destinations</h4>
-                        <div class="destination-item">
+                        <div clas]s="destination-item">
                             <h5 class="destination-name">Paris</h5>
                             <p class="destination-description">Explore the City of Lights with its iconic landmarks and vibrant culture.</p>
                         </div>
                         <div class="destination-item">
                             <h5 class="destination-name">Tokyo</h5>
-                            <p class="destination-description">Experience the bustling metropolis and rich traditions of Japan.</p>
+                            <p class="destination-description">Experience the bustling metropolis and ri[h traditions of Japan.</p>
                         </div>
                     </div>
                     <button class="cta-button">Explore More</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -888,7 +999,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #00796b;
             }
-        `
+        `}
+        ]
     },
     {
         id: 10,
@@ -896,7 +1008,13 @@ export const allTemplates = [
         tag: "Business",
         image: t10,
         description: "Create a site to promote your non-profit organization and its mission.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t10} alt="Non-Profit Image" class="template-image">
                 <div class="template-content">
@@ -904,21 +1022,26 @@ export const allTemplates = [
                     <p class="template-description">Create a site to promote your non-profit organization and its mission. Share your cause, provide donation options, and update visitors on your latest initiatives.</p>
                     <div class="mission-statement">
                         <h4 class="mission-title">Our Mission</h4>
-                        <p class="mission-text">To make a difference in the community by providing resources and support to those in need.</p>
+           ]             <p class="mission-text">To make a difference in the community by providing resources and support to those in need.</p>
                     </div>
                     <div class="donation-options">
                         <h4 class="donation-title">How You Can Help</h4>
                         <ul class="donation-list">
                             <li>Donate Money</li>
                             <li>Volunteer Your Time</li>
-                            <li>Spread the Word</li>
+            [             <li>Spread the Word</li>
                         </ul>
                     </div>
                     <button class="cta-button">Donate Now</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -995,7 +1118,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #388e3c;
             }
-        `
+        `}
+        ]
     },
     {
         id: 11,
@@ -1003,7 +1127,13 @@ export const allTemplates = [
         tag: "Personal",
         image: t11,
         description: "Build a fitness website with workout plans and nutrition tips.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t11} alt="Fitness Image" class="template-image">
                 <div class="template-content">
@@ -1017,7 +1147,7 @@ export const allTemplates = [
                         </div>
                         <div class="plan-item">
                             <h5 class="plan-name">Cardio Workouts</h5>
-                            <p class="plan-description">Improve cardiovascular health with various cardio exercises.</p>
+                            <p class="plan-description">Improve cardiovascular health with variou]s cardio exercises.</p>
                         </div>
                     </div>
                     <div class="nutrition-tips">
@@ -1025,14 +1155,19 @@ export const allTemplates = [
                         <ul class="nutrition-list">
                             <li>Stay Hydrated</li>
                             <li>Balanced Diet</li>
-                            <li>Post-Workout Recovery</li>
+            [             <li>Post-Workout Recovery</li>
                         </ul>
                     </div>
                     <button class="cta-button">Join Now</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -1117,7 +1252,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #fb8c00;
             }
-        `
+        `}
+        ]
     },
     {
         id: 12,
@@ -1125,7 +1261,13 @@ export const allTemplates = [
         tag: "Personal",
         image: t12,
         description: "Create an educational site with courses and learning resources.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t12} alt="Education Image" class="template-image">
                 <div class="template-content">
@@ -1137,20 +1279,25 @@ export const allTemplates = [
                             <h5 class="course-name">Web Development</h5>
                             <p class="course-description">Learn the fundamentals of web development with HTML, CSS, and JavaScript.</p>
                         </div>
-                        <div class="course-item">
+           ]             <div class="course-item">
                             <h5 class="course-name">Digital Marketing</h5>
                             <p class="course-description">Understand the principles of digital marketing and how to effectively promote online.</p>
                         </div>
                     </div>
                     <div class="registration-info">
                         <h4 class="registration-title">Register Now</h4>
-                        <p class="registration-text">Sign up to access exclusive content and track your learning progress.</p>
+            [         <p class="registration-text">Sign up to access exclusive content and track your learning progress.</p>
                     </div>
                     <button class="cta-button">Sign Up</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -1230,7 +1377,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #1976d2;
             }
-        `
+        `}
+        ]
     },
     {
         id: 13,
@@ -1238,7 +1386,13 @@ export const allTemplates = [
         tag: "Personal",
         image: t13,
         description: "Share recipes, cooking tips, and food photography on your blog.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t13} alt="Food Blog Image" class="template-image">
                 <div class="template-content">
@@ -1252,7 +1406,7 @@ export const allTemplates = [
                         </div>
                         <div class="recipe-item">
                             <h5 class="recipe-name">Chocolate Lava Cake</h5>
-                            <p class="recipe-description">Rich and gooey chocolate cake with a molten center.</p>
+                            <p class="recipe-description">Rich and gooey chocolate cake with ]a molten center.</p>
                         </div>
                     </div>
                     <div class="cooking-tips">
@@ -1260,14 +1414,19 @@ export const allTemplates = [
                         <ul class="tips-list">
                             <li>Always use fresh ingredients</li>
                             <li>Season your food properly</li>
-                            <li>Experiment with different flavors</li>
+            [             <li>Experiment with different flavors</li>
                         </ul>
                     </div>
                     <button class="cta-button">Read More</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -1352,7 +1511,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #d32f2f;
             }
-        `
+        `}
+        ]
     },
     {
         id: 14,
@@ -1360,7 +1520,13 @@ export const allTemplates = [
         tag: "Personal",
         image: t14,
         description: "Display your photography portfolio with stunning visuals.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${14} alt="Photography Image" class="template-image">
                 <div class="template-content">
@@ -1373,19 +1539,24 @@ export const allTemplates = [
                             <p class="photo-description">Sunset over the mountains</p>
                         </div>
                         <div class="photo-item">
-                            <img src="https://images.unsplash.com/photo-1485269782161-8d6a72e5f2c3" alt="Gallery Photo" class="gallery-image">
+                            <]img src="https://images.unsplash.com/photo-1485269782161-8d6a72e5f2c3" alt="Gallery Photo" class="gallery-image">
                             <p class="photo-description">Cityscape at night</p>
                         </div>
                     </div>
                     <div class="about-photographer">
                         <h4 class="photographer-title">About the Photographer</h4>
-                        <p class="photographer-text">An experienced photographer with a passion for capturing life's moments. Explore more of my work and learn about my journey.</p>
+                        <p class="photographer-text">An experienced photographer with a passion for captur[ng life's moments. Explore more of my work and learn about my journey.</p>
                     </div>
                     <button class="cta-button">View Portfolio</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -1466,7 +1637,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #7b1fa2;
             }
-        `
+        `}
+        ]
     },
     {
         id: 15,
@@ -1474,7 +1646,13 @@ export const allTemplates = [
         tag: "Business",
         image: t15,
         description: "Showcase properties with a professional real estate website.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t15} alt="Real Estate Image" class="template-image">
                 <div class="template-content">
@@ -1486,20 +1664,25 @@ export const allTemplates = [
                             <h5 class="property-name">Luxury Villa</h5>
                             <p class="property-description">A stunning villa with 5 bedrooms, a private pool, and breathtaking views.</p>
                         </div>
-                        <div class="property-item">
+           ]             <div class="property-item">
                             <h5 class="property-name">Modern Apartment</h5>
                             <p class="property-description">A contemporary apartment with 2 bedrooms, a spacious living area, and modern amenities.</p>
                         </div>
                     </div>
                     <div class="contact-info">
                         <h4 class="contact-title">Get in Touch</h4>
-                        <p class="contact-text">Contact us to schedule a viewing or get more information about our properties.</p>
+            [         <p class="contact-text">Contact us to schedule a viewing or get more information about our properties.</p>
                     </div>
                     <button class="cta-button">Contact Us</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -1579,7 +1762,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #303f9f;
             }
-        `
+        `}
+        ]
     },
     {
         id: 16,
@@ -1587,7 +1771,13 @@ export const allTemplates = [
         tag: "Business",
         image: t16,
         description: "Create a fully functional e-commerce website to sell products online.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${16} alt="E-Commerce Image" class="template-image">
                 <div class="template-content">
@@ -1599,20 +1789,25 @@ export const allTemplates = [
                             <h5 class="product-name">Smartphone</h5>
                             <p class="product-description">Latest model with high-resolution display and advanced features.</p>
                         </div>
-                        <div class="product-item">
+           ]             <div class="product-item">
                             <h5 class="product-name">Headphones</h5>
                             <p class="product-description">Wireless headphones with noise-canceling technology.</p>
                         </div>
                     </div>
                     <div class="shopping-info">
                         <h4 class="shopping-title">Shopping Information</h4>
-                        <p class="shopping-text">Explore our products and enjoy a seamless shopping experience with secure payments and fast delivery.</p>
+            [         <p class="shopping-text">Explore our products and enjoy a seamless shopping experience with secure payments and fast delivery.</p>
                     </div>
                     <button class="cta-button">Shop Now</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -1692,7 +1887,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #e64a19;
             }
-        `
+        `}
+        ]
     },
     {
         id: 17,
@@ -1700,26 +1896,37 @@ export const allTemplates = [
         tag: "Personal",
         image: t17,
         description: "Create elegant and memorable wedding invitations.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t17} alt="Wedding Invitation Image" class="template-image">
                 <div class="template-content">
                     <h3 class="template-title">Wedding Invitation</h3>
-                    <p class="template-description">Create elegant and memorable wedding invitations with beautiful designs. Include event details, RSVP options, and personalized messages.</p>
+                    <p class="template-description">Create elegant and memorable weddin]g invitations with beautiful designs. Include event details, RSVP options, and personalized messages.</p>
                     <div class="event-details">
                         <h4 class="details-title">Event Details</h4>
                         <p class="details-text">Date: June 12, 2024</p>
                         <p class="details-text">Location: The Grand Hall, 123 Main St.</p>
                     </div>
                     <div class="rsvp-section">
-                        <h4 class="rsvp-title">RSVP</h4>
+            [         <h4 class="rsvp-title">RSVP</h4>
                         <p class="rsvp-text">Please confirm your attendance by June 5, 2024.</p>
                     </div>
                     <button class="cta-button">RSVP Now</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -1778,7 +1985,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #c2185b;
             }
-        `
+        `}
+        ]
     },
     {
         id: 18,
@@ -1786,7 +1994,13 @@ export const allTemplates = [
         tag: "Personal",
         image: t18,
         description: "Share health tips, wellness advice, and fitness routines on your blog.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t18} alt="Health Blog Image" class="template-image">
                 <div class="template-content">
@@ -1800,7 +2014,7 @@ export const allTemplates = [
                         </div>
                         <div class="tip-item">
                             <h5 class="tip-name">Regular Exercise</h5>
-                            <p class="tip-description">Engage in at least 30 minutes of physical activity each day.</p>
+                            <p class="tip-description">Engage in at least 30 minutes of physica]l activity each day.</p>
                         </div>
                     </div>
                     <div class="fitness-routines">
@@ -1808,14 +2022,19 @@ export const allTemplates = [
                         <ul class="routines-list">
                             <li>Morning Yoga Routine</li>
                             <li>Full-Body Workout</li>
-                            <li>Evening Stretching Exercises</li>
+            [             <li>Evening Stretching Exercises</li>
                         </ul>
                     </div>
                     <button class="cta-button">Read Articles</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -1891,7 +2110,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #388e3c;
             }
-        `
+        `}
+        ]
     },
     {
         id: 19,
@@ -1899,7 +2119,13 @@ export const allTemplates = [
         tag: "Business",
         image: t19,
         description: "Design a travel agency website with beautiful destinations and booking options.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t19} alt="Travel Agency Image" class="template-image">
                 <div class="template-content">
@@ -1911,20 +2137,25 @@ export const allTemplates = [
                             <h5 class="destination-name">Paris</h5>
                             <p class="destination-description">The city of lights, known for its romance and landmarks.</p>
                         </div>
-                        <div class="destination-item">
+           ]             <div class="destination-item">
                             <h5 class="destination-name">Tokyo</h5>
                             <p class="destination-description">A vibrant city with a mix of tradition and modernity.</p>
                         </div>
                     </div>
                     <div class="booking-info">
                         <h4 class="booking-title">Book Your Trip</h4>
-                        <p class="booking-text">Find and book your perfect vacation package with ease. Our team is here to help you plan an unforgettable trip.</p>
+            [         <p class="booking-text">Find and book your perfect vacation package with ease. Our team is here to help you plan an unforgettable trip.</p>
                     </div>
                     <button class="cta-button">Book Now</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -1995,7 +2226,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #1976d2;
             }
-        `
+        `}
+        ]
     },
     {
         id: 20,
@@ -2003,7 +2235,13 @@ export const allTemplates = [
         tag: "Business",
         image: t20,
         description: "Showcase properties with a professional real estate website. Provide property details, pricing information, and contact forms for potential buyers.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t20} alt="Real Estate Image" class="template-image">
                 <div class="template-content">
@@ -2015,20 +2253,25 @@ export const allTemplates = [
                             <h5 class="property-name">Luxury Villa</h5>
                             <p class="property-description">A stunning villa with 5 bedrooms, a private pool, and breathtaking views.</p>
                         </div>
-                        <div class="property-item">
+           ]             <div class="property-item">
                             <h5 class="property-name">Modern Apartment</h5>
                             <p class="property-description">A contemporary apartment with 2 bedrooms, a spacious living area, and modern amenities.</p>
                         </div>
                     </div>
                     <div class="contact-info">
                         <h4 class="contact-title">Get in Touch</h4>
-                        <p class="contact-text">Contact us to schedule a viewing or get more information about our properties.</p>
+            [         <p class="contact-text">Contact us to schedule a viewing or get more information about our properties.</p>
                     </div>
                     <button class="cta-button">Contact Us</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -2108,7 +2351,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #303f9f;
             }
-        `
+        `}
+        ]
     },
     {
         id: 21,
@@ -2116,7 +2360,13 @@ export const allTemplates = [
         tag: "Business",
         image: t21,
         description: "Build a dynamic website for your tech startup with modern design and features.",
-        html: `
+        tabs: [
+            {
+
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t21} alt="Tech Startup Image" class="template-image">
                 <div class="template-content">
@@ -2130,7 +2380,7 @@ export const allTemplates = [
                         </div>
                         <div class="feature-item">
                             <h5 class="feature-name">Expert Team</h5>
-                            <p class="feature-description">A team of experts dedicated to driving your success.</p>
+                            <p class="feature-description">A team of experts dedicated to drivin]g your success.</p>
                         </div>
                     </div>
                     <div class="latest-projects">
@@ -2138,14 +2388,19 @@ export const allTemplates = [
                         <ul class="projects-list">
                             <li>AI-powered Chatbot</li>
                             <li>Blockchain-based Security</li>
-                            <li>Cloud-based Solutions</li>
+            [             <li>Cloud-based Solutions</li>
                         </ul>
                     </div>
                     <button class="cta-button">Learn More</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -2221,7 +2476,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #1976d2;
             }
-        `
+        `}
+        ]
     },
     {
         id: 22,
@@ -2229,7 +2485,13 @@ export const allTemplates = [
         tag: "Business",
         image: t22,
         description: "Create an e-commerce store with product listings, cart functionality, and checkout options.",
-        html: `
+        tabs: [
+            {
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code:
+                    `
             <div class="template-card">
                 <img src=${t22} alt="E-commerce Store Image" class="template-image">
                 <div class="template-content">
@@ -2241,20 +2503,25 @@ export const allTemplates = [
                             <h5 class="product-name">Stylish Backpack</h5>
                             <p class="product-description">A sleek and stylish backpack for all your daily needs.</p>
                         </div>
-                        <div class="product-item">
+           ]             <div class="product-item">
                             <h5 class="product-name">Wireless Earbuds</h5>
                             <p class="product-description">High-quality wireless earbuds with excellent sound quality.</p>
                         </div>
                     </div>
                     <div class="cart-info">
                         <h4 class="cart-title">Shopping Cart</h4>
-                        <p class="cart-text">Review your cart items, apply discounts, and proceed to checkout.</p>
+            [         <p class="cart-text">Review your cart items, apply discounts, and proceed to checkout.</p>
                     </div>
                     <button class="cta-button">Shop Now</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -2325,7 +2592,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #e64a19;
             }
-        `
+        `}
+        ]
     },
     {
         id: 23,
@@ -2333,7 +2601,13 @@ export const allTemplates = [
         tag: "Non-Profit",
         image: t23,
         description: "Design a website for your non-profit organization to highlight your mission, projects, and donation opportunities.",
-        html: `
+        tabs: [
+            {
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code:
+                    `
             <div class="template-card">
                 <img src=${t23} alt="Non-Profit Organization Image" class="template-image">
                 <div class="template-content">
@@ -2345,20 +2619,25 @@ export const allTemplates = [
                     </div>
                     <div class="project-list">
                         <h4 class="project-title">Our Projects</h4>
-                        <div class="project-item">
+                        <div clas]s="project-item">
                             <h5 class="project-name">Community Outreach</h5>
                             <p class="project-description">Organizing events to support and engage with the local community.</p>
                         </div>
                         <div class="project-item">
                             <h5 class="project-name">Environmental Conservation</h5>
-                            <p class="project-description">Initiatives focused on preserving and protecting our natural environment.</p>
+                            <p class="project-description">Initiatives focused on preserving and protec[ing our natural environment.</p>
                         </div>
                     </div>
                     <button class="cta-button">Donate Now</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -2425,7 +2704,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #c62828;
             }
-        `
+        `}
+        ]
     },
     {
         id: 24,
@@ -2433,7 +2713,13 @@ export const allTemplates = [
         tag: "Business",
         image: t24,
         description: "Create a website to showcase your event planning services. Include details on your services, past events, and contact information.",
-        html: `
+        tabs: [
+            {
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code:
+                    `
             <div class="template-card">
                 <img src=${t24} alt="Event Planner Image" class="template-image">
                 <div class="template-content">
@@ -2447,7 +2733,7 @@ export const allTemplates = [
                         </div>
                         <div class="service-item">
                             <h5 class="service-name">Weddings</h5>
-                            <p class="service-description">Planning and coordinating all aspects of wedding events to make them memorable.</p>
+                            <p class="service-description">Planning and coordinating all aspects o]f wedding events to make them memorable.</p>
                         </div>
                     </div>
                     <div class="past-events">
@@ -2455,14 +2741,19 @@ export const allTemplates = [
                         <ul class="events-list">
                             <li>Annual Corporate Gala</li>
                             <li>Summer Wedding Extravaganza</li>
-                            <li>Charity Fundraiser</li>
+            [             <li>Charity Fundraiser</li>
                         </ul>
                     </div>
                     <button class="cta-button">Contact Us</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -2538,7 +2829,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #0097a7;
             }
-        `
+        `}
+        ]
     },
     {
         id: 25,
@@ -2546,7 +2838,13 @@ export const allTemplates = [
         tag: "Personal",
         image: t25,
         description: "Design a portfolio showcase to highlight your projects and skills. Ideal for freelancers and creatives.",
-        html: `
+        tabs: [
+            {
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code:
+                    `
             <div class="template-card">
                 <img src=${t25} alt="Portfolio Showcase Image" class="template-image">
                 <div class="template-content">
@@ -2560,7 +2858,7 @@ export const allTemplates = [
                         </div>
                         <div class="project-item">
                             <h5 class="project-name">Mobile App Interface</h5>
-                            <p class="project-description">Design and development of a user-friendly mobile app interface.</p>
+                            <p class="project-description">Design and development of ]a user-friendly mobile app interface.</p>
                         </div>
                     </div>
                     <div class="skills-section">
@@ -2568,14 +2866,19 @@ export const allTemplates = [
                         <ul class="skills-list">
                             <li>HTML/CSS</li>
                             <li>JavaScript</li>
-                            <li>Graphic Design</li>
+            [             <li>Graphic Design</li>
                         </ul>
                     </div>
                     <button class="cta-button">View More</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -2651,7 +2954,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #388e3c;
             }
-        `
+        `}
+        ]
     },
     {
         id: 26,
@@ -2659,7 +2963,13 @@ export const allTemplates = [
         tag: "Business",
         image: t26,
         description: "Create a compelling landing page for your startup. Showcase your product, features, and call-to-action buttons.",
-        html: `
+        tabs: [
+            {
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code:
+                    `
             <div class="template-card">
                 <img src=${t26} alt="Startup Landing Page Image" class="template-image">
                 <div class="template-content">
@@ -2667,21 +2977,26 @@ export const allTemplates = [
                     <p class="template-description">Create a compelling landing page for your startup. Showcase your product, features, and call-to-action buttons to attract and engage potential customers.</p>
                     <div class="product-showcase">
                         <h4 class="product-title">Our Product</h4>
-                        <p class="product-description">Innovative solutions designed to make your life easier. Explore our product features and benefits.</p>
+           ]             <p class="product-description">Innovative solutions designed to make your life easier. Explore our product features and benefits.</p>
                     </div>
                     <div class="features-list">
                         <h4 class="features-title">Features</h4>
                         <ul class="features-list-items">
                             <li>Feature 1: Cutting-edge technology</li>
                             <li>Feature 2: User-friendly interface</li>
-                            <li>Feature 3: 24/7 customer support</li>
+            [             <li>Feature 3: 24/7 customer support</li>
                         </ul>
                     </div>
                     <button class="cta-button">Get Started</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -2745,7 +3060,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #1976d2;
             }
-        `
+        `}
+        ]
     },
     {
         id: 27,
@@ -2753,7 +3069,13 @@ export const allTemplates = [
         tag: "Food",
         image: t27,
         description: "Design a website to display your restaurant menu. Include sections for appetizers, main courses, desserts, and beverages.",
-        html: `
+        tabs: [
+            {
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code:
+                    `
             <div class="template-card">
                 <img src=${t27} alt="Restaurant Menu Image" class="template-image">
                 <div class="template-content">
@@ -2776,20 +3098,25 @@ export const allTemplates = [
                         <h4 class="menu-title">Main Courses</h4>
                         <ul class="menu-list">
                             <li class="menu-item">
-                                <h5 class="item-name">Grilled Salmon</h5>
+           ]                     <h5 class="item-name">Grilled Salmon</h5>
                                 <p class="item-description">Fresh salmon fillet grilled to perfection.</p>
                             </li>
                             <li class="menu-item">
                                 <h5 class="item-name">Vegetarian Lasagna</h5>
                                 <p class="item-description">Layers of pasta with vegetables and cheese.</p>
-                            </li>
+            [             </li>
                         </ul>
                     </div>
                     <button class="cta-button">Order Now</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -2860,7 +3187,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #e64a19;
             }
-        `
+        `}
+        ]
     },
     {
         id: 28,
@@ -2868,7 +3196,13 @@ export const allTemplates = [
         tag: "Health",
         image: t28,
         description: "Create a website for a fitness trainer. Include information about services, workout plans, testimonials, and contact details.",
-        html: `
+        tabs: [
+            {
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code:
+                    `
             <div class="template-card">
                 <img src=${t28} alt="Fitness Trainer Image" class="template-image">
                 <div class="template-content">
@@ -2885,20 +3219,25 @@ export const allTemplates = [
                             <p class="service-description">Join group classes for a fun and motivating workout experience.</p>
                         </div>
                     </div>
-                    <div class="testimonials">
+                    <div class="t]estimonials">
                         <h4 class="testimonials-title">What Clients Say</h4>
                         <div class="testimonial-item">
                             <p class="testimonial-text">"An incredible trainer who helped me achieve my fitness goals!" - Jane Doe</p>
                         </div>
                         <div class="testimonial-item">
-                            <p class="testimonial-text">"The group classes are always energizing and fun!" - John Smith</p>
+                            <p class="testimonial-text">"The group classes are always energizing and fu[!" - John Smith</p>
                         </div>
                     </div>
                     <button class="cta-button">Get in Touch</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -2965,7 +3304,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #f9a825;
             }
-        `
+        `}
+        ]
     },
     {
         id: 29,
@@ -2973,7 +3313,13 @@ export const allTemplates = [
         tag: "Real Estate",
         image: t29,
         description: "Design a website for real estate listings. Display properties, details, and contact information for potential buyers.",
-        html: `
+        tabs: [
+            {
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code:
+                    `
             <div class="template-card">
                 <img src=${t29} alt="Real Estate Listings Image" class="template-image">
                 <div class="template-content">
@@ -2985,20 +3331,25 @@ export const allTemplates = [
                             <h5 class="property-name">Luxury Villa</h5>
                             <p class="property-description">A stunning villa with a beautiful view, pool, and modern amenities.</p>
                         </div>
-                        <div class="property-item">
+           ]             <div class="property-item">
                             <h5 class="property-name">City Apartment</h5>
                             <p class="property-description">A stylish apartment in the heart of the city with convenient access to amenities.</p>
                         </div>
                     </div>
                     <div class="contact-section">
                         <h4 class="contact-title">Contact Us</h4>
-                        <p class="contact-info">Get in touch with us to schedule a viewing or for more information about our properties.</p>
+            [         <p class="contact-info">Get in touch with us to schedule a viewing or for more information about our properties.</p>
                     </div>
                     <button class="cta-button">Inquire Now</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -3065,7 +3416,8 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #0288d1;
             }
-        `
+        `}
+        ]
     },
     {
         id: 30,
@@ -3073,7 +3425,12 @@ export const allTemplates = [
         tag: "Education",
         image: t30,
         description: "Create a website to showcase educational courses. Include course details, instructor information, and registration options.",
-        html: `
+        tabs: [
+            {
+                id: 1,
+                name: 'index.html',
+                language: 'html',
+                code: `
             <div class="template-card">
                 <img src=${t30} alt="Educational Course Image" class="template-image">
                 <div class="template-content">
@@ -3090,8 +3447,13 @@ export const allTemplates = [
                     <button class="cta-button">Enroll Now</button>
                 </div>
             </div>
-        `,
-        css: `
+        `}
+            ,
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -3150,6 +3512,7 @@ export const allTemplates = [
             .cta-button:hover {
                 background-color: #fb8c00;
             }
-        `
-    },   
+        `}
+        ]
+    },
 ];

@@ -2,34 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { FaPlus } from "react-icons/fa";
 
-const MyProjects = ({ darkMode }) => {
-  // Hardcoded projects for demonstration
-  const projects = [
-    { 
-      title: "Project 1",
-      desc: "This is a description for Project 1.",
-      tag: "Portfolio",
-      html: "<h1>Hello World</h1>",
-      css: "h1 { color: red; }",
-      js: "console.log('Hello World');",
-    },
-    { 
-      title: "Project 2",
-      tag: "Portfolio",
-      desc: "This is a description for Project 2.",
-      html: "<p>Sample text</p>",
-      css: "p { font-size: 16px; }",
-      js: "alert('Sample Project');",
-    },
-    { 
-      title: "Project 3",
-      tag: "Portfolio",
-      desc: "This is a description for Project 3.",
-      html: "<div>Another Project</div>",
-      css: "div { padding: 10px; }",
-      js: "console.log('Another Project');",
-    },
-  ];
+const MyProjects = ({ darkMode, projects }) => {
+
 
   const projectCardStyles = darkMode
     ? "bg-gray-800 text-white shadow-lg"
@@ -56,7 +30,7 @@ const MyProjects = ({ darkMode }) => {
           </p>
           <Link
             to={"/codeeditor"}
-            state={{ template: {} }}
+            state={{ template: {}, index: -1 }}
             className={`flex items-center text-sm xs:text-lg px-3 xs:px-6 py-3 rounded-full ${darkMode
               ? "bg-gradient-to-r from-yellow-500 to-pink-500 text-black"
               : "bg-gradient-to-r from-blue-600 to-purple-600 text-white"
@@ -78,7 +52,7 @@ const MyProjects = ({ darkMode }) => {
                 aria-hidden="true"
               />
               <h2 className="text-xl xs:text-2xl font-semibold mb-4">{project.title}</h2>
-              <p className="text-sm mb-6">{project.desc}</p>
+              <p className="text-sm mb-6">{project.description}</p>
               <Link
                 to={`/codeeditor`}
                 state={{ template: project, index: index }}
@@ -97,7 +71,7 @@ const MyProjects = ({ darkMode }) => {
         <div className="mt-8 flex justify-center">
           <Link
             to={"/codeeditor"}
-            state={{ template: {} }}
+            state={{ template: {}, index: -1 }}
             className={`flex items-center text-sm xs:text-lg px-3 xs:px-6 py-3 rounded-full ${darkMode
               ? "bg-gradient-to-r from-yellow-500 to-pink-500 text-black"
               : "bg-gradient-to-r from-blue-600 to-purple-600 text-white"

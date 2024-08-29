@@ -3,32 +3,43 @@ import { Link, useLocation } from 'react-router-dom';
 import { FiHome, FiBookOpen, FiTool, FiMoon, FiInfo, FiLayers, FiTag, FiUser, FiMenu, FiX, FiEdit3, FiFolder } from 'react-icons/fi';
 import ProfilePopup from './ProfilePopUp';
 
-function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, userDetails, isPopupOpen, openPopup, closePopup, setFormData }) {
+function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, userDetails, isPopupOpen, openPopup, closePopup, setFormData, setIsLoggedIn }) {
     const location = useLocation();
 
-    const template = {
-        html: `
-            <div class="template-card">
-                <img src="https://s.tmimgcdn.com/scr/800x500/52500/music-band-responsive-website-template_52511-original.jpg" alt="Music Band Website Image" class="template-image">
-                <div class="template-content">
-                    <h3 class="template-title">Music Band Website</h3>
-                    <p class="template-description">Design a vibrant music band website. Include sections for tour dates, music samples, and profiles of band members to engage fans and promote your music.</p>
-                    <div class="tour-dates">
-                        <h4 class="dates-title">Upcoming Tour Dates</h4>
-                        <div class="tour-item">
-                            <h5 class="tour-city">New York City</h5>
-                            <p class="tour-date">September 25, 2024</p>
+    const template =
+    {
+        tabs: [
+            {
+                id: 1,
+                name: "index.html",
+                language: 'html',
+                code: `
+                        <div class="template-card">
+                            <img src="https://s.tmimgcdn.com/scr/800x500/52500/music-band-responsive-website-template_52511-original.jpg" alt="Music Band Website Image" class="template-image">
+                            <div class="template-content">
+                                <h3 class="template-title">Music Band Website</h3>
+                                <p class="template-description">Design a vibrant music band website. Include sections for tour dates, music samples, and profiles of band members to engage fans and promote your music.</p>
+                                <div class="tour-dates">
+                                    <h4 class="dates-title">Upcoming Tour Dates</h4>
+                                    <div class="tour-item">
+                                        <h5 class="tour-city">New York City</h5>
+                                        <p class="tour-date">September 25, 2024</p>
+                                    </div>
+                                    <div class="tour-item">
+                                        <h5 class="tour-city">Los Angeles</h5>
+                                        <p class="tour-date">October 5, 2024</p>
+                                    </div>
+                                </div>
+                                <button class="cta-button">Listen to Music</button>
+                            </div>
                         </div>
-                        <div class="tour-item">
-                            <h5 class="tour-city">Los Angeles</h5>
-                            <p class="tour-date">October 5, 2024</p>
-                        </div>
-                    </div>
-                    <button class="cta-button">Listen to Music</button>
-                </div>
-            </div>
-        ` ,
-        css: `
+                    ` ,
+            },
+            {
+                id: 2,
+                name: 'style.css',
+                language: 'css',
+                code: `
             .template-card {
                 background-color: #fff;
                 border-radius: 10px;
@@ -95,8 +106,10 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, userDet
             .cta-button:hover {
                 background-color: #5e35b1;
             }
-        `
-    } 
+                    `
+            }
+        ]
+    }
 
     return (
         <div className={`h-screen sticky top-0 overflow-y-auto custom-scrollbar  ${darkMode ? 'bg-gray-800 text-white' : 'bg-white text-gray-900'}`}>
@@ -178,7 +191,7 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, userDet
                     </Link>
 
                     <Link
-                        to={`/codeeditor`}                 
+                        to={`/codeeditor`}
                         state={{ template: template, index: -1 }}
                         className={`flex items-center ${sidebarOpen ? 'justify-start px-2' : 'justify-center'} py-2 rounded-md transition-all duration-300 ease-in-out transform ${location.pathname === "/codeeditor"
                             ? "bg-purple-500 text-white shadow-lg scale-105"
@@ -268,7 +281,7 @@ function Sidebar({ toggleDarkMode, darkMode, sidebarOpen, toggleSidebar, userDet
                     </div>
                 </div>
             </div>
-            {isPopupOpen && <ProfilePopup userDetails={userDetails} onClose={closePopup} isOpen={isPopupOpen} darkMode={darkMode} setFormData={setFormData} />}
+            {isPopupOpen && <ProfilePopup userDetails={userDetails} onClose={closePopup} isOpen={isPopupOpen} darkMode={darkMode} setFormData={setFormData} setIsLoggedIn={setIsLoggedIn} />}
         </div>
     );
 }

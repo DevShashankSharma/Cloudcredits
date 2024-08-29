@@ -3,17 +3,18 @@ import ReactDOM from 'react-dom';
 import { IoClose } from 'react-icons/io5';
 import { FiUser } from 'react-icons/fi';
 import { motion } from 'framer-motion';
-import { Link, useNavigate } from 'react-router-dom';  
+import { Link, useNavigate } from 'react-router-dom';
 
-const ProfilePopup = ({ isOpen, onClose, userDetails, darkMode, setFormData }) => {
-    const navigate = useNavigate();  
+const ProfilePopup = ({ isOpen, onClose, userDetails, darkMode, setFormData, setIsLoggedIn }) => {
+    const navigate = useNavigate();
 
     const handleLogout = () => {
         // Clear localStorage and reset userDetails
         localStorage.removeItem("user");
-        setFormData({name: "", email: ""})
+        setFormData({ name: "", email: "" })
         onClose(); // Close the popup
-        navigate('/'); 
+        setIsLoggedIn(false);
+        navigate('/signup');
     };
 
     if (!isOpen) return null;

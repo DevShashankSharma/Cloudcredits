@@ -3,35 +3,12 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import { Editor } from '@monaco-editor/react';
 
 
-function CodeEditor({ darkMode, onSave, onUpdate }) {
+function CodeEditor({ darkMode, projects, setProjects }) {
     const location = useLocation();
     const navigate = useNavigate();
     const { template, index } = location.state || {}; 
-
-    const [tabs, setTabs] = useState([
-        {
-            id: 1,
-            name: 'index.html',
-            language: 'html',
-            code: template.html || '<!DOCTYPE html>\n<html>\n<head>\n\t<title>My Web Page</title>\n</head>\n<body>\n\t<h1>Hello, World!</h1>\n</body>\n</html>',
-            dependencies: []
-        },
-        {
-            id: 2,
-            name: 'style.css',
-            language: 'css',
-            code: template.css || 'body {\n\tbackground-color: #f2f2f2;\n}\n\nh1 {\n\tcolor: #333;\n\ttext-align: center;\n}',
-
-            dependencies: []
-        },
-        {
-            id: 3,
-            name: 'script.js',
-            language: 'javascript',
-            code: template.js || 'console.log("Hello, World!");',
-            dependencies: []
-        }
-    ]);
+    const [tabs, setTabs] = useState(template.tabs||[]);
+    // console.log(template)
     const [activeTab, setActiveTab] = useState(1);
     const [isAdding, setIsAdding] = useState(false);
     const [newFileName, setNewFileName] = useState('');
@@ -41,34 +18,20 @@ function CodeEditor({ darkMode, onSave, onUpdate }) {
     const [previewSize, setPreviewSize] = useState('desktop');
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [tag, setTag] = useState(""); 
+    const [tag, setTag] = useState("");
+    const [newProject, setNewProject] = useState({ title: "", description: "", tag: "", tabs: [] });
 
-    const handleSave = () => {
-        const projectData = { title, description, tag };
-        onSave(projectData);
-    };
-
-    const handleUpdate = () => {
-        const projectData = { title, description, tag };
-        onUpdate(projectData);
-    };
-
-    const containerStyles = darkMode
-        ? "bg-gray-800 text-white"
-        : "bg-white text-gray-900";
-    const inputStyles = darkMode
-        ? "bg-gray-700 text-white border-gray-600"
-        : "bg-gray-100 text-gray-900 border-gray-300";
 
     useEffect(() => {
         const htmlTab = tabs.find(tab => tab.language === 'html');
         setHtmlCode(htmlTab ? htmlTab.code : '');
-    }, [tabs, activeTab]);
+        setNewProject({ title: title, description: description, tag: tag, tabs: tabs });
+    }, [tabs, activeTab, title, description, tag]);
 
-    useEffect(() => { 
-            setTitle(template.title || '');
-            setDescription(template.description || '');
-            setTag(template.tag || ''); 
+    useEffect(() => {
+        setTitle(template.title || '');
+        setDescription(template.description || '');
+        setTag(template.tag || '');
     }, [template]);
 
     useEffect(() => {
@@ -76,6 +39,8 @@ function CodeEditor({ darkMode, onSave, onUpdate }) {
             navigate("/templates");
         }
     }, [location.state, navigate]);
+
+
 
     const getLanguage = (fileType) => {
         switch (fileType) {
@@ -188,6 +153,28 @@ function CodeEditor({ darkMode, onSave, onUpdate }) {
         }
     };
 
+    const handleUpdateProject = () => {
+        // Update existing project
+        const updatedProjects = [...projects];
+        updatedProjects[index] = newProject;
+        setProjects(updatedProjects);
+        setNewProject({title: "", description:"", tag: "", tabs: []});
+        navigate("/myprojects");
+    };
+
+    const handleAddProject = () => {
+        setProjects([...projects, newProject]);
+        setNewProject({title: "", description:"", tag: "", tabs: []}); 
+        navigate("/myprojects");
+    };
+
+    const containerStyles = darkMode
+        ? "bg-gray-800 text-white"
+        : "bg-white text-gray-900";
+    const inputStyles = darkMode
+        ? "bg-gray-700 text-white border-gray-600"
+        : "bg-gray-100 text-gray-900 border-gray-300";
+
 
 
     return (
@@ -211,6 +198,7 @@ function CodeEditor({ darkMode, onSave, onUpdate }) {
                                 value={title}
                                 onChange={(e) => setTitle(e.target.value)}
                                 placeholder="Enter project title"
+                                required
                             />
                         </div>
                         <div>
@@ -227,6 +215,7 @@ function CodeEditor({ darkMode, onSave, onUpdate }) {
                                 onChange={(e) => setDescription(e.target.value)}
                                 placeholder="Enter project description"
                                 rows="4"
+                                required
                             />
                         </div>
                         <div>
@@ -240,12 +229,18 @@ function CodeEditor({ darkMode, onSave, onUpdate }) {
                                 value={tag}
                                 onChange={(e) => setTag(e.target.value)}
                                 placeholder="Enter project tag"
+                                required
                             />
                         </div>
                         <div className="flex space-x-4 justify-center mt-8">
                             <button
+                                disabled={!title && !description && !tag}
                                 type="button"
-                                onClick={handleSave}
+                                onClick={handleAddProject}
+                                style={{
+                                    opacity: title && description && tag ? 1 : 0.5,
+                                    cursor: title && description && tag ? 'pointer' : 'not-allowed',
+                                }}
                                 className={`px-6 py-3 rounded-full ${darkMode
                                     ? "bg-gradient-to-r from-green-400 to-blue-500 text-black"
                                     : "bg-gradient-to-r from-green-600 to-blue-600 text-white"
@@ -255,8 +250,13 @@ function CodeEditor({ darkMode, onSave, onUpdate }) {
                             </button>
                             {index !== -1 && (
                                 <button
+                                    disabled={!title && !description && !tag}
                                     type="button"
-                                    onClick={handleUpdate}
+                                    onClick={handleUpdateProject}
+                                    style={{
+                                        opacity: title && description && tag ? 1 : 0.5,
+                                        cursor: title && description && tag ? 'pointer' : 'not-allowed',
+                                    }}
                                     className={`px-6 py-3 rounded-full ${darkMode
                                         ? "bg-gradient-to-r from-yellow-400 to-pink-500 text-black"
                                         : "bg-gradient-to-r from-yellow-600 to-pink-600 text-white"
