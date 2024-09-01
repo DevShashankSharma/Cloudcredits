@@ -1,82 +1,43 @@
 import React, { useState } from 'react';
-import Sidebar from './components/Sidebar';
-import Canvas from './components/Canvas';
-import PropertyPanel from './components/PropertyPanel';
-import ResponsivePreview from './components/ResponsivePreview';
-import '@fortawesome/fontawesome-free/css/all.min.css';
+import './App.css';
 
-function App() {
-  const [elements, setElements] = useState([]);
-  const [selectedElement, setSelectedElement] = useState(null);
-  const [theme, setTheme] = useState('light');
+const App = () => {
+  const [darkMode, setDarkMode] = useState(false);
 
-  const addElement = (type) => {
-    const newElement = {
-      id: Date.now(),
-      type,
-      content: getDefaultContent(type),
-      styles: {},
-    };
-    setElements([...elements, newElement]);
-    setSelectedElement(newElement);
-  };
-
-  const updateElement = (id, updatedProperties) => {
-    setElements(elements.map(el => el.id === id ? { ...el, ...updatedProperties } : el));
-  };
-
-  const removeElement = (id) => {
-    setElements(elements.filter(el => el.id !== id));
-    setSelectedElement(null);
-  };
-
-  const getDefaultContent = (type) => {
-    switch (type) {
-      case 'text': return 'Editable Text';
-      case 'image': return 'https://via.placeholder.com/150';
-      case 'button': return 'Click Me';
-      case 'header': return 'Header Text';
-      case 'subheader': return 'Subheader Text';
-      case 'paragraph': return 'This is a paragraph. You can edit the text here.';
-      case 'link': return 'Click Here';
-      case 'card': return 'Card Title';
-      case 'list': return 'List Item';
-      case 'video': return 'https://www.youtube.com/embed/dQw4w9WgXcQ'; // Placeholder video
-      case 'icon': return 'fa-star'; // Example FontAwesome icon
-      default: return '';
-    }
+  const toggleDarkMode = () => {
+    setDarkMode(!darkMode);
   };
 
   return (
-    <div className={`${theme === 'dark' ? 'bg-gray-900 text-white' : 'bg-gray-100 text-black'} flex flex-col h-screen`}>
-      <div className="flex justify-between p-4 bg-gray-200 dark:bg-gray-800">
-        <h1 className="text-lg font-bold">EasyPage: Basic Web Page Design</h1>
-        <ResponsivePreview elements={elements} theme={theme} />
+    <div className={`min-h-screen ${darkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} transition-colors duration-300`}>
+      <header className="p-4 flex justify-between items-center border-b">
+        <h1 className="text-2xl font-bold">EasyPage</h1>
         <button
-          onClick={() => setTheme(theme === 'light' ? 'dark' : 'light')}
-          className="px-4 py-2 bg-blue-500 text-white rounded hover:bg-blue-600"
+          onClick={toggleDarkMode}
+          className="px-4 py-2 bg-gray-800 text-white rounded-lg hover:bg-gray-700"
         >
-          Toggle {theme === 'light' ? 'Dark' : 'Light'} Mode
+          {darkMode ? 'Light Mode' : 'Dark Mode'}
         </button>
-      </div>
-      <div className="grid grid-cols-[1fr_4fr_1fr] ">
-        <Sidebar addElement={addElement} theme={theme} />
-        <Canvas
-          elements={elements}
-          setSelectedElement={setSelectedElement}
-          updateElement={updateElement}
-          removeElement={removeElement}
-          theme={theme}
-        />
-        <PropertyPanel
-          selectedElement={selectedElement}
-          updateElement={updateElement}
-          removeElement={removeElement}
-          theme={theme}
-        />
-      </div>
+      </header>
+      <main className="p-4">
+        <section className="container mx-auto">
+          <h2 className="text-xl font-semibold mb-4">Welcome to EasyPage</h2>
+          <p className="mb-4">
+            This is a basic web page design using React and Tailwind CSS.
+          </p>
+          <div className="bg-gray-100 p-4 rounded-lg shadow-md">
+            <h3 className="text-lg font-semibold">About This Project</h3>
+            <p>
+              EasyPage demonstrates how to create a simple web page with responsive design, dark mode, and basic styling.
+            </p>
+          </div>
+        </section>
+      </main>
+      <footer className="p-4 border-t">
+        <p className="text-center text-sm">© 2024 EasyPage. All rights reserved.</p>
+      </footer>
     </div>
   );
-}
+};
 
 export default App;
