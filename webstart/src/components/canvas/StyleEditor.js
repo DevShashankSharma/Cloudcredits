@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import Draggable from 'react-draggable';
 
-function StyleEditor({ component, onStyleChange, onClose }) {
+function StyleEditor({ component, onStyleChange, onClose , item }) {
     const [styles, setStyles] = useState(component.styles);
     const [display, setDisplay] = useState(styles.display || 'block');
 
-    const handleChange = (e) => {
+
+    const handleChange = (e) => { 
         const { name, value } = e.target;
         const updatedStyles = { ...styles, [name]: value };
         setStyles(updatedStyles);

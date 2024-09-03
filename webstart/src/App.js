@@ -11,6 +11,7 @@ import Footer from './components/Footer';
 
 function App() {
   const [isDarkMode, setIsDarkMode] = useState(false);
+  const [item, setItem] = useState(null);
 
   const toggleDarkMode = () => {
     setIsDarkMode(!isDarkMode);
@@ -28,7 +29,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home isDarkMode={isDarkMode} />} />
             <Route path="/templates" element={<Templates isDarkMode={isDarkMode} />} />
-            <Route path="/create" element={<CreatePage isDarkMode={isDarkMode} />} />
+            <Route path="/create" element={<CreatePage isDarkMode={isDarkMode} item={item} setItem={setItem}/>} />
             <Route path="/account" element={<Account isDarkMode={isDarkMode} />} />
           </Routes>
         </div>

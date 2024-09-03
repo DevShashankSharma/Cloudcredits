@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDrag } from 'react-dnd';
+import { useDrag } from 'react-dnd'; 
 
 function DraggableComponent({ component }) {
     const [{ isDragging }, drag] = useDrag(() => ({
@@ -94,7 +94,7 @@ function DraggableComponent({ component }) {
                         <rect x="2" y="2" width="20" height="20" fill="none" stroke="currentColor" />
                     </svg>
                 );
-            case 'form':
+            case 'input':
                 return (
                     <svg
                         width="24"
@@ -105,13 +105,44 @@ function DraggableComponent({ component }) {
                         strokeWidth="2"
                         strokeLinecap="round"
                         strokeLinejoin="round"
-                        className="feather feather-form"
+                        className="feather feather-input"
                     >
-                        <rect x="2" y="2" width="20" height="20" fill="none" stroke="currentColor" />
-                        <line x1="2" y1="6" x2="22" y2="6" stroke="currentColor" />
+                        <rect x="2" y="8" width="20" height="8" fill="none" stroke="currentColor" />
+                    </svg>
+                );
+            case 'select':
+                return (
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke={isDragging ? "#ccc" : "#000"}
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="feather feather-select"
+                    >
+                        <rect x="2" y="6" width="20" height="12" fill="none" stroke="currentColor" />
                         <line x1="2" y1="10" x2="22" y2="10" stroke="currentColor" />
                         <line x1="2" y1="14" x2="22" y2="14" stroke="currentColor" />
-                        <line x1="2" y1="18" x2="22" y2="18" stroke="currentColor" />
+                    </svg>
+                );
+            case 'link':
+                return (
+                    <svg
+                        width="24"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke={isDragging ? "#ccc" : "#000"}
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        className="feather feather-link"
+                    >
+                        <path d="M10 14l1.4-1.4a1.5 1.5 0 0 0 0-2.12l-4-4a1.5 1.5 0 0 0-2.12 0L3.4 8.6a1.5 1.5 0 0 0 0 2.12l4 4a1.5 1.5 0 0 0 2.12 0L12 12" />
+                        <path d="M16 10l-1.4 1.4a1.5 1.5 0 0 0 0 2.12l4 4a1.5 1.5 0 0 0 2.12 0l1.4-1.4a1.5 1.5 0 0 0 0-2.12l-4-4a1.5 1.5 0 0 0-2.12 0L16 10" />
                     </svg>
                 );
             case 'audio':

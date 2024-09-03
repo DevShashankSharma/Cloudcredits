@@ -1,52 +1,68 @@
-import React, { useState, useCallback } from 'react';
+import React, { useState } from 'react';
 import { useDrop } from 'react-dnd';
 import DraggableComponent from './DraggableComponent';
 import EditableComponent from './EditableComponent';
 import StyleEditor from './StyleEditor';
 
-// Component types for drag-and-drop
 const componentTypes = [
     { name: 'Text', type: 'text' },
     { name: 'Image', type: 'image' },
     { name: 'Button', type: 'button' },
     { name: 'Video', type: 'video' },
-    { name: 'Section', type: 'section' }
+    { name: 'Section', type: 'section' },
+    { name: 'Input', type: 'input' },
+    { name: 'Select', type: 'select' },
+    { name: 'Link', type: 'link' }
 ];
 
-function PageEditor({ isDarkMode }) {
+
+function PageEditor({ isDarkMode, item, setItem }) {
     const [components, setComponents] = useState([]);
     const [selectedComponent, setSelectedComponent] = useState(null);
     const [styleEditorVisible, setStyleEditorVisible] = useState(false);
 
-    const [, drop] = useDrop(() => ({
+    const [, drop] = useDrop({
         accept: componentTypes.map((component) => component.type),
         drop: (item, monitor) => {
+            const didDrop = monitor.didDrop();
+            if (didDrop) {
+                return;
+            }
+
             const offset = monitor.getClientOffset();
             const x = offset ? offset.x : 0;
             const y = offset ? offset.y : 0;
             addComponent(item, x, y);
         },
-    }));
+    });
 
     const addComponent = (component, x, y) => {
         setComponents((prevComponents) => [
             ...prevComponents,
-            { ...component, x, y, styles: {}, children: [] }
+            { ...component, id: Date.now(), x, y, styles: {}, children: [] }
         ]);
     };
 
-    const handleComponentClick = (index) => {
+    const handleComponentClick = (index, e) => {
+        console.log(e.target)
+        setItem(e.target);
         setSelectedComponent(index);
         setStyleEditorVisible(true);
     };
 
-    const handleStyleChange = useCallback((index, newStyles) => {
-        setComponents((prevComponents) => {
-            const updatedComponents = [...prevComponents];
-            updatedComponents[index] = { ...updatedComponents[index], styles: newStyles };
-            return updatedComponents;
-        });
-    }, []);
+
+
+    const handleStyleChange = (ele, styles) => {
+        const styleString = Object.entries(styles).reduce((acc, [key, value]) => {
+            // Convert camelCase to kebab-case for CSS properties
+            const kebabCaseKey = key.replace(/([A-Z])/g, "-$1").toLowerCase();
+            return `${acc}${kebabCaseKey}: ${value}; `;
+        }, '');
+
+
+        console.log(styles, typeof styles)
+        item.style.cssText = styleString;
+    };
 
     const handleCloseStyleEditor = () => {
         setStyleEditorVisible(false);
@@ -62,7 +78,7 @@ function PageEditor({ isDarkMode }) {
             const sectionIndex = updatedComponents.findIndex(comp => comp.type === 'section' && comp.id === sectionId);
             if (sectionIndex !== -1) {
                 const section = updatedComponents[sectionIndex];
-                section.children = [...(section.children || []), { ...item, x, y }];
+                section.children = [...(section.children || []), { ...item, id: Date.now(), x, y }];
                 updatedComponents[sectionIndex] = section;
             }
             return updatedComponents;
@@ -72,14 +88,13 @@ function PageEditor({ isDarkMode }) {
     const renderComponents = (componentsList) => {
         console.log(componentsList)
         return componentsList.map((component, index) => (
-            <EditableComponent 
-                key={index}
+            <EditableComponent
+                key={component.id}
                 component={component}
-                onClick={() => handleComponentClick(index)}
+                onClick={(e) => handleComponentClick(index, e)}
                 onDropIntoSection={(item, monitor) => handleDropIntoSection(item, monitor, component.id)}
                 styles={component.styles}
             >
-                
                 {component.children && renderComponents(component.children)}
             </EditableComponent>
         ));
@@ -108,6 +123,7 @@ function PageEditor({ isDarkMode }) {
                     component={components[selectedComponent]}
                     onStyleChange={(newStyles) => handleStyleChange(selectedComponent, newStyles)}
                     onClose={handleCloseStyleEditor}
+                    item={item}
                 />
             )}
         </div>
