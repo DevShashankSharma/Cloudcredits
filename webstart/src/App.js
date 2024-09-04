@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
 import Navbar from './components/Navbar';
-import Home from './components/Home';
+import Home from './components/home/Home';
 import Templates from './components/TemplateGallary';
 import PageEditor from './components/canvas/PageEditor';
 import Account from './components/Profile';

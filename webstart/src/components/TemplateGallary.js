@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-// import template1 from '../assets/images/template1.jpg';
-// import template2 from '../assets/images/template2.jpg';
-// import template3 from '../assets/images/template3.jpg';
 
 const templates = [
     { id: 1, name: 'Business Template', description: 'A sleek, professional template for businesses.', thumbnail: "template1" },
@@ -51,4 +48,3 @@ function TemplateGallery({ isDarkMode }) {
 }
 
 export default TemplateGallery;
-
