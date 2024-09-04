@@ -12,7 +12,7 @@ function Navbar({ isDarkMode, toggleDarkMode }) {
                     <div className="flex flex-wrap space-x-6 mt-2 md:mt-0">
                         <Link to="/" className="hover:underline">Home</Link>
                         <Link to="/templates" className="hover:underline">Templates</Link>
-                        <Link to="/create" className="hover:underline">Create</Link>
+                        <Link to="/create" className="hover:underline">Editor</Link>
                         <Link to="/account" className="hover:underline">Account</Link>
                     </div>
                 </div>

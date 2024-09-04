@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDrop } from 'react-dnd';
+import { useLocation } from 'react-router-dom';
 import DraggableComponent from './DraggableComponent';
 import EditableComponent from './EditableComponent';
 import StyleEditor from './StyleEditor';
@@ -20,6 +21,14 @@ function PageEditor({ isDarkMode, item, setItem }) {
     const [components, setComponents] = useState([]);
     const [selectedComponent, setSelectedComponent] = useState(null);
     const [styleEditorVisible, setStyleEditorVisible] = useState(false); 
+
+    const location = useLocation();
+    const templateContent = location.state?.templateContent || '';
+
+    useEffect (() => {
+        let obj = document.getElementById('editor');
+        obj.innerHTML = templateContent;
+    })
 
     const [, drop] = useDrop({
         accept: componentTypes.map((component) => component.type),
@@ -114,20 +123,20 @@ function PageEditor({ isDarkMode, item, setItem }) {
     };
 
     return (
-        <div className={`p-4 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} transition duration-300`}>
+        <div className={`p-4 h-full ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} transition duration-300`}>
             <h2 className="text-2xl font-bold mb-4">Page Editor</h2>
-            <div className="flex">
-                <div className="w-1/3">
+            <div className="flex justify-between">
+            <div className="w-fit">
                     <h3 className="font-semibold mb-2">Available Components</h3>
                     {componentTypes.map((component) => (
                         <DraggableComponent key={component.type} component={component} />
                     ))}
-                </div>
+                </div> 
                 <div
                     ref={drop}
-                    className="w-2/3 min-h-500px p-4 border-2 border-dashed rounded relative"
+                    className="w-[80vw] min-h-[70vh] p-4 border-2 border-dashed rounded relative"
+                    id='editor'
                 >
-                    <h3 className="font-semibold mb-2">Your Page</h3>
                     {renderComponents(components)}
                 </div>
             </div>

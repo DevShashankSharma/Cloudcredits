@@ -24,16 +24,20 @@ function App() {
   return (
     <Router>
       <DndProvider backend={HTML5Backend}>
-        <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
-        <div className={`container mx-auto p-4 transition duration-300 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
-          <Routes>
-            <Route path="/" element={<Home isDarkMode={isDarkMode} />} />
-            <Route path="/templates" element={<Templates isDarkMode={isDarkMode} />} />
-            <Route path="/create" element={<PageEditor isDarkMode={isDarkMode} item={item} setItem={setItem} />} />
-            <Route path="/account" element={<Account isDarkMode={isDarkMode} />} />
-          </Routes>
+        <div className={`${isDarkMode ? 'bg-gray-800 text-white' : 'bg-gray-100 text-white'}`}>
+          <Navbar isDarkMode={isDarkMode} toggleDarkMode={toggleDarkMode} />
+          <div className={`min-h-screen relative ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} `}>
+            <div className={`container h-full mx-auto p-4 transition duration-300 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+              <Routes>
+                <Route path="/" element={<Home isDarkMode={isDarkMode} />} />
+                <Route path="/templates" element={<Templates isDarkMode={isDarkMode} />} />
+                <Route path="/create" element={<PageEditor isDarkMode={isDarkMode} item={item} setItem={setItem} />} />
+                <Route path="/account" element={<Account isDarkMode={isDarkMode} />} />
+              </Routes>
+            </div>
+          </div>
+          <Footer isDarkMode={isDarkMode} />
         </div>
-        <Footer isDarkMode={isDarkMode} />
       </DndProvider>
     </Router>
   );
