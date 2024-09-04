@@ -19,7 +19,7 @@ const componentTypes = [
 function PageEditor({ isDarkMode, item, setItem }) {
     const [components, setComponents] = useState([]);
     const [selectedComponent, setSelectedComponent] = useState(null);
-    const [styleEditorVisible, setStyleEditorVisible] = useState(false);
+    const [styleEditorVisible, setStyleEditorVisible] = useState(false); 
 
     const [, drop] = useDrop({
         accept: componentTypes.map((component) => component.type),
@@ -44,24 +44,38 @@ function PageEditor({ isDarkMode, item, setItem }) {
     };
 
     const handleComponentClick = (index, e) => {
-        console.log(e.target)
+        // console.log(e.target)
         setItem(e.target);
         setSelectedComponent(index);
         setStyleEditorVisible(true);
-    };
+    }; 
 
-
-
-    const handleStyleChange = (ele, styles) => {
+    const handleStyleChange = (styles) => {  
         const styleString = Object.entries(styles).reduce((acc, [key, value]) => {
             // Convert camelCase to kebab-case for CSS properties
             const kebabCaseKey = key.replace(/([A-Z])/g, "-$1").toLowerCase();
             return `${acc}${kebabCaseKey}: ${value}; `;
-        }, '');
+        }, ''); 
 
+        item.style.cssText = styleString; 
+        // console.log(item.style.cssText)
+        if(item.name === "text" || item.name === "input"){
+            item.value = styles['--content'] || '';
+        }
+        else if(item.name === "link"){
+            item.href = styles['--content'] || '';
+        }
+        else if(item.name === "image"){
+            item.src = styles['--content'] || '';
+        }
+        else if(item.name === "video"){
+            const sourceElement = item.querySelector('source');
+            sourceElement.src = styles['--content'] || '';
+        }
+        else if(item.name === "button"){
+            item.textContent = styles['--content'] || '';
+        }  
 
-        console.log(styles, typeof styles)
-        item.style.cssText = styleString;
     };
 
     const handleCloseStyleEditor = () => {
@@ -86,14 +100,13 @@ function PageEditor({ isDarkMode, item, setItem }) {
     };
 
     const renderComponents = (componentsList) => {
-        console.log(componentsList)
+        // console.log(componentsList)
         return componentsList.map((component, index) => (
             <EditableComponent
                 key={component.id}
                 component={component}
                 onClick={(e) => handleComponentClick(index, e)}
-                onDropIntoSection={(item, monitor) => handleDropIntoSection(item, monitor, component.id)}
-                styles={component.styles}
+                onDropIntoSection={(item, monitor) => handleDropIntoSection(item, monitor, component.id)} 
             >
                 {component.children && renderComponents(component.children)}
             </EditableComponent>
@@ -112,7 +125,7 @@ function PageEditor({ isDarkMode, item, setItem }) {
                 </div>
                 <div
                     ref={drop}
-                    className="w-2/3 h-fit p-4 border-2 border-dashed rounded relative"
+                    className="w-2/3 min-h-500px p-4 border-2 border-dashed rounded relative"
                 >
                     <h3 className="font-semibold mb-2">Your Page</h3>
                     {renderComponents(components)}
@@ -121,8 +134,8 @@ function PageEditor({ isDarkMode, item, setItem }) {
             {styleEditorVisible && selectedComponent !== null && (
                 <StyleEditor
                     component={components[selectedComponent]}
-                    onStyleChange={(newStyles) => handleStyleChange(selectedComponent, newStyles)}
-                    onClose={handleCloseStyleEditor}
+                    onStyleChange={(newStyles) => handleStyleChange(newStyles)}
+                    onClose={handleCloseStyleEditor} 
                     item={item}
                 />
             )}

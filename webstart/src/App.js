@@ -5,7 +5,7 @@ import { HTML5Backend } from 'react-dnd-html5-backend';
 import Navbar from './components/Navbar';
 import Home from './components/Home';
 import Templates from './components/TemplateGallary';
-import CreatePage from './components/canvas/PageEditor';
+import PageEditor from './components/canvas/PageEditor';
 import Account from './components/Profile';
 import Footer from './components/Footer';
 
@@ -29,7 +29,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home isDarkMode={isDarkMode} />} />
             <Route path="/templates" element={<Templates isDarkMode={isDarkMode} />} />
-            <Route path="/create" element={<CreatePage isDarkMode={isDarkMode} item={item} setItem={setItem}/>} />
+            <Route path="/create" element={<PageEditor isDarkMode={isDarkMode} item={item} setItem={setItem} />} />
             <Route path="/account" element={<Account isDarkMode={isDarkMode} />} />
           </Routes>
         </div>

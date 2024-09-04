@@ -1,14 +1,23 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import Draggable from 'react-draggable';
 
-function StyleEditor({ component, onStyleChange, onClose , item }) {
-    const [styles, setStyles] = useState(component.styles);
-    const [display, setDisplay] = useState(styles.display || 'block');
+function StyleEditor({ onStyleChange, onClose, item }) {
+    const [styles, setStyles] = useState({});
+    const [display, setDisplay] = useState('block');
 
+    useEffect(() => {
+        const styleObject = {};
+        for (let i = 0; i < item.style.length; i++) {
+            const styleName = item.style[i];
+            styleObject[styleName] = item.style.getPropertyValue(styleName);
+        }
+        setStyles(styleObject);
+    }, [item]);  
 
-    const handleChange = (e) => { 
+    const handleChange = (e) => {
         const { name, value } = e.target;
         const updatedStyles = { ...styles, [name]: value };
+        console.log("updated: " + JSON.stringify(updatedStyles),styles)
         setStyles(updatedStyles);
         onStyleChange(updatedStyles);
     };
@@ -26,28 +35,78 @@ function StyleEditor({ component, onStyleChange, onClose , item }) {
         onStyleChange(updatedStyles);
     };
 
+    const handleDelete = () => {
+        item.remove();
+        onClose();
+    };
+
+    function TextrgbToHex(color = "rgb(0, 0, 0)") {
+        // Check if the color is already in hex format
+        if (/^#[0-9A-Fa-f]{6}$/i.test(color)) {
+            return color;  
+        }
+
+        // Remove whitespace and match the RGB values
+        const rgb = color.replace(/\s+/g, '').match(/^rgb\((\d+),(\d+),(\d+)\)$/i);
+
+        if (!rgb) {
+            throw new Error("Invalid color format");
+        }
+
+        // Convert each of the RGB components to a two-digit hexadecimal number
+        const hex = rgb.slice(1).map(x => {
+            const hexValue = parseInt(x).toString(16);
+            return hexValue.length === 1 ? "0" + hexValue : hexValue;
+        }).join('');
+
+        return `#${hex}`;
+    }
+
+    function BgrgbToHex(color = "rgb(255, 255, 255)") {
+        // Check if the color is already in hex format
+        if (/^#[0-9A-Fa-f]{6}$/i.test(color)) {
+            return color;  
+        }
+
+        // Remove whitespace and match the RGB values
+        const rgb = color.replace(/\s+/g, '').match(/^rgb\((\d+),(\d+),(\d+)\)$/i);
+
+        if (!rgb) {
+            throw new Error("Invalid color format");
+        }
+
+        // Convert each of the RGB components to a two-digit hexadecimal number
+        const hex = rgb.slice(1).map(x => {
+            const hexValue = parseInt(x).toString(16);
+            return hexValue.length === 1 ? "0" + hexValue : hexValue;
+        }).join('');
+
+        return `#${hex}`;
+    }
+
     return (
         <Draggable>
             <div className="fixed top-0 right-0 p-4 bg-white shadow-lg border rounded z-50 w-[400px] h-[80vh] overflow-y-auto">
                 <h3 className="text-lg font-bold mb-2">Style Editor</h3>
                 <div className="space-y-4">
-                    {/* Content selection  */}
-                    <div className='mb-4'>
+                    {/* Content selection */}
+                    <div className="mb-4">
                         <input
                             type="text"
-                            name="content"
+                            name="--content"
                             onChange={handleChange}
-                            value={styles.content || ''}
+                            value={styles['--content'] || ''}
                             className="w-full p-1 border rounded"
-                                placeholder="Enter text here..."
+                            placeholder="Enter text here..."
                         />
                     </div>
+
                     {/* Display Selection */}
                     <div className="mb-4">
                         <label className="block mb-2">
                             Display:
                             <select
-                                value={display}
+                                value={styles.display || display}
                                 onChange={handleDisplayChange}
                                 className="w-full p-1 border rounded"
                             >
@@ -87,18 +146,32 @@ function StyleEditor({ component, onStyleChange, onClose , item }) {
                         </label>
                     </div>
 
-                    {/* Background Color and Font Properties */}
+                    {/* Text Color */}
                     <div className="grid grid-cols-2 gap-4">
                         <label className="block mb-2">
-                            Background Color:
+                            Text Color:
                             <input
                                 type="color"
-                                name="backgroundColor"
-                                value={styles.backgroundColor || '#ffffff'}
+                                name="color"
+                                value={TextrgbToHex(styles.color)}
                                 onChange={handleChange}
                                 className="w-full p-1 border rounded"
                             />
                         </label>
+
+                        {/* Background Color */}
+                        <label className="block mb-2">
+                            Background Color:
+                            <input
+                                type="color"
+                                name="background-color"
+                                value={BgrgbToHex(styles['background-color'])}
+                                onChange={handleChange}
+                                className="w-full p-1 border rounded"
+                            />
+                        </label>
+
+                        {/* Font Size */}
                         <label className="block mb-2">
                             Font Size:
                             <input
@@ -110,6 +183,8 @@ function StyleEditor({ component, onStyleChange, onClose , item }) {
                                 placeholder="e.g., 16px or 1em"
                             />
                         </label>
+
+                        {/* Font Family */}
                         <label className="block mb-2">
                             Font Family:
                             <input
@@ -121,6 +196,8 @@ function StyleEditor({ component, onStyleChange, onClose , item }) {
                                 placeholder="e.g., Arial, sans-serif"
                             />
                         </label>
+
+                        {/* Font Weight */}
                         <label className="block mb-2">
                             Font Weight:
                             <input
@@ -132,6 +209,8 @@ function StyleEditor({ component, onStyleChange, onClose , item }) {
                                 placeholder="e.g., bold, 700"
                             />
                         </label>
+
+                        {/* Line Height */}
                         <label className="block mb-2">
                             Line Height:
                             <input
@@ -143,6 +222,8 @@ function StyleEditor({ component, onStyleChange, onClose , item }) {
                                 placeholder="e.g., 1.5"
                             />
                         </label>
+
+                        {/* Text Align */}
                         <label className="block mb-2">
                             Text Align:
                             <select
@@ -157,6 +238,8 @@ function StyleEditor({ component, onStyleChange, onClose , item }) {
                                 <option value="justify">Justify</option>
                             </select>
                         </label>
+
+                        {/* Text Transform */}
                         <label className="block mb-2">
                             Text Transform:
                             <select
@@ -171,6 +254,8 @@ function StyleEditor({ component, onStyleChange, onClose , item }) {
                                 <option value="lowercase">Lowercase</option>
                             </select>
                         </label>
+
+                        {/* Letter Spacing */}
                         <label className="block mb-2">
                             Letter Spacing:
                             <input
@@ -184,7 +269,7 @@ function StyleEditor({ component, onStyleChange, onClose , item }) {
                         </label>
                     </div>
 
-                    {/* Border and Padding */}
+                    {/* Border, Padding, and Margin */}
                     <div className="grid grid-cols-2 gap-4">
                         <label className="block mb-2">
                             Border:
@@ -248,6 +333,7 @@ function StyleEditor({ component, onStyleChange, onClose , item }) {
                                 <option value="outset">Outset</option>
                             </select>
                         </label>
+
                         <label className="block mb-2">
                             Margin:
                             <input
@@ -270,6 +356,10 @@ function StyleEditor({ component, onStyleChange, onClose , item }) {
                                 placeholder="e.g., 10px"
                             />
                         </label>
+                    </div>
+
+                    {/* Box Shadow */}
+                    <div className="mb-4">
                         <label className="block mb-2">
                             Box Shadow:
                             <input
@@ -278,7 +368,7 @@ function StyleEditor({ component, onStyleChange, onClose , item }) {
                                 value={styles.boxShadow || ''}
                                 onChange={handleChange}
                                 className="w-full p-1 border rounded"
-                                placeholder="e.g., 0 4px 8px rgba(0, 0, 0, 0.2)"
+                                placeholder="e.g., 0px 4px 6px rgba(0, 0, 0, 0.1)"
                             />
                         </label>
                     </div>
@@ -453,6 +543,7 @@ function StyleEditor({ component, onStyleChange, onClose , item }) {
                     )}
                 </div>
                 <button onClick={onClose} className="mt-4 w-full bg-red-500 text-white p-2 rounded">Close</button>
+                <button onClick={handleDelete} className="mt-4 w-full bg-red-500 text-white p-2 rounded">Delete item</button>
             </div>
         </Draggable>
     );
