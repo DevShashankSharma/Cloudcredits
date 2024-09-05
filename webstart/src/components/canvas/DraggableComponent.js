@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDrag } from 'react-dnd'; 
+import { useDrag } from 'react-dnd';
 
 function DraggableComponent({ component }) {
     const [{ isDragging }, drag] = useDrag(() => ({
@@ -108,24 +108,6 @@ function DraggableComponent({ component }) {
                         className="feather feather-input"
                     >
                         <rect x="2" y="8" width="20" height="8" fill="none" stroke="currentColor" />
-                    </svg>
-                );
-            case 'select':
-                return (
-                    <svg
-                        width="24"
-                        height="24"
-                        viewBox="0 0 24 24"
-                        fill="none"
-                        stroke={isDragging ? "#ccc" : "#000"}
-                        strokeWidth="2"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                        className="feather feather-select"
-                    >
-                        <rect x="2" y="6" width="20" height="12" fill="none" stroke="currentColor" />
-                        <line x1="2" y1="10" x2="22" y2="10" stroke="currentColor" />
-                        <line x1="2" y1="14" x2="22" y2="14" stroke="currentColor" />
                     </svg>
                 );
             case 'link':

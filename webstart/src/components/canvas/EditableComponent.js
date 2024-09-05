@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from "react";
 import { useDrag, useDrop } from "react-dnd";
 
-const componentTypes = ["text", "image", "button", "video", "section", "input", "select", "link"];
+const componentTypes = ["text", "image", "button", "video", "section", "input", "link"];
 
 function EditableComponent({
     component,

@@ -4,7 +4,7 @@ import img from '../../image/lee-campbell-DtDlVpy-vvQ-unsplash.jpg'
 
 function Hero({ isDarkMode }) {
     return (
-        <div className={`relative ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-blue-600 text-white'} transition-all duration-500 ease-in-out`}>
+        <div className={`relative mt-12 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-blue-600 text-white'} transition-all duration-500 ease-in-out`}>
             <div className="container mx-auto flex flex-col md:flex-row items-center py-20 px-4">
                 <div className="md:w-1/2">
                     <h1 className="text-5xl md:text-6xl font-extrabold mb-6 animate-fade-in-up">

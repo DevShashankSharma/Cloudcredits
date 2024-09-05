@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDrop } from 'react-dnd';
-import { useLocation } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import DraggableComponent from './DraggableComponent';
 import EditableComponent from './EditableComponent';
 import StyleEditor from './StyleEditor';
@@ -11,24 +11,34 @@ const componentTypes = [
     { name: 'Button', type: 'button' },
     { name: 'Video', type: 'video' },
     { name: 'Section', type: 'section' },
-    { name: 'Input', type: 'input' },
-    { name: 'Select', type: 'select' },
+    { name: 'Input', type: 'input' }, 
     { name: 'Link', type: 'link' }
 ];
 
 
-function PageEditor({ isDarkMode, item, setItem }) {
+function PageEditor({ isDarkMode, item, setItem, projects, setProjects }) {
     const [components, setComponents] = useState([]);
     const [selectedComponent, setSelectedComponent] = useState(null);
-    const [styleEditorVisible, setStyleEditorVisible] = useState(false); 
+    const [styleEditorVisible, setStyleEditorVisible] = useState(false);
+    const [newProject, setNewProject] = useState({ title: "", description: "", content: "" });
 
     const location = useLocation();
-    const templateContent = location.state?.templateContent || '';
+    const template = location.state?.template || '';
+    const index = location.state?.index; 
 
-    useEffect (() => {
+    const navigate = useNavigate();
+
+    const [title, setTitle] = useState(template.title || '');
+    const [description, setDescription] = useState(template.description || '');
+
+    useEffect(() => {
         let obj = document.getElementById('editor');
-        obj.innerHTML = templateContent;
-    })
+        obj.innerHTML = template.content || '';
+    }, [template]);
+
+    useEffect(() => {
+        setNewProject({ title: title, description: description, content: '' });
+    }, [title, description]);
 
     const [, drop] = useDrop({
         accept: componentTypes.map((component) => component.type),
@@ -57,33 +67,33 @@ function PageEditor({ isDarkMode, item, setItem }) {
         setItem(e.target);
         setSelectedComponent(index);
         setStyleEditorVisible(true);
-    }; 
+    };
 
-    const handleStyleChange = (styles) => {  
+    const handleStyleChange = (styles) => {
         const styleString = Object.entries(styles).reduce((acc, [key, value]) => {
             // Convert camelCase to kebab-case for CSS properties
             const kebabCaseKey = key.replace(/([A-Z])/g, "-$1").toLowerCase();
             return `${acc}${kebabCaseKey}: ${value}; `;
-        }, ''); 
+        }, '');
 
-        item.style.cssText = styleString; 
+        item.style.cssText = styleString;
         // console.log(item.style.cssText)
-        if(item.name === "text" || item.name === "input"){
+        if (item.name === "text" || item.name === "input") {
             item.value = styles['--content'] || '';
         }
-        else if(item.name === "link"){
+        else if (item.name === "link") {
             item.href = styles['--content'] || '';
         }
-        else if(item.name === "image"){
+        else if (item.name === "image") {
             item.src = styles['--content'] || '';
         }
-        else if(item.name === "video"){
+        else if (item.name === "video") {
             const sourceElement = item.querySelector('source');
             sourceElement.src = styles['--content'] || '';
         }
-        else if(item.name === "button"){
+        else if (item.name === "button") {
             item.textContent = styles['--content'] || '';
-        }  
+        }
 
     };
 
@@ -115,41 +125,135 @@ function PageEditor({ isDarkMode, item, setItem }) {
                 key={component.id}
                 component={component}
                 onClick={(e) => handleComponentClick(index, e)}
-                onDropIntoSection={(item, monitor) => handleDropIntoSection(item, monitor, component.id)} 
+                onDropIntoSection={(item, monitor) => handleDropIntoSection(item, monitor, component.id)}
             >
                 {component.children && renderComponents(component.children)}
             </EditableComponent>
         ));
     };
 
-    return (
-        <div className={`p-4 h-full ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} transition duration-300`}>
-            <h2 className="text-2xl font-bold mb-4">Page Editor</h2>
-            <div className="flex justify-between">
-            <div className="w-fit">
-                    <h3 className="font-semibold mb-2">Available Components</h3>
-                    {componentTypes.map((component) => (
-                        <DraggableComponent key={component.type} component={component} />
-                    ))}
-                </div> 
-                <div
-                    ref={drop}
-                    className="w-[80vw] min-h-[70vh] p-4 border-2 border-dashed rounded relative"
-                    id='editor'
-                >
-                    {renderComponents(components)}
+    const handleAddProject = () => {
+        let obj = document.getElementById('editor');
+        newProject.content = obj.innerHTML;
+        setProjects([...projects, newProject]);
+        setNewProject({ title: "", description: "", content: "" });
+        navigate("/dashboard");
+    };
+
+    const handleUpdateProject = () => {
+        // Update existing project
+        let obj = document.getElementById('editor');
+        newProject.content = obj.innerHTML;
+        const updatedProjects = [...projects];
+        updatedProjects[index] = newProject;
+        setProjects(updatedProjects);
+        setNewProject({ title: "", description: "", content: "" });
+        navigate("/dashboard");
+    };
+
+    const inputStyles = isDarkMode
+        ? 'bg-gray-700 text-white border-gray-600'
+        : 'bg-gray-100 text-gray-900 border-gray-300';
+
+        return (
+            <div className={`p-4 h-full ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} transition duration-300 `}>
+                <h2 className="text-2xl font-bold mb-4">Page Editor</h2>
+                <div className="flex flex-col md:flex-row sticky top-0 justify-between">
+                    {/* Draggable components section */}
+                    <div className="md:w-1/4 h-[500px] w-full  p-4 bg-opacity-90">
+                        <h3 className="font-semibold mb-2">Components</h3>
+                        {componentTypes.map((component) => (
+                            <DraggableComponent key={component.type} component={component} />
+                        ))}
+                    </div>
+        
+                    {/* Form and Editor section */}
+                    <div className="md:w-3/4 w-full p-4">
+                        <form className="space-y-6">
+                            <div>
+                                <label className="block text-sm font-medium mb-2" htmlFor="title">
+                                    Title
+                                </label>
+                                <input
+                                    id="title"
+                                    type="text"
+                                    className={`w-full px-4 py-2 rounded-lg border ${inputStyles} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                                    value={title}
+                                    onChange={(e) => setTitle(e.target.value)}
+                                    placeholder="Enter project title"
+                                    required
+                                />
+                            </div>
+                            <div>
+                                <label className="block text-sm font-medium mb-2" htmlFor="description">
+                                    Description
+                                </label>
+                                <textarea
+                                    id="description"
+                                    className={`w-full px-4 py-2 rounded-lg border ${inputStyles} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                                    value={description}
+                                    onChange={(e) => setDescription(e.target.value)}
+                                    placeholder="Enter project description"
+                                    rows="4"
+                                    required
+                                />
+                            </div>
+                            <div className="flex space-x-4 justify-center mt-8">
+                                <button
+                                    disabled={!title || !description}
+                                    type="button"
+                                    onClick={() => handleAddProject({ title, description })}
+                                    style={{
+                                        opacity: title && description ? 1 : 0.5,
+                                        cursor: title && description ? 'pointer' : 'not-allowed',
+                                    }}
+                                    className={`px-6 py-3 rounded-full ${isDarkMode
+                                        ? 'bg-gradient-to-r from-green-400 to-blue-500 text-black'
+                                        : 'bg-gradient-to-r from-green-600 to-blue-600 text-white'
+                                        } shadow-lg hover:shadow-xl transition-transform duration-300 transform hover:scale-105`}
+                                >
+                                    Save
+                                </button>
+                                {index !== -1 && (
+                                    <button
+                                        disabled={!title || !description}
+                                        type="button"
+                                        onClick={() => handleUpdateProject(index, { title, description })}
+                                        style={{
+                                            opacity: title && description ? 1 : 0.5,
+                                            cursor: title && description ? 'pointer' : 'not-allowed',
+                                        }}
+                                        className={`px-6 py-3 rounded-full ${isDarkMode
+                                            ? 'bg-gradient-to-r from-yellow-400 to-pink-500 text-black'
+                                            : 'bg-gradient-to-r from-yellow-600 to-pink-600 text-white'
+                                            } shadow-lg hover:shadow-xl transition-transform duration-300 transform hover:scale-105`}
+                                    >
+                                        Update
+                                    </button>
+                                )}
+                            </div>
+                        </form>
+                        <h1 className="font-semibold text-3xl mb-2 text-center">Preview</h1>
+                        <div
+                            ref={drop}
+                            className="w-full min-h-[70vh] p-4 border-2 border-dashed rounded relative"
+                            id='editor'
+                        >
+                            {renderComponents(components)}
+                        </div>
+                    </div>
                 </div>
+                {styleEditorVisible && selectedComponent !== null && (
+                    <StyleEditor
+                        component={components[selectedComponent]}
+                        onStyleChange={(newStyles) => handleStyleChange(newStyles)}
+                        onClose={handleCloseStyleEditor}
+                        item={item}
+                    />
+                )}
             </div>
-            {styleEditorVisible && selectedComponent !== null && (
-                <StyleEditor
-                    component={components[selectedComponent]}
-                    onStyleChange={(newStyles) => handleStyleChange(newStyles)}
-                    onClose={handleCloseStyleEditor} 
-                    item={item}
-                />
-            )}
-        </div>
-    );
+        );
+        
 }
 
 export default PageEditor;
