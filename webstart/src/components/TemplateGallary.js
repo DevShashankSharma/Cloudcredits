@@ -1,12 +1,27 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import template1 from '../image/template1.png'
+import template2 from '../image/template2.jpeg'
+import template3 from '../image/template3.png'
+import template4 from '../image/template4.png'
+import template5 from '../image/template5.jpeg'
+import template6 from '../image/template6.png'
+import template7 from '../image/template7.jpeg'
+import template8 from '../image/template8.jpeg'
+import template9 from '../image/template9.jpeg'
+import template10 from '../image/template10.png'
+import template11 from '../image/template11.webp'
+import template12 from '../image/template12.jpeg'
+import template13 from '../image/template13.webp'
+import template14 from '../image/template14.png'
+import template15 from '../image/template15.png' 
 
 const templates = [
     { 
         id: 1, 
         title: 'Basic Page Layout', 
         description: 'A simple page layout with a header, content section, and footer.', 
-        thumbnail: "https://www.programiz.com/sites/tutorial2program/files/html-layout-example.png", 
+        thumbnail: template1, 
         content: `
         <div style="margin: 0; font-family: Arial, sans-serif;">
             <header style="background-color: #4CAF50; padding: 20px; text-align: center; color: white;">
@@ -25,7 +40,7 @@ const templates = [
         id: 2, 
         title: 'Hero Section', 
         description: 'A hero section with centered content.', 
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRsgSuWwtjccZ1Nk4y0Qd2CSY-5XsYr9fkXvQ&s", 
+        thumbnail: template2, 
         content: `
         <div style="height: 100vh; display: flex; align-items: center; justify-content: center; background-color: #282c34; color: white; text-align: center;">
             <div>
@@ -39,7 +54,7 @@ const templates = [
         id: 3, 
         title: 'Feature Section', 
         description: 'A section to showcase features.', 
-        thumbnail: "https://miro.medium.com/v2/resize:fit:1400/1*oUIqM1O8ZgdQw7cBEXky9A.png", 
+        thumbnail: template3, 
         content: `
         <div style="padding: 40px; background-color: #f9f9f9;">
             <h2 style="text-align: center;">Features</h2>
@@ -64,7 +79,7 @@ const templates = [
         id: 4, 
         title: 'Call to Action', 
         description: 'A section for a call to action with a button.', 
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSRLerZBJ3fRtzFotQOMh-KD2I51yYzNfEhSA&s", 
+        thumbnail: template4, 
         content: `
         <div style="padding: 50px; background-color: #007BFF; color: white; text-align: center;">
             <h2>Ready to get started?</h2>
@@ -76,7 +91,7 @@ const templates = [
         id: 5, 
         title: 'Pricing Table', 
         description: 'A section displaying different pricing plans.', 
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRNwHO7FipLFLu8idz_xy_xT-w9Nx5WnwW3sw&s", 
+        thumbnail: template5, 
         content: `
         <div style="padding: 50px; background-color: #f4f4f4;">
             <h2 style="text-align: center;">Pricing Plans</h2>
@@ -101,7 +116,7 @@ const templates = [
         id: 6, 
         title: 'Contact Form', 
         description: 'A simple contact form for users to get in touch.', 
-        thumbnail: "https://cdn01.jotfor.ms/templates/screenshot/form-templates/responsive-layout-general-inquiry-contact-form.png?v=1627058557&t=classic", 
+        thumbnail: template6, 
         content: `
         <div style="padding: 50px; background-color: #fff;">
             <h2 style="text-align: center;">Contact Us</h2>
@@ -127,7 +142,7 @@ const templates = [
         id: 7, 
         title: 'Image Gallery', 
         description: 'A section for displaying an image gallery.', 
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlv46vCmi-rptBs8ggjM7Bu9Lozh5gpuBIfA&s", 
+        thumbnail: template7, 
         content: `
         <div style="padding: 40px; background-color: #f9f9f9;">
             <h2 style="text-align: center;">Image Gallery</h2>
@@ -143,7 +158,7 @@ const templates = [
         id: 8, 
         title: 'Blog Post', 
         description: 'A template for a simple blog post.', 
-        thumbnail: "https://contenthub-static.grammarly.com/blog/wp-content/uploads/2017/11/how-to-write-a-blog-post.jpeg", 
+        thumbnail: template8, 
         content: `
         <div style="padding: 50px; background-color: #fff;">
             <h2 style="text-align: center;">Blog Post Title</h2>
@@ -156,7 +171,7 @@ const templates = [
         id: 9, 
         title: 'Testimonials', 
         description: 'A section to display client testimonials.', 
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTTyoQI1GV164CiUJGNM9tJxxq70BFgowAfKg&s", 
+        thumbnail: template9, 
         content: `
         <div style="padding: 50px; background-color: #f1f1f1;">
             <h2 style="text-align: center;">What Our Clients Say</h2>
@@ -181,7 +196,7 @@ const templates = [
         id: 10, 
         title: 'Services Section', 
         description: 'A section to showcase services offered.', 
-        thumbnail: "https://i.pinimg.com/originals/4f/61/cc/4f61cca8a7a9bc11ac092718232763a9.png", 
+        thumbnail: template10, 
         content: `
         <div style="padding: 50px; background-color: #fff;">
             <h2 style="text-align: center;">Our Services</h2>
@@ -206,7 +221,7 @@ const templates = [
         id: 11, 
         title: 'Portfolio Section', 
         description: 'A section to display portfolio items.', 
-        thumbnail: "https://cdn.prod.website-files.com/6396257fec13a8df1b522d2f/64e6028c1b4ae39f8d470352_Euphemia%20About%20Page%20Section%20Portfolio.webp", 
+        thumbnail: template11, 
         content: `
         <div style="padding: 50px; background-color: #f9f9f9;">
             <h2 style="text-align: center;">Our Portfolio</h2>
@@ -231,7 +246,7 @@ const templates = [
         id: 12, 
         title: 'Team Section', 
         description: 'A section to introduce your team members.', 
-        thumbnail: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfrPkPD61HXQsRpiBz5JQCTpFntJy8bkKRRg&s", 
+        thumbnail: template12, 
         content: `
         <div style="padding: 50px; background-color: #fff;">
             <h2 style="text-align: center;">Meet Our Team</h2>
@@ -256,7 +271,7 @@ const templates = [
         id: 13, 
         title: 'FAQ Section', 
         description: 'A section for frequently asked questions.', 
-        thumbnail: "https://images.websitebuilderexpert.com/wp-content/uploads/2023/08/15235448/McDonalds-FAQ-page-example-screenshot.png", 
+        thumbnail: template13, 
         content: `
         <div style="padding: 50px; background-color: #f1f1f1;">
             <h2 style="text-align: center;">Frequently Asked Questions</h2>
@@ -273,7 +288,7 @@ const templates = [
         id: 14, 
         title: 'Newsletter Signup', 
         description: 'A section for users to sign up for a newsletter.', 
-        thumbnail: "https://cdn.optinmonster.com/wp-content/uploads/2023/01/email-newsletter-signup-examples-fb.png", 
+        thumbnail: template14, 
         content: `
         <div style="padding: 50px; background-color: #007BFF; color: white; text-align: center;">
             <h2>Subscribe to Our Newsletter</h2>
@@ -288,7 +303,7 @@ const templates = [
         id: 15, 
         title: 'Footer Section', 
         description: 'A basic footer with social media links.', 
-        thumbnail: "https://media.geeksforgeeks.org/wp-content/cdn-uploads/Screenshot-14-1-e1546951555448-1024x476.png", 
+        thumbnail: template15, 
         content: `
         <footer style="padding: 20px; background-color: #282c34; color: white; text-align: center;">
             <p>&copy; 2024 Your Company</p>
