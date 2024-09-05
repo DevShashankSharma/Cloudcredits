@@ -16,8 +16,7 @@ function StyleEditor({ onStyleChange, onClose, item, isDarkMode }) {
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        const updatedStyles = { ...styles, [name]: value };
-        console.log("updated: " + JSON.stringify(updatedStyles),styles)
+        const updatedStyles = { ...styles, [name]: value }; 
         setStyles(updatedStyles);
         onStyleChange(updatedStyles);
     };
