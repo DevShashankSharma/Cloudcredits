@@ -11,7 +11,7 @@ const componentTypes = [
     { name: 'Button', type: 'button' },
     { name: 'Video', type: 'video' },
     { name: 'Section', type: 'section' },
-    { name: 'Input', type: 'input' }, 
+    { name: 'Input', type: 'input' },
     { name: 'Link', type: 'link' }
 ];
 
@@ -24,7 +24,7 @@ function PageEditor({ isDarkMode, item, setItem, projects, setProjects }) {
 
     const location = useLocation();
     const template = location.state?.template || '';
-    const index = location.state?.index; 
+    const index = location.state?.index;
 
     const navigate = useNavigate();
 
@@ -155,105 +155,107 @@ function PageEditor({ isDarkMode, item, setItem, projects, setProjects }) {
         ? 'bg-gray-700 text-white border-gray-600'
         : 'bg-gray-100 text-gray-900 border-gray-300';
 
-        return (
-            <div className={`p-4 h-full ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} transition duration-300 `}>
-                <h2 className="text-2xl font-bold mb-4">Page Editor</h2>
-                <div className="flex flex-col md:flex-row sticky top-0 justify-between">
-                    {/* Draggable components section */}
-                    <div className="md:w-1/4 h-[500px] w-full  p-4 bg-opacity-90">
-                        <h3 className="font-semibold mb-2">Components</h3>
-                        {componentTypes.map((component) => (
-                            <DraggableComponent key={component.type} component={component} />
-                        ))}
-                    </div>
-        
-                    {/* Form and Editor section */}
-                    <div className="md:w-3/4 w-full p-4">
-                        <form className="space-y-6">
-                            <div>
-                                <label className="block text-sm font-medium mb-2" htmlFor="title">
-                                    Title
-                                </label>
-                                <input
-                                    id="title"
-                                    type="text"
-                                    className={`w-full px-4 py-2 rounded-lg border ${inputStyles} focus:outline-none focus:ring-2 focus:ring-blue-500`}
-                                    value={title}
-                                    onChange={(e) => setTitle(e.target.value)}
-                                    placeholder="Enter project title"
-                                    required
-                                />
-                            </div>
-                            <div>
-                                <label className="block text-sm font-medium mb-2" htmlFor="description">
-                                    Description
-                                </label>
-                                <textarea
-                                    id="description"
-                                    className={`w-full px-4 py-2 rounded-lg border ${inputStyles} focus:outline-none focus:ring-2 focus:ring-blue-500`}
-                                    value={description}
-                                    onChange={(e) => setDescription(e.target.value)}
-                                    placeholder="Enter project description"
-                                    rows="4"
-                                    required
-                                />
-                            </div>
-                            <div className="flex space-x-4 justify-center mt-8">
+    return (
+        <div className={`mt-16 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} transition duration-300 `}>
+            <h2 className="text-5xl text-center font-bold mb-4">Page Editor</h2>
+            <div className="flex justify-between">
+                {/* Draggable components section */}
+                <div className="md:w-1/4 w-[50px] pt-[5rem]  h-[500px] sticky top-4 bg-opacity-90">
+                    <h3 className="font-semibold md:block hidden mb-2">Components</h3>
+                    {componentTypes.map((component) => (
+                        <DraggableComponent key={component.type} component={component} isDarkMode={isDarkMode} />
+                    ))}
+                </div>
+
+                {/* Form and Editor section */}
+                <div className="md:w-3/4 w-full p-4">
+                    <form className="space-y-6">
+                        <div>
+                            <label className="block text-sm font-medium mb-2" htmlFor="title">
+                                Title
+                            </label>
+                            <input
+                                id="title"
+                                type="text"
+                                className={`w-full px-4 py-2 rounded-lg border ${inputStyles} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                                value={title}
+                                onChange={(e) => setTitle(e.target.value)}
+                                placeholder="Enter project title"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label className="block text-sm font-medium mb-2" htmlFor="description">
+                                Description
+                            </label>
+                            <textarea
+                                id="description"
+                                className={`w-full px-4 py-2 rounded-lg border ${inputStyles} focus:outline-none focus:ring-2 focus:ring-blue-500`}
+                                value={description}
+                                onChange={(e) => setDescription(e.target.value)}
+                                placeholder="Enter project description"
+                                rows="4"
+                                required
+                            />
+                        </div>
+                        <div className="flex space-x-4 flex-col gap-4 my-2 items-center sm:flex-row sm:justify-center mt-8">
+                            <button
+                                disabled={!title || !description}
+                                type="button"
+                                onClick={() => handleAddProject({ title, description })}
+                                style={{
+                                    opacity: title && description ? 1 : 0.5,
+                                    cursor: title && description ? 'pointer' : 'not-allowed',
+                                }}
+                                className={`px-6 py-3 rounded-full ${isDarkMode
+                                    ? 'bg-gradient-to-r from-green-400 to-blue-500 text-black'
+                                    : 'bg-gradient-to-r from-green-600 to-blue-600 text-white'
+                                    } shadow-lg hover:shadow-xl transition-transform duration-300 transform hover:scale-105`}
+                            >
+                                Save
+                            </button>
+                            {index !== -1 && (
                                 <button
                                     disabled={!title || !description}
                                     type="button"
-                                    onClick={() => handleAddProject({ title, description })}
+                                    onClick={() => handleUpdateProject(index, { title, description })}
                                     style={{
                                         opacity: title && description ? 1 : 0.5,
                                         cursor: title && description ? 'pointer' : 'not-allowed',
                                     }}
                                     className={`px-6 py-3 rounded-full ${isDarkMode
-                                        ? 'bg-gradient-to-r from-green-400 to-blue-500 text-black'
-                                        : 'bg-gradient-to-r from-green-600 to-blue-600 text-white'
+                                        ? 'bg-gradient-to-r from-yellow-400 to-pink-500 text-black'
+                                        : 'bg-gradient-to-r from-yellow-600 to-pink-600 text-white'
                                         } shadow-lg hover:shadow-xl transition-transform duration-300 transform hover:scale-105`}
                                 >
-                                    Save
+                                    Update
                                 </button>
-                                {index !== -1 && (
-                                    <button
-                                        disabled={!title || !description}
-                                        type="button"
-                                        onClick={() => handleUpdateProject(index, { title, description })}
-                                        style={{
-                                            opacity: title && description ? 1 : 0.5,
-                                            cursor: title && description ? 'pointer' : 'not-allowed',
-                                        }}
-                                        className={`px-6 py-3 rounded-full ${isDarkMode
-                                            ? 'bg-gradient-to-r from-yellow-400 to-pink-500 text-black'
-                                            : 'bg-gradient-to-r from-yellow-600 to-pink-600 text-white'
-                                            } shadow-lg hover:shadow-xl transition-transform duration-300 transform hover:scale-105`}
-                                    >
-                                        Update
-                                    </button>
-                                )}
-                            </div>
-                        </form>
-                        <h1 className="font-semibold text-3xl mb-2 text-center">Preview</h1>
-                        <div
-                            ref={drop}
-                            className="w-full min-h-[70vh] p-4 border-2 border-dashed rounded relative"
-                            id='editor'
-                        >
-                            {renderComponents(components)}
+                            )}
                         </div>
+                    </form>
+                    <h1 className="font-semibold text-3xl mt-4 mb-2 text-center">Preview</h1>
+                    <div
+                        ref={drop}
+                        className="w-full min-h-[70vh] p-4 border-2 border-dashed rounded relative bg-white"
+                        id='editor'
+                        onClick={(e) => handleComponentClick(index, e)}
+                    >
+                        {renderComponents(components)}
                     </div>
                 </div>
-                {styleEditorVisible && selectedComponent !== null && (
-                    <StyleEditor
-                        component={components[selectedComponent]}
-                        onStyleChange={(newStyles) => handleStyleChange(newStyles)}
-                        onClose={handleCloseStyleEditor}
-                        item={item}
-                    />
-                )}
             </div>
-        );
-        
+            {styleEditorVisible && selectedComponent !== null && (
+                <StyleEditor
+                    component={components[selectedComponent]}
+                    onStyleChange={(newStyles) => handleStyleChange(newStyles)}
+                    onClose={handleCloseStyleEditor}
+                    item={item}
+                    isDarkMode={isDarkMode}
+                />
+            )}
+        </div>
+    );
+
 }
 
 export default PageEditor;

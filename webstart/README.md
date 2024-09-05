@@ -1,70 +1,32 @@
-# Getting Started with Create React App
+# EasyPage
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+**EasyPage** is a drag-and-drop website builder that allows users to create responsive, customizable web pages with ease. It features a user-friendly canvas, a variety of pre-built components, and an intuitive style editor. EasyPage also supports dark mode, responsive design, and advanced styling for sections and elements.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Drag-and-Drop Interface**: Easily drag elements onto the canvas, position them, and edit their content or styles.
+- **Style Editor**: Modify CSS properties such as background, border, padding, margin, colors, and more for any section or element.
+- **Component Support**: Includes components such as buttons, text, images, headers, forms, tables, and more.
+- **Section-Based Layout**: Create sections within the page that can contain multiple components, each with editable titles and styles.
+- **Dark Mode Support**: Switch between light and dark themes for a better user experience.
+- **Responsive Design**: The design automatically adjusts to different screen sizes, ensuring your pages look great on any device.
+- **No Extra Wrapping Elements**: When dragging elements, they are placed directly on the canvas without additional wrapping divs.
+- **Live Preview**: See changes in real-time as you edit your page.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React**: Frontend framework for building dynamic and interactive user interfaces.
+- **Tailwind CSS**: Utility-first CSS framework for styling components.
+- **React DnD**: For drag-and-drop functionality.
+- **React Router**: For navigation and routing between pages.
+- **React Draggable**: For enabling draggable components within the editor.
+- **Dark Mode**: A toggleable dark theme that enhances usability and aesthetics.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Installation
 
-### `npm test`
+To install and run EasyPage locally, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+   ```bash
+   git clone https://github.com/DevShashankSharma/Cloudcredits/tree/main/webstart

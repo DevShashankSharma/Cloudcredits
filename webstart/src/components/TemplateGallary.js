@@ -311,7 +311,7 @@ function TemplateGallery({ isDarkMode }) {
     );
 
     return (
-        <div className={`p-4 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} transition duration-300`}>
+        <div className={`p-4 mt-14 ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'} transition duration-300`}>
             <input
                 type="text"
                 placeholder="Search templates..."

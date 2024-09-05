@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Draggable from 'react-draggable';
 
-function StyleEditor({ onStyleChange, onClose, item }) {
+function StyleEditor({ onStyleChange, onClose, item, isDarkMode }) {
     const [styles, setStyles] = useState({});
     const [display, setDisplay] = useState('block');
 
@@ -86,8 +86,8 @@ function StyleEditor({ onStyleChange, onClose, item }) {
 
     return (
         <Draggable>
-            <div className="fixed top-0 right-0 p-4 bg-white shadow-lg border rounded z-50 w-[400px] h-[80vh] overflow-y-auto">
-                <h3 className="text-lg font-bold mb-2">Style Editor</h3>
+            <div className={`fixed top-0 right-0 p-4 shadow-lg border rounded z-50 w-[400px] h-[80vh] overflow-y-auto ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}>
+                <h3 className={`text-lg font-bold mb-2 `}>Style Editor</h3>
                 <div className="space-y-4">
                     {/* Content selection */}
                     <div className="mb-4">
@@ -96,7 +96,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                             name="--content"
                             onChange={handleChange}
                             value={styles['--content'] || ''}
-                            className="w-full p-1 border rounded"
+                            className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                             placeholder="Enter text here..."
                         />
                     </div>
@@ -108,7 +108,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                             <select
                                 value={styles.display || display}
                                 onChange={handleDisplayChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                             >
                                 <option value="block">Block</option>
                                 <option value="inline">Inline</option>
@@ -129,7 +129,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="width"
                                 value={styles.width || ''}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 placeholder="e.g., 100px or 50%"
                             />
                         </label>
@@ -140,7 +140,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="height"
                                 value={styles.height || ''}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 placeholder="e.g., 100px or 50%"
                             />
                         </label>
@@ -155,7 +155,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="color"
                                 value={TextrgbToHex(styles.color)}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                             />
                         </label>
 
@@ -167,7 +167,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="background-color"
                                 value={BgrgbToHex(styles['background-color'])}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                             />
                         </label>
 
@@ -179,7 +179,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="fontSize"
                                 value={styles.fontSize || ''}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 placeholder="e.g., 16px or 1em"
                             />
                         </label>
@@ -192,7 +192,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="fontFamily"
                                 value={styles.fontFamily || ''}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 placeholder="e.g., Arial, sans-serif"
                             />
                         </label>
@@ -205,7 +205,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="fontWeight"
                                 value={styles.fontWeight || ''}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 placeholder="e.g., bold, 700"
                             />
                         </label>
@@ -218,7 +218,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="lineHeight"
                                 value={styles.lineHeight || ''}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 placeholder="e.g., 1.5"
                             />
                         </label>
@@ -230,7 +230,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="textAlign"
                                 value={styles.textAlign || 'left'}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                             >
                                 <option value="left">Left</option>
                                 <option value="center">Center</option>
@@ -246,7 +246,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="textTransform"
                                 value={styles.textTransform || 'none'}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                             >
                                 <option value="none">None</option>
                                 <option value="capitalize">Capitalize</option>
@@ -263,7 +263,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="letterSpacing"
                                 value={styles.letterSpacing || ''}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 placeholder="e.g., 0.1em"
                             />
                         </label>
@@ -278,7 +278,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="border"
                                 value={styles.border || ''}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 placeholder="e.g., 1px solid #000"
                             />
                         </label>
@@ -289,7 +289,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="borderRadius"
                                 value={styles.borderRadius || ''}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 placeholder="e.g., 8px"
                             />
                         </label>
@@ -300,7 +300,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="borderColor"
                                 value={styles.borderColor || '#000000'}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                             />
                         </label>
                         <label className="block mb-2">
@@ -310,7 +310,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="borderWidth"
                                 value={styles.borderWidth || ''}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 placeholder="e.g., 1px"
                             />
                         </label>
@@ -320,7 +320,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="borderStyle"
                                 value={styles.borderStyle || 'solid'}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                             >
                                 <option value="none">None</option>
                                 <option value="solid">Solid</option>
@@ -341,7 +341,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="margin"
                                 value={styles.margin || ''}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 placeholder="e.g., 10px"
                             />
                         </label>
@@ -352,7 +352,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="padding"
                                 value={styles.padding || ''}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 placeholder="e.g., 10px"
                             />
                         </label>
@@ -367,7 +367,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                 name="boxShadow"
                                 value={styles.boxShadow || ''}
                                 onChange={handleChange}
-                                className="w-full p-1 border rounded"
+                                className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 placeholder="e.g., 0px 4px 6px rgba(0, 0, 0, 0.1)"
                             />
                         </label>
@@ -382,7 +382,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                     name="flexDirection"
                                     value={styles.flexDirection || 'row'}
                                     onChange={handleChange}
-                                    className="w-full p-1 border rounded"
+                                    className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 >
                                     <option value="row">Row</option>
                                     <option value="column">Column</option>
@@ -396,7 +396,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                     name="justifyContent"
                                     value={styles.justifyContent || 'flex-start'}
                                     onChange={handleChange}
-                                    className="w-full p-1 border rounded"
+                                    className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 >
                                     <option value="flex-start">Flex Start</option>
                                     <option value="center">Center</option>
@@ -412,7 +412,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                     name="alignItems"
                                     value={styles.alignItems || 'stretch'}
                                     onChange={handleChange}
-                                    className="w-full p-1 border rounded"
+                                    className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 >
                                     <option value="stretch">Stretch</option>
                                     <option value="flex-start">Flex Start</option>
@@ -427,7 +427,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                     name="alignContent"
                                     value={styles.alignContent || 'stretch'}
                                     onChange={handleChange}
-                                    className="w-full p-1 border rounded"
+                                    className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 >
                                     <option value="stretch">Stretch</option>
                                     <option value="flex-start">Flex Start</option>
@@ -444,7 +444,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                     name="flexGrow"
                                     value={styles.flexGrow || '0'}
                                     onChange={handleChange}
-                                    className="w-full p-1 border rounded"
+                                    className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 />
                             </label>
                             <label className="block mb-2">
@@ -454,7 +454,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                     name="flexShrink"
                                     value={styles.flexShrink || '1'}
                                     onChange={handleChange}
-                                    className="w-full p-1 border rounded"
+                                    className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 />
                             </label>
                             <label className="block mb-2">
@@ -464,7 +464,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                     name="flexBasis"
                                     value={styles.flexBasis || 'auto'}
                                     onChange={handleChange}
-                                    className="w-full p-1 border rounded"
+                                    className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                 />
                             </label>
                             <label className="block mb-2">
@@ -474,7 +474,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                     name="gap"
                                     value={styles.gap || ''}
                                     onChange={handleChange}
-                                    className="w-full p-1 border rounded"
+                                    className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                     placeholder="e.g., 10px"
                                 />
                             </label>
@@ -491,7 +491,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                     name="gridTemplateColumns"
                                     value={styles.gridTemplateColumns || ''}
                                     onChange={handleChange}
-                                    className="w-full p-1 border rounded"
+                                    className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                     placeholder="e.g., repeat(3, 1fr)"
                                 />
                             </label>
@@ -502,7 +502,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                     name="gridTemplateRows"
                                     value={styles.gridTemplateRows || ''}
                                     onChange={handleChange}
-                                    className="w-full p-1 border rounded"
+                                    className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                     placeholder="e.g., repeat(2, 1fr)"
                                 />
                             </label>
@@ -513,7 +513,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                     name="gridColumn"
                                     value={styles.gridColumn || ''}
                                     onChange={handleChange}
-                                    className="w-full p-1 border rounded"
+                                    className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                     placeholder="e.g., 1 / 3"
                                 />
                             </label>
@@ -524,7 +524,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                     name="gridRow"
                                     value={styles.gridRow || ''}
                                     onChange={handleChange}
-                                    className="w-full p-1 border rounded"
+                                    className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                     placeholder="e.g., 1 / 2"
                                 />
                             </label>
@@ -535,7 +535,7 @@ function StyleEditor({ onStyleChange, onClose, item }) {
                                     name="gridGap"
                                     value={styles.gridGap || ''}
                                     onChange={handleChange}
-                                    className="w-full p-1 border rounded"
+                                    className={`w-full p-1 border rounded ${isDarkMode ? 'bg-gray-900 text-white' : 'bg-white text-gray-900'}`}
                                     placeholder="e.g., 10px"
                                 />
                             </label>
