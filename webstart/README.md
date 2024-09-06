@@ -1,6 +1,7 @@
-# EasyPage
+# WebStart : Easy web development for beginners.
 
-**EasyPage** is a drag-and-drop website builder that allows users to create responsive, customizable web pages with ease. It features a user-friendly canvas, a variety of pre-built components, and an intuitive style editor. EasyPage also supports dark mode, responsive design, and advanced styling for sections and elements.
+
+**WebStart** is a drag-and-drop website builder that allows users to create responsive, customizable web pages with ease. It features a user-friendly canvas, a variety of pre-built components, and an intuitive style editor. WebStart also supports dark mode, responsive design, and advanced styling for sections and elements.
 
 ## Features
 
@@ -24,7 +25,7 @@
 
 ## Installation
 
-To install and run EasyPage locally, follow these steps:
+To install and run WebStart locally, follow these steps:
 
 1. Clone the repository:
 
